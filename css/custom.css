@@ -1,0 +1,88 @@
+
+html, body{
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+.row {
+    padding: 70px 0px 70px 0px;
+    
+}
+
+#header{
+    width: 100%;
+    transition: background ease-out 0.2s;
+    background-color: var(--secondary)
+    
+}
+
+
+
+#header .navbar-collapse{
+    width: auto;
+    
+}
+
+.navbar-nav{
+    text-align: center;
+}
+
+#header .nav-link{
+    text-transform: uppercase;
+    font-weight: 800;
+
+
+    color: black;
+    border-bottom: solid 2px transparent;
+    display: inline-block;
+    text-decoration: none;
+    
+}
+
+
+#header a:hover{
+    color: var(--primary);
+}
+
+#header .nav-link::after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+
+}
+
+#header .nav-link:hover::after{
+    border-bottom: solid 1px var(--primary);
+    width: 100%;
+    transition: width .3s;
+   
+}
+
+
+#slider .hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../assets/network-monitoring-6475769_640.jpg");
+    height: 600px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+  }
+  
+  .hero-text {
+    text-align: center;
+    margin-top: 8%;
+    color: rgb(255, 255, 255);
+    opacity: 1;
+    font-family: serif;
+    
+  }
+
+
+  #slider .hero-text h1{
+    font-size: 93px;
+  }
+
+
+
+  
