@@ -83,6 +83,19 @@ html, body{
     font-size: 93px;
   }
 
-
+.btn-entrar-ou-registrar {
+    width: 100%;
+    padding: 16px 0px;
+    margin: 25px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color:#f0ffffde;
+    background: rgb(5, 5, 145);
+    cursor: pointer;
+}
 
   
