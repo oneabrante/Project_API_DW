@@ -3,22 +3,58 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/icofont.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <title>Eyes of API</title>
+    <title>EyesUP</title>
     <style>
 
 
 html, body{
-    font-family: 'Roboto', sans-serif;
-    
+    font-family: 'Lato', sans-serif;
+    min-height: 100vh;
+    overflow: auto;
+}
+
+.parallax {
+background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./assets/network-monitoring-6475769_640.jpg);
+  height: 100%; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Turn off parallax scrolling for tablets and phones. Increase the pixels if needed */
+@media only screen and (max-device-width: 1366px) {
+  .parallax {
+    background-attachment: scroll;
+  }
+}
+
+.row {
+    padding: 70px 0px 70px 0px;
 }
 
 * {
     list-style: none;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
     
 }
+
+.navbar {
+    padding: 0px 0px 0px 0px;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-family: 'Lato', sans-serif;
+}
+
 
 .navbar-nav{
     text-align: center;
@@ -41,7 +77,7 @@ html, body{
     border: none;
     outline: none;
     font-weight: 800;
-    color: #fff;
+    color: rgb(178, 121, 30);
     background-color: transparent;
     
 }
@@ -49,7 +85,7 @@ html, body{
 .btn-entrar:hover {
     width: 100%;
     transition: background ease-out 0.02s;
-    color: rgb(178, 121, 30);
+    color: rgb(255, 157, 0);
     
 }
 
@@ -59,10 +95,8 @@ html, body{
     border-radius: 100px;
     outline: none;
     font-weight: 800;
-    
-    border-color: black;
-    
-    
+    color: #eff0f0;
+    background: black;
 }
 
 
@@ -78,45 +112,120 @@ html, body{
     
 }
 
-#slider .hero-image {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./assets/network-monitoring-6475769_640.jpg);
-    height: 600px;
-    background-position: center;
-    background-repeat: no-repeat;
+
+#particles-js{
+    background-color:black;
+    height: 100vh;
     background-size: cover;
-    
-  }
-  
-  .hero-text {
-    text-align: center;
-    margin-top: 8%;
-    color: rgb(255, 255, 255);
-    opacity: 1;
-    font-family: serif;
-    
-  }
-
-
-  #slider .hero-text h1{
-    font-size: 93px;
-  }
-
-  .avatar {
-  vertical-align: middle;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+    background-position: center;
 }
+
+.welcome{
+    margin-left: 17%;
+    position: absolute;
+    text-align: center;
+    margin-top: 18%;
+    color: rgb(255, 255, 255);
+    font-family: serif;
+}
+
+.welcome h1{
+    font-size: 82px;
+    font-weight: 900;
+}
+
+.welcome p{
+    font-size: 30px;
+    font-weight: 400;
+    font-family: monospace;
+}
+
+.welcome a{
+    background-color: rgb(178, 121, 30);
+    color: black;
+    text-decoration: none;
+    letter-spacing: 2px;
+    margin-top: 40%;
+    padding: 15px 30px;
+    border-radius: 100px;
+    font-size: 20px;
+}
+
+.welcome a:hover{
+    background-color: rgb(255, 157, 0);
+    color: black;
+    text-decoration: none;
+    letter-spacing: 2px;
+    margin-top: 40%;
+    padding: 15px 30px;
+    border-radius: 100px;
+    font-size: 20px;
+}
+
+.textcenterunder {
+    text-align: center;
+    padding: 0 15px;
+    position: relative;
+}
+
+.service-icon {
+    float: left;
+    margin: 0 30px 0 0;
+    padding: 0;
+    width: 40px;
+}
+
+.service-icon i {
+    font-size: 60px;
+    color: orange;
+}
+
+.media-body {
+    overflow: hidden;
+    display: block !important
+}
+
+
+.carousel-item h1 {
+  position: absolute;
+  margin: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  color: #fff;
+  white-space: normal;
+  box-sizing: border-box;
+  padding: 0;
+  line-height: 1;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 85px;
+  opacity: 1;
+  transition: all 400ms 600ms cubic-bezier(0, 0.83, 0.45, 1);
+}
+
+.carousel-item button {
+  position: absolute;
+  margin: 0;
+  color: rgb(255, 255, 255);
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%, -50%);
+ 
+}
+
 
 
     </style>
   </head>
   <body>
-    <div id="header">
-        <nav class="navbar navbar-expand-lg bg-secondary">
+    <div id="header" style="padding: 0; --bs-gutter-x: none">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
             <div class="container-fluid">
                 <a class="ms-5 navbar-brand" href="#">
-                    <img src="./assets/small.jpg" alt="Logo Eye of API LTDA" width="80" style="border-radius: 100%;">
+                    <img src="./assets/small.jpg" alt="Logo" width="80" style="border-radius: 100%;">
                 </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -145,7 +254,7 @@ html, body{
                         <a href="login.html"><button class="btn-entrar" type="submit">Entrar</button></a>
                     </li>
                     <li class="nav-item">
-                        <a href="login.html"><button class="btn-registrar" type="submit">Registre-se</button></a>
+                        <a href="cadastro.html"><button class="btn-registrar" type="submit">Registre-se</button></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active"><i class="fab fa-github fa-2x"></i></a>
@@ -166,20 +275,177 @@ html, body{
             </div>
         </nav>
     </div>
-     <!-- header off -->
-    <!-- slider init -->
-       <div id="slider">
-        <div class="row" style="padding: 0; --bs-gutter-x: none">
-            <div class="hero-image">
-                <div class="row" style="--bs-gutter-x: none">
-                    <div class="hero-text">
-                    <h1>Eyes of API</h1>
-                    <p style="font-size:50px">Application Programming Interface</p>
+    <!-- header off -->
+      <!-- slider init -->
+        <!-- <div id="slider">
+            <div class="row" style="padding: 0; --bs-gutter-x: none">
+                <div class="hero-image">
+                        <div class="row" style="--bs-gutter-x: none">
+                                <div class="hero-text">
+                                    <div class="container">
+                                        <h1>Bem-vindo ao mundo da <strong style="color:rgb(255, 157, 0);">EyesUp</strong></h1>
+                                        <p style="font-size:50px;">Somos especializados em monitorar aplicações de Internet<p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="welcome">
+            <h1>Bem-vindo(a) ao mundo da <strong style="color:rgb(255, 157, 0);">EyesUp</strong></h1>
+            <p>Somos especializados em monitorar aplicações de Internet.</p>
+            <a href="#">Experimente</a>
+        </div>
+        <div id="particles-js"></div>
+    <!-- slider off -->
+    <!-- tot on -->
+    <div id="tot" style="color: whitesmoke;">
+        <div class="parallax" style="padding: 0; --bs-gutter-x: none">
+            <div class="container">
+                <div class="pb-0 row">
+                <div class="col-md-12">
+                    <div class="textcenterunder">
+                        <h1>O que fazemos por você</h1>
+                        <br>
+                        <!-- <br>
+                        <h3>Nossas soluções auxliam a manter sua infraestrutura em um estado de trabalho e funcionando de forma ideal, conseguindo isso com uma facilidade incrível. projetado para monitorar sites, servidores e outros serviços web. Ele permite monitorar o trabalho do seu recurso, analisar estatísticas dos últimos 3 meses, notificá-lo prontamente de problemas emergentes.</h3> -->
+                        <p style="font-size:25px;">Saber que seu site ou aplicação está disponível e acessível é fundamental para todos os negócios. Dessa forma, nossas soluções auxliam a manter sua infraestrutura em um estado de trabalho e funcionando de forma ideal, conseguindo isso com uma interface simples, objetiva e confiável. </p>
+                    </div>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="service-area">
+                        <div class="media">
+                            <div class="service-icon">
+                                <i class="icofont-web"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4>Monitoramento de site</h4>
+                                <p>
+                                Acompanhe as informações e o desempenho do seu site à qualquer momento e em qualquer lugar com o EyesUp Monitoramento de Site.
+                                </p>
+                            </div>
+                        </div>
+                        </div> 
+                    </div>
+                    <div class="col-md-4">
+                    <div class="service-area">
+                        <div class="media">
+                        <div class="service-icon">
+                            <i class="icofont-thunder-light"></i>
+                            </i>
+                        </div>
+                        <div class="media-body">
+                            <h4>Monitoramento de API</h4>
+                            <p>
+                                Monitore transações de API em várias etapas, verifique cargas e disponibilidade da aplicação e receba alertas de problemas em tempo real com o EyesUp Monitoramento de API.
+                            </p>
+                        </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-md-4">
+                <div class="service-area">
+                    <div class="media">
+                        <div class="service-icon">
+                            <i class="icofont-notification"></i>
+                        </div>
+                        <div class="media-body">
+                        <h4>Notificações</h4>
+                            <p>
+                                Seja o primeiro a saber quando seu site ou servidor está com problema. A EyesUp te avisa 
+                            </p>
+                        </div>
+                    </div>
+                </div> 
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="service-area">
+                        <div class="media">
+                            <div class="service-icon">
+                            <i class="icofont-chart-line-alt"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4>Relatórios</h4>
+                                <p>
+                                Obtenha relatórios de tempo de atividade e análise detalhada.
+                                </p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="service-area">
+                        <div class="media">
+                            <div class="service-icon">
+                                <i class="icofont-slightly-smile"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4>Facilidade de uso</h4>
+                                <p>
+                                    Nenhum software complicado para instalar; tudo o que você precisa é de um navegador web.
+                                </p>
+                            </div>
+                        </div>
+                        </div> 
+                    </div>
+                </div>
+                <div class="pb-0 row">
+                    <div class="col-md-12">
+                    <div class="textcenterunder">
+                        <h1>O que fazemos por você</h1>
+                        <br>
+                        <!-- <br>
+                        <h3>Nossas soluções auxliam a manter sua infraestrutura em um estado de trabalho e funcionando de forma ideal, conseguindo isso com uma facilidade incrível. projetado para monitorar sites, servidores e outros serviços web. Ele permite monitorar o trabalho do seu recurso, analisar estatísticas dos últimos 3 meses, notificá-lo prontamente de problemas emergentes.</h3> -->
+                        <h3>Saber que seu site está ou aplicação está disponível e acessível é fundamental para todos os negócios. Dessa forma, nossas soluções auxliam a manter sua infraestrutura em um estado de trabalho e funcionando de forma ideal, conseguindo isso com uma interface simples, objetiva e confiável. </h3>
+                    </div>
                     </div>
                 </div>
             </div>
         </div>
-
+    </div>
+    </div>
+     <!-- tot off -->
+    <!-- parte do carrossel -->
+    <conteiner>
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="/assets/img.png" class="d-block w-100 align-items-center justify-content-center" alt="...">
+                <h1>
+                    <p>Serviço de Monitoramento de Sites</p>
+                </h1>
+                    <button type="button" class="btn btn-info">Experimentar Grátis</button>
+              </div>
+              <div class="carousel-item">
+                <img src="/assets/img2.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="/assets/img3.png" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </conteiner>
+    <!-- final do carrossel-->
+mapa mundo atraas com: 
+Conte com o AlertSite para API, Aplicativo e Monitoramento de Sites
+ 
+Visão unificada do desempenho da interface do usuário e da API
+ 
+Mais de 350 nodes globais e cobertura de rede privada
+ 
+Integra-se com as ferramentas Ops e DevOps
      <main style="font-size: 30px;">
            <p>Verificação rápida...</p>
            <p>Como funciona...</p>
@@ -209,7 +475,38 @@ html, body{
   
         
      </footer>
-  
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <h1>Conte com o AlertSite para API, Aplicativo e Monitoramento de Sites</h1>
+                        <br>
+                        <br>
+                        <h3>Visão unificada do desempenho da interface do usuário e da API</h3>
+                        <br>
+                        <h3>Mais de 350 nodes globais e cobertura de rede privada</h3>
+                        <br>
+                        <h3>Integra-se com as ferramentas Ops e DevOps</h3>
+                        <br>
+                        <br>
+                        <button type="button" class="btn btn-info">Experimentar Grátis</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+     <script src="./js/particles.js"></script>
+     <script src="./js/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script>
+        var nav = document.querySelector('nav');
+        window.addEventListener('scroll', function () {
+            if (window.pageYOffset > 90) {
+                nav.classList.add('bg-dark', 'shadow');
+            } else {
+                nav.classList.remove('bg-dark', 'shadow');
+            }
+        });
+    </script>
   </body>
 </html>
