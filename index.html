@@ -120,22 +120,25 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
     background-position: center;
 }
 
+
+
 .welcome{
-    margin-left: 17%;
+    top: 50%;
+    left: 50%;
     position: absolute;
     text-align: center;
-    margin-top: 18%;
     color: rgb(255, 255, 255);
     font-family: serif;
+    transform: translate(-50%, -50%);
 }
 
 .welcome h1{
-    font-size: 82px;
+    font-size: 57px;
     font-weight: 900;
 }
 
 .welcome p{
-    font-size: 30px;
+    font-size: 29px;
     font-weight: 400;
     font-family: monospace;
 }
@@ -148,7 +151,7 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
     margin-top: 40%;
     padding: 15px 30px;
     border-radius: 100px;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .welcome a:hover{
@@ -159,7 +162,25 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
     margin-top: 40%;
     padding: 15px 30px;
     border-radius: 100px;
-    font-size: 20px;
+    font-size: 16px;
+}
+
+@media (max-width: 716px){
+    .welcome h1, .welcome p{
+        font-size: 190%; 
+    }
+}
+
+@media (max-width: 416px){
+    .welcome p{
+    font-size: 140%; 
+    }
+}
+
+@media (max-width: 316px){
+    .welcome p{
+    font-size: 100%; 
+    }
 }
 
 .textcenterunder {
@@ -293,10 +314,11 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
             </div>
         </div> -->
         <div class="welcome">
-            <h1>Bem-vindo(a) ao mundo da <strong style="color:rgb(255, 157, 0);">EyesUp</strong></h1>
+            <h1>Bem-vindo(a) ao mundo da <strong style="color:rgb(255, 157, 0); font-size: 80px;">EyesUp</strong></h1>
             <p>Somos especializados em monitorar aplicações de Internet.</p>
             <a href="#">Experimente</a>
         </div>
+    </div>
         <div id="particles-js"></div>
     <!-- slider off -->
     <!-- tot on -->
