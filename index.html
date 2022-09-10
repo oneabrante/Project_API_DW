@@ -27,7 +27,7 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
   background-size: cover;
 }
 
-/* Turn off parallax scrolling for tablets and phones. Increase the pixels if needed */
+
 @media only screen and (max-device-width: 1366px) {
   .parallax {
     background-attachment: scroll;
@@ -64,14 +64,33 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
 #header .nav-link{
     text-transform: uppercase;
     font-weight: 800;
+    color: #ffffff;
+    border-bottom: solid 2px transparent;
+    display: inline-block;
     text-decoration: none;
     
 }
 
-
 #header a:hover{
     color: rgb(178, 121, 30);
 }
+
+#header .nav-link::after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+
+}
+
+#header .nav-link:hover::after{
+    border-bottom: solid 1px rgb(178, 121, 30);
+    width: 100%;
+    transition: width .3s;
+   
+}
+
+
 
 .btn-entrar {
     padding: 10px 10px 10px;
@@ -84,10 +103,7 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
 }
 
 .btn-entrar:hover {
-    width: 100%;
-    transition: background ease-out 0.02s;
     color: rgb(255, 157, 0);
-    
 }
 
   .btn-registrar {
@@ -114,8 +130,16 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
 }
 
 
+@media (max-width: 1000px){
+    .fixed-top{
+        background-color: var(--bs-dark);
+    }
+}
+
+
+
 #particles-js{
-    background-color:black;
+    background-color:rgb(8, 18, 27);
     height: 100vh;
     background-size: cover;
     background-position: center;
@@ -244,16 +268,16 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
   </head>
   <body>
     <div id="header" style="padding: 0; --bs-gutter-x: none">
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
             <div class="container-fluid">
                 <a class="ms-5 navbar-brand" href="#">
                     <img src="./assets/small.jpg" alt="Logo" width="80" style="border-radius: 100%;">
                 </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="pt-3 navbar-nav ms-auto">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                 </button>
+            <div class="p-3 navbar-collapse collapse show" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Início</a>
                     </li>
@@ -297,23 +321,6 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
             </div>
         </nav>
     </div>
-    <!-- header off -->
-      <!-- slider init -->
-        <!-- <div id="slider">
-            <div class="row" style="padding: 0; --bs-gutter-x: none">
-                <div class="hero-image">
-                        <div class="row" style="--bs-gutter-x: none">
-                                <div class="hero-text">
-                                    <div class="container">
-                                        <h1>Bem-vindo ao mundo da <strong style="color:rgb(255, 157, 0);">EyesUp</strong></h1>
-                                        <p style="font-size:50px;">Somos especializados em monitorar aplicações de Internet<p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-            </div>
-        </div> -->
         <div class="welcome">
             <h1>Bem-vindo(a) ao mundo da <strong style="color:rgb(255, 157, 0); font-size: 80px;">EyesUp</strong></h1>
             <p>Somos especializados em monitorar aplicações de Internet.</p>
@@ -331,8 +338,6 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
                     <div class="textcenterunder">
                         <h1>O que fazemos por você</h1>
                         <br>
-                        <!-- <br>
-                        <h3>Nossas soluções auxliam a manter sua infraestrutura em um estado de trabalho e funcionando de forma ideal, conseguindo isso com uma facilidade incrível. projetado para monitorar sites, servidores e outros serviços web. Ele permite monitorar o trabalho do seu recurso, analisar estatísticas dos últimos 3 meses, notificá-lo prontamente de problemas emergentes.</h3> -->
                         <p style="font-size:25px;">Saber que seu site ou aplicação está disponível e acessível é fundamental para todos os negócios. Dessa forma, nossas soluções auxliam a manter sua infraestrutura em um estado de trabalho e funcionando de forma ideal, conseguindo isso com uma interface simples, objetiva e confiável. </p>
                     </div>
                 </div>
@@ -524,7 +529,7 @@ Integra-se com as ferramentas Ops e DevOps
     <script>
         var nav = document.querySelector('nav');
         window.addEventListener('scroll', function () {
-            if (window.pageYOffset > 90) {
+            if (window.pageYOffset > 100) {
                 nav.classList.add('bg-dark', 'shadow');
             } else {
                 nav.classList.remove('bg-dark', 'shadow');
