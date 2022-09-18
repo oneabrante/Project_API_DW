@@ -1,3 +1,4 @@
+
 <h1 align="center"> EyesUP </h1>
 
 <p align="center"><img src="./assets/small.jpg" alt="logo EyesUP" width="90px" style="border-radius: 40px;"></p>
@@ -11,4 +12,3 @@ Este é um projeto da disciplina de Desenvolvimento WEB do curso de Tecnologia d
 - `Funcionalidade 1`: Monitoramento de Aplicações WEB
 - `Funcionalidade 2`: Monitoramento de API
 - `Funcionalidade 2a`: Consulta das API do IFPB
-

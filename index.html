@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -643,7 +643,7 @@ Integra-se com as ferramentas Ops e DevOps
           <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
             <h6 class="text-uppercase mb-4 font-weight-bold">Serviços</h6>
             <p>
-              <a class="nav-link">Lorem</a>
+              <a class="text-white">Lorem</a>
             </p>
             <p>
               <a class="text-white">Lorem</a>
@@ -703,7 +703,7 @@ Integra-se com as ferramentas Ops e DevOps
   
           <div class="col-md-7 col-lg-8 text-center text-md-start">
     
-            <div class="p-0"> © 2020 Copyright: EyesUP</div>
+            <div class="p-0"> © 2022 Copyright: EyesUP</div>
       
           </div>
 
@@ -753,6 +753,7 @@ Integra-se com as ferramentas Ops e DevOps
      <script src="./js/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script>
+        // Aparecer navbar a parti de 100px de scroll 
         var nav = document.querySelector('nav');
         window.addEventListener('scroll', function () {
             if (window.pageYOffset > 100) {
@@ -760,7 +761,9 @@ Integra-se com as ferramentas Ops e DevOps
             } else {
                 nav.classList.remove('bg-dark', 'shadow');
             }
-        });       
+        });
+
+        // Resetar o navbar (no mobile) toda vez que clicar num link do navbar
         $('.navbar-nav li a').click(function (){
                 $('.navbar-collapse').collapse('hide');
         });
