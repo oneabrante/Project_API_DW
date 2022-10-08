@@ -19,7 +19,16 @@ html, body{
 }
 
 .parallax {
-background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./assets/network-monitoring-6475769_640.jpg);
+background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./assets/network\ monitor.jpg);
+  height: 100%; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax2 {
+background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./assets/plan.png);
   height: 100%; 
   background-attachment: fixed;
   background-position: center;
@@ -139,7 +148,7 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
 
 
 #particles-js{
-    background-color:rgb(8, 18, 27);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./assets/backimg.png);
     height: 100vh;
     background-size: cover;
     background-position: center;
@@ -168,27 +177,7 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
     font-family: monospace;
 }
 
-.welcome a{
-    background-color: rgb(178, 121, 30);
-    color: black;
-    text-decoration: none;
-    letter-spacing: 2px;
-    margin-top: 40%;
-    padding: 15px 30px;
-    border-radius: 100px;
-    font-size: 16px;
-}
 
-.welcome a:hover{
-    background-color: rgb(255, 157, 0);
-    color: black;
-    text-decoration: none;
-    letter-spacing: 2px;
-    margin-top: 40%;
-    padding: 15px 30px;
-    border-radius: 100px;
-    font-size: 16px;
-}
 
 @media (max-width: 716px){
     .welcome h1, .welcome p{
@@ -290,40 +279,182 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
     display: block !important
 }
 
+/* verifast */
 
-.carousel-item h1 {
-  position: absolute;
-  margin: 0;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Lato', sans-serif;
-  text-align: center;
-  color: #fff;
-  white-space: normal;
-  box-sizing: border-box;
-  padding: 0;
-  line-height: 1;
-  font-weight: 900;
-  text-transform: uppercase;
-  font-size: 85px;
-  opacity: 1;
-  transition: all 400ms 600ms cubic-bezier(0, 0.83, 0.45, 1);
-}
+.verform{
+        margin: 30px;
+        min-height: 40px;
+    }
 
-.carousel-item button {
-  position: absolute;
-  margin: 0;
-  color: rgb(255, 255, 255);
-  left: 50%;
-  top: 70%;
-  transform: translate(-50%, -50%);
- 
-}
+    .verform p{
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: 30px;
+        color: #222;
+
+    }
 
 
+    .verfast-form .input-container{
+        margin-bottom: 20px;
+    }
+
+    .input-container label{
+        font-size: 20px;
+        margin-right: 10px;
+    }
+
+    .verfast-form .input-container .link{
+        width: 400px;
+        height: 35px;
+        border: 1px solid #222;
+        border-radius: 5px;
+        padding: 5px;
+        font-size: 20px;
+        margin-left: 10px;
+    }
+
+    .verfast-form .input-container .select_ver{
+        width: 100px;
+        height: 35px;
+        border: 1px solid #222;
+        border-radius: 5px;
+        padding: 5px;
+        font-size: 20px;
+    }
+
+    .verfast-form .submit-btn{
+        width: 200px;
+        height: 40px;
+        border: 1px solid #222;
+        border-radius: 5px;
+        padding: 5px;
+        font-size: 20px;
+        background-color: #222;
+        color: #fff;
+        cursor: pointer;
+        
+    }
+
+    .verfast-form .submit-btn:hover{
+        background-color: #fff;
+        color: #222;
+    }
+
+    @media screen and (max-width: 1041px){
+        .verform .verfast-form .input-container{
+            width: 300px;
+        }
+    }
+
+    @media screen and (max-width: 841px){
+        .verform .verfast-form .input-container{
+            width: 200px;
+        }
+    }
+
+    @media screen and (max-width: 641px){
+        .verform .verfast-form .input-container{
+            width: 100px;
+        }
+    }
+
+    @media screen and (max-width: 441px){
+        .verform .verfast-form .input-container{
+            width: 50px;
+        }
+    }
+
+    @media screen and (max-width: 341px){
+        .verform .verfast-form .input-container{
+            width: 25px;
+        }
+    }
+
+    .textcenterunder img {
+        width: 100%;
+      
+    }
 
 
+
+/* table */
+
+    #ifpblogo{ 
+        margin-top: 10px;
+        margin-left: 10px;
+        width: 120px;
+        height: 100px;
+    }
+
+    .title{
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: -90px;
+        margin-left: 120px;
+        
+    }
+
+    .title p{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .textinfo{
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 20px;
+        text-align: justify;
+    }
+
+    table{
+        width: 40%;
+        border-collapse: collapse;
+        margin: 0 auto;
+    }
+
+    th, td{
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    tr:nth-child(even){background-color: #f2f2f2;}
+
+    tr:hover {background-color: #ddd;}
+
+    th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: center;
+        background-color: #4CAF50;
+        color: white;
+
+    }
+
+    .fas.fa-check{
+        color: green;
+    }
+
+    .fas.fa-times{
+        color: red;
+    }
+
+    a {
+        color: #4CAF50;
+    }
+
+    ul{
+        list-style-type: none;
+        margin: 20px;
+        justify-content: flex-end;
+        justify-content: space-between;
+        
+
+        
+       
+        
+    }
 
 
 
@@ -343,19 +474,19 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
             <div class="p-3 navbar-collapse collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Início</a>
+                        <a class="nav-link active" aria-current="page" href="index.html">Início</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Verificação Rápida</a>
+                        <a class="nav-link active" href="#about">Sobre a Empresa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active">Como funciona</a>
+                        <a class="nav-link active" href="#tot">Soluções</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active">Fale Conosco</a>
+                        <a class="nav-link active" href="#veri">Verificação Rápida</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active">Sobre</a>
+                        <a class="nav-link active" href="#contact">Fale Conosco</a>
                     </li>
                     <li class="mb-2 nav-item">
                         <div class="vr d-none d-lg-flex mx-lg-3 text-white" style="height: 120%;"></div>  
@@ -388,18 +519,18 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
         <div class="welcome">
             <h1>Bem-vindo(a) ao mundo da <strong style="color:rgb(255, 157, 0); font-size: 80px;">EyesUp</strong></h1>
             <p>Somos especializados em monitorar aplicações de Internet.</p>
-            <a href="#">Experimente</a>
         </div>
     </div>
         <div id="particles-js"></div>
     <!-- slider off -->
     <!-- about on -->
-    <div id="about" style="background-color: rgb(221, 221, 216);">
+    <div id="about" style="background-color: rgb(221, 221, 216); padding-top: 1%;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="textcenterunder">
-                        <h1>Prazer, somos a EyesUP</h1><p style="font-size:25px;">Saber que seu site ou aplicação está disponível e acessível é fundamental para todos os negócios. Dessa forma, nossas soluções auxiliam a manter sua infraestrutura em um estado de trabalho e funcionando de forma ideal, conseguindo isso com uma interface simples, objetiva e confiável. </p></div>
+                        <h1>Prazer, somos a EyesUP</h1>
+                        <p style="font-size:25px; margin-top: 3%;">Saber que seu site ou aplicação está disponível e acessível é fundamental para todos os negócios. Dessa forma, nossas soluções auxiliam a manter sua infraestrutura em um estado de trabalho e funcionando de forma ideal, conseguindo isso com uma interface simples, objetiva e confiável. </p></div>
                         <div class="textcenterunder">
                             <h1>Nosso Valores</h1>
                             <div class="p-2 row">
@@ -443,7 +574,7 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
             <div class="container">
                 <div class="pb-0 row">
                 <div class="col-md-12">
-                    <div class="textcenterunder">
+                    <div class="textcenterunder" style="margin-top: 3%;">
                         <h1>O que fazemos por você</h1>
                     </div>
                 </div>
@@ -548,52 +679,259 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
     </div>
      <!-- tot off -->
      <!-- veri on -->
-     <div class="container">
-        <div class="pb-0 row">
-            <div class="col-md-12">
-                <div class="textcenterunder">
-                    <h1>Verifique Rapidamente</h1>
-                    <br>
-                        <p style="font-size:25px;">Saber que seu site ou aplicação está disponível e acessível é fundamental para todos os negócios. Dessa forma, nossas soluções auxiliam a manter sua infraestrutura em um estado de trabalho e funcionando de forma ideal, conseguindo isso com uma interface simples, objetiva e confiável. </p>
-                    <p> EyesUP é feito para você, opte pela nossa ferramenta de monitoramento de aplicações web. Ser alertado em tempo real relacionados à disponibilidade do seu site ou aplicativo web faz com que você evite problemas, tais como: Perda de clientes, redução de posições nos mecanismos de buscas, alta confiabilidade, . Com nossa ferramenta de monitoramento HTTPCS, opte por monitoramento contínuo e detecte quando seu site não estiver disponível (problema de rede, falha do servidor...). Soluções de ping mais precisas do que as normas, garantimos uma continuidade de serviço de monitoramento para 99,999%. Uma solução sem obrigações sem necessidade de instalação.
-                        Com o monitoramento do HTTPCS, monitorar a disponibilidade de serviços web a cada momento.
-                    </p>
-                    <p> EyesUP é feito para você, opte pela nossa ferramenta de monitoramento de aplicações web. Ser alertado em tempo real relacionados à disponibilidade do seu site ou aplicativo web faz com que você evite problemas, tais como: Perda de clientes, redução de posições nos mecanismos de buscas, alta confiabilidade, . Com nossa ferramenta de monitoramento HTTPCS, opte por monitoramento contínuo e detecte quando seu site não estiver disponível (problema de rede, falha do servidor...). Soluções de ping mais precisas do que as normas, garantimos uma continuidade de serviço de monitoramento para 99,999%. Uma solução sem obrigações sem necessidade de instalação.
-                        Com o monitoramento do HTTPCS, monitorar a disponibilidade de serviços web a cada momento.</p>
+     <div id="veri" style="background-color: rgb(221, 221, 216); padding-top: 1%;">
+        <div class="container">
+            <div class="pb-0 row">
+                <div class="col-md-12">
+                    <div class="textcenterunder">
+                        <h1>Verificação Rápida</h1>
+                            <p style="font-size:25px; margin-top: 3%;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi dolore dolorum eius eligendi perspiciatis soluta doloribus optio officiis magni! Atque, quaerat quis. Illo inventore tenetur adipisci deleniti! Enim, nobis doloribus. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis assumenda, corrupti ullam sunt laborum minima animi vitae mollitia, illum eos earum laboriosam nostrum dignissimos neque libero quis quam hic tempore! </p>
+                            <p>Digite abaixo o site que você quer verificar se está no ar (por exemplo www.eyesup.com.br)</p>
+                    </div>
+                    <div class="textcenterunder">
+                        <form class="verfast-form">
+                            <div class="input-container">
+                                <label for="url">URL:</label>
+                                <select class="select_ver" name="url" id="url" v-model="url">
+                                    <option value="http" >http</option>
+                                    <option value="https">https</option>
+                                    <option value="ftp">ftp</option>
+                                    <option value="smtp">smtp</option>
+                                    <option value="pop3">pop3</option>
+                                    <option value="DNS">DNS</option>
+                                </select>
+                                <input class="link" type="text" id="url" name="url"/>
+                            </div>
+                            <input class="submit-btn" type="submit" value="Verificar">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-      </div>
+    </div>
      <!-- veri off -->
-    <!-- parte do carrossel -->
-    <conteiner>
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="/assets/img.png" class="d-block w-100 align-items-center justify-content-center" alt="...">
-                <h1>
-                    <p>Serviço de Monitoramento de Sites</p>
-                </h1>
-                    <button type="button" class="btn btn-info">Experimentar Grátis</button>
-              </div>
-              <div class="carousel-item">
-                <img src="/assets/img2.png" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="/assets/img3.png" class="d-block w-100" alt="...">
-              </div>
+     <!-- statusapi on -->
+        <div id="statusapi" style="background-color: rgb(221, 221, 216); padding-top: 1%;">
+            <div class="container">
+                <div class="pb-0 row">
+                    <div class="col-md-12">
+                        <div class="textcenterunder">
+                            <h1>Status API Teste</h1>
+                                <p style="font-size:25px; margin-top: 3%;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi dolore dolorum eius eligendi perspiciatis soluta doloribus optio officiis magni! Atque, quaerat quis. Illo inventore tenetur adipisci deleniti! Enim, nobis doloribus. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis assumenda, corrupti ullam sunt laborum minima animi vitae mollitia, illum eos earum laboriosam nostrum dignissimos neque libero quis quam hic tempore! </p>
+                                <p>Digite abaixo o site que você quer verificar se está no ar (por exemplo www.eyesup.com.br)</p>
+                        </div>
+                        <div class="textcenterunder">
+                            <table class="monitor">
+                                <div class="api-status">
+                                    <img :src="ifpblogo" id="ifpblogo">
+                                    <div class="title">
+                                        <h2>IFPB API Status</h2>
+                                     
+                                        <p>Veja o status atual e histórico de todos os serviços</p>
+                                    </div>
+                                    <br>
+                                    <hr>
+                                    <br>
+                                    <div class="textinfo">
+                                        <p>Está página fornece informações de status sobre os serviços que fazem parte do Instituto Federal da Paraíba (IFPB). A tabela a seguir é um registro de execução de interrupções. </p>
+                                        <p>Se você estiver tendo problemas com um serviço específico, verifique se ele está listado como indisponível na tabela acima. Se você não encontrar o serviço que está tendo problemas, entre em contato conosco.</p>
+                                        
+                                    </div>
+                                    <br>
+                                    <div class="table1">
+                                        <table>
+                                            <div class="prob">
+                                                <p>Sem problemas recentes</p>
+                                            </div>
+                                            <tr>
+                                                <th>API</th>
+                                                <th>Descrição</th>
+                                                <th>Status</th>
+                                                <th>Última atualização</th>
+                                            </tr>
+                                            <tr v-for="endpoint in endpoints" :key="endpoint.id">
+                                                <td>{{endpoint.name}}</td>
+                                                <td>{{endpoint.description}}</td>
+                                                <td>
+                                                    <i class="fas fa-check" v-if="endpoint.status"></i>
+                                                    <i class="fas fa-times" v-else></i>
+                                                </td>
+                                                <td>{{endpoint.lastUpdate}}</td>
+                                                
+                                            </tr>
+                                            <div class="icones">
+                                                <ul>
+                                                    <li><i class="fas fa-check"></i> Funcionando</li>
+                                                    <li><i class="fas fa-times"></i> Indisponível</li>
+                                                </ul>
+                                            </div>
+                                            <div class="historyincidents">
+                                                <a class="font-largest no-link" id="past-incidents" href="#past-incidents">Histórico de Ocorrências</a>
+                                                <div class="status-day font-regular no-incidents">
+                                                    <div class="date border-color font-large">Outubro</div>
+                                                    <var data-var="date">04/</var>
+                                                    <var data-var="year">2022</var>
+                                                    <p class="color-secondary">Nenhum incidente reportado hoje</p>
+                                                </div>
+                                                <div class="status-day font-regular no-incidents">
+                                                    <div class="date border-color font-large">Outubro</div>
+                                                    <var data-var="date">03/</var>
+                                                    <var data-var="year">2022</var>
+                                                    <p class="color-secondary">Nenhum incidente reportado</p>
+                                                </div>
+                                                <div class="status-day font-regular no-incidents">
+                                                    <div class="date border-color font-large">Outubro</div>
+                                                    <var data-var="date">02/</var>
+                                                    <var data-var="year">2022</var>
+                                                    <p class="color-secondary">Nenhum incidente reportado</p>
+                                                </div>
+                                                <div class="status-day font-regular no-incidents">
+                                                    <div class="date border-color font-large">Outubro</div>
+                                                    <var data-var="date">01/</var>
+                                                    <var data-var="year">2022</var>
+                                                    <p class="color-secondary">Nenhum incidente reportado</p>
+                                                </div>
+                                                <div class="status-day font-regular no-incidents">
+                                                    <div class="date border-color font-large">Setembro</div>
+                                                    <var data-var="date">30/</var>
+                                                    <var data-var="year">2022</var>
+                                                    <p class="color-secondary">Nenhum incidente reportado</p>
+                                                </div>
+                                                <div class="status-day font-regular no-incidents">
+                                                    <div class="date border-color font-large">Setembro</div>
+                                                    <var data-var="date">29/</var>
+                                                    <var data-var="year">2022</var>
+                                                    <p class="color-secondary">Nenhum incidente reportado</p>
+                                                </div>
+                                                <div class="status-day font-regular no-incidents">
+                                                    <div class="date border-color font-large">Setembro</div>
+                                                    <var data-var="date">28/</var>
+                                                    <var data-var="year">2022</var>
+                                                    <p class="color-secondary">Nenhum incidente reportado</p>
+                                                </div>
+                                                <div class="status-day font-regular no-incidents">
+                                                    <div class="date border-color font-large">Setembro</div>
+                                                    <var data-var="date">27/</var>
+                                                    <var data-var="year">2022</var>
+                                                    <p class="color-secondary">Nenhum incidente reportado</p>
+                                                </div>
+                                                <div class="status-day font-regular no-incidents">
+                                                    <div class="date border-color font-large">Setembro</div>
+                                                    <var data-var="date">26/</var>
+                                                    <var data-var="year">2022</var>
+                                                    <p class="color-secondary">Nenhum incidente reportado</p>
+                                                </div>
+                                                <div class="status-day font-regular no-incidents">
+                                                    <div class="date border-color font-large">Setembro</div>
+                                                    <var data-var="date">25/</var>
+                                                    <var data-var="year">2022</var>
+                                                    <p class="color-secondary">Nenhum incidente reportado</p>
+                                                </div>
+                                                <div class="status-day font-regular no-incidents">
+                                                    <div class="date border-color font-large">Setembro</div>
+                                                    <var data-var="date">24/</var>
+                                                    <var data-var="year">2022</var>
+                                                    <p class="color-secondary">Nenhum incidente reportado</p>
+                                                </div> 
+                                            </div>
+                                        </table>
+                                    </div>
+                                </div>   
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
         </div>
-    </conteiner>
-    <!-- final do carrossel-->
+     <!-- statusapi off -->
+    <!-- plan on -->
+     <div id="tot" style="color: whitesmoke;">
+        <div class="parallax2" style="padding: 0; --bs-gutter-x: none">
+            <div class="container">
+                <div class="pb-0 row">
+                <div class="col-md-12">
+                    <div class="textcenterunder" style="margin-top: 3%;">
+                        <h1>Lorem Lorem</h1>
+                    </div>
+                    <div class="textcenterunder">
+                        <p style="font-size:25px; margin-top: 3%;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi dolore dolorum eius eligendi perspiciatis soluta doloribus optio officiis magni! Atque, quaerat quis. Illo inventore tenetur adipisci deleniti! Enim, nobis doloribus. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit magni aspernatur magnam exercitationem blanditiis dolores temporibus esse optio, suscipit inventore ipsum sunt ullam dignissimos nihil voluptate, modi quasi architecto quidem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas perferendis vero inventore sequi ipsum laudantium dolores et harum, illo incidunt qui doloremque, commodi aliquid odit consequatur, magnam quia iure animi? </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+     <!-- plan off -->
+      <!-- team on -->
+    <div id="team" style="background-color: rgb(170, 170, 160); padding-top: 1%;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="textcenterunder">
+                        <h1>Nossa equipe</h1>
+                    </div>
+                    <div class="textcenterunder">
+                        <img src="./assets/mappeople.svg" alt="map people" height="500" >
+                    </div>
+                    <div class="texteam">
+                        <p style="text-align: center; padding: 0 20% ;">
+                            Se você é um analista ou um criativo, se você escreve programas ou corrige erros, pensa mais ou trabalha melhor com as mãos, um desenvolvedor inovador ou se dá bem com os clientes... <br>Junte-se a nós para fazer o que você ama.</p>
+                        <p style="text-align: center; font-size: 15px;"><strong>Apoiamos a diversidade e temos orgulho de ter representantes de todo o mundo em nossa equipe.</p></strong>
+                       
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- team off -->
+    <!-- contact on -->
+    <div id="contact" style="background-color: rgb(219, 214, 214); padding-top: 1%;">
+        <a href="#contact" style="text-decoration: none;"></a>
+        <form class="verfast-form">
+            <form action="https://formsubmit.co/jivohib426@otodir.com" method="POST">
+              <div class="contact-section">
+                 <div class="container">
+                    <div class="row">
+                    <h2 style="margin-bottom: 20px;">Entre em Contato Conosco</h2>
+                    <p>Como podemos ajudar você? Fique à vontade para entrar em contato seja para fazer um pedido, tirar suas dúvidas. Prezamos pelo bom atendimento aos nossos clientes, será um prazer atende-lo!</p>
+                    <p>Suas informações serão usadas apenas para entrar em contato com você sobre esta solicitação, não serão repassadas a terceiros e serão armazenadas de acordo com o GDPR. <br> Você não será adicionado a uma lista de e-mail marketing.</p>
+                      <div class="col-md-12 col-sm-4">
+                </div>
+                <div class="col-md-9 col-sm-8">
+                    <div class="pt-0 row">
+                        <div class="col-md-5">
+                            <div class="pb-4 form-group">
+                                <input id="fname" name="First Name" required="" class="form-control input-lg" placeholder="Primeiro nome*" type="text">
+                            </div>
+                            <div class="pb-4 form-group">
+                                <input id="lname" name="Last Name" class="form-control input-lg" placeholder="Sobrenome" type="text">
+                            </div>
+                            <div class="pb-4 form-group">
+                                <input id="email" name="email" class="form-control input-lg" placeholder="Seu e-mail*" type="email">
+                            </div>
+                            <div class="pb-4 form-group">
+                                <input id="phone" name="phone" class="form-control input-lg" placeholder="Seu telefone" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="pb-4 form-group">
+                                <textarea cols="6" rows="8" id="comments" name="comments" class="form-control input-lg" placeholder="Escreva sua mensagem"></textarea>
+                            </div>
+                            <input name="submit" class="submit-btn" value="Enviar" type="submit">
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div id="message"></div>
+                    </div> 
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+  
+    <!-- contact off -->
+ 
 mapa mundo atraas com: 
 Conte com o AlertSite para API, Aplicativo e Monitoramento de Sites
  
@@ -602,23 +940,9 @@ Visão unificada do desempenho da interface do usuário e da API
 Mais de 350 nodes globais e cobertura de rede privada
  
 Integra-se com as ferramentas Ops e DevOps
-     <main style="font-size: 30px;">
-           <p>Verificação rápida...</p>
-           <p>Como funciona...</p>
-           <p>Fale Conosco...</p>
-           <p>Sobre...</p>
 
 
-   
-     </main>
-
-    <div class="mx-auto" style="width: 200px;">
-        <img src="./assets/l.jpg" alt="" class="avatar">
-        <img src="./assets/m.webp" alt="" class="avatar">
-        <img src="./assets/t.jpg" alt="" class="avatar">
-      </div>
-
-
+<!-- footer on  -->
 <footer class="text-center text-lg-start text-white" style="background-color: #000000">
 
     <div class="container p-4 pb-0">
@@ -747,7 +1071,7 @@ Integra-se com as ferramentas Ops e DevOps
     </div>
 
   </footer>
-  
+  <!-- footer off -->
 
      <script src="./js/particles.js"></script>
      <script src="./js/app.js"></script>
