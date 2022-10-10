@@ -1,7 +1,7 @@
 
 <h1 align="center"> EyesUP </h1>
 
-<p align="center"><img src="./assets/small.jpg" alt="logo EyesUP" width="90px" style="border-radius: 40px;"></p>
+<p align="center"><img src="./frontend/assets/small.jpg" alt="logo EyesUP" width="90px" style="border-radius: 40px;"></p>
 
 Este é um projeto da disciplina de Desenvolvimento WEB do curso de Tecnologia de Redes de Computadores do IFPB - Campus JP. Ao longo do período serão realizadas constantes atualizações/modificações pelos membros idealizadores do projeto.
 
