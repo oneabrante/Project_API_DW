@@ -1,8 +1,7 @@
 html, body{
     font-family: 'Lato', sans-serif;
     min-height: 100vh;
-    overflow: auto;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .row {
@@ -30,7 +29,7 @@ html, body{
 }
 
 #cadastro{
-    top: 50%;
+    top: 51.5%;
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
@@ -38,11 +37,14 @@ html, body{
 
 .logo{
     position: absolute;
-    top: 15%;
+    top: 8%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
+.ja-tem-conta{
+    padding: 10px 0px;
+}
 
 #botao{
     background: rgb(250, 137, 51);

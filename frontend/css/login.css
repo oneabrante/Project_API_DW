@@ -38,11 +38,14 @@ html, body{
 
 .logo{
     position: absolute;
-    top: 15%;
+    top: 10.5%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
+.sem-conta{
+    padding: 10px 0px;
+}
 
 #botao{
     background: rgb(250, 137, 51);
