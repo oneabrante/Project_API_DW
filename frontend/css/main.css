@@ -365,6 +365,9 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
 
 
 
+
+
+
 /* apistatus */
 
 
@@ -428,4 +431,12 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
     font-size: 25px;
 }
 
-
+#loading {
+    background: url('../assets/Loading_icon.gif') no-repeat center center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999999;
+}

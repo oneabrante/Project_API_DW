@@ -10,6 +10,7 @@ window.addEventListener('scroll', function () {
 
 // Resetar o navbar (no mobile) toda vez que clicar num link do navbar
 $('.navbar-nav li a').click(function (){
-        $('.navbar-collapse').collapse('hide');
+        $('.navbar-collapse').collapse('bd-example-modal-lg');
 });
+
 

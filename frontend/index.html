@@ -71,8 +71,8 @@
         </div>
     </div>
         <div id="particles-js"></div>
-    <!-- slider off -->
-    <!-- about on -->
+<!-- slider off -->
+<!-- about on -->
     <div id="about" style="background-color: rgb(221, 221, 216); padding-top: 1%;">
         <div class="container">
             <div class="row">
@@ -116,8 +116,8 @@
             </div>
         </div>
     </div>
-    <!-- about off -->
-    <!-- tot on -->
+<!-- about off -->
+<!-- tot on -->
     <div id="tot" style="color: whitesmoke;">
         <div class="parallax" style="padding: 0; --bs-gutter-x: none">
             <div class="container">
@@ -226,42 +226,45 @@
         </div>
     </div>
     </div>
-     <!-- tot off -->
-     <!-- veri on -->
+<!-- tot off -->
+<!-- veri on -->
      <div id="veri" style="background-color: rgb(221, 221, 216); padding-top: 1%;">
         <div class="container">
             <div class="pb-0 row">
                 <div class="col-md-12">
                     <div class="textcenterunder">
                         <h1>Verificação Rápida</h1>
-                        <h1>Monitoramento de API</h1>
-                        <h1>Nossa equipe</h1>
                             <p style="font-size:25px; margin-top: 3%;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi dolore dolorum eius eligendi perspiciatis soluta doloribus optio officiis magni! Atque, quaerat quis. Illo inventore tenetur adipisci deleniti! Enim, nobis doloribus. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis assumenda, corrupti ullam sunt laborum minima animi vitae mollitia, illum eos earum laboriosam nostrum dignissimos neque libero quis quam hic tempore! </p>
                             <p>Digite abaixo o site que você quer verificar se está no ar (por exemplo www.eyesup.com.br)</p>
                     </div>
-                    <div class="textcenterunder">
-                        <form class="verfast-form">
+                   
+                    <form action="" id="formntz" class="verfast-form">
+                        <div class="textcenterunder">
                             <div class="input-container">
-                                <label for="url">URL:</label>
-                                <select class="select_ver" name="url" id="url" v-model="url">
-                                    <option value="http" >http</option>
-                                    <option value="https">https</option>
-                                    <option value="ftp">ftp</option>
-                                    <option value="smtp">smtp</option>
-                                    <option value="pop3">pop3</option>
-                                    <option value="DNS">DNS</option>
+                                <label>URL:</label>
+                                <select class="select_ver" name="url" id="url1">
+                                    <option value="http://" >http</option>
+                                    <option value="https://">https</option>
                                 </select>
-                                <input class="link" type="text" id="url" name="url"/>
+                                <input class="link" type="text" id="url2" name="url"/>
                             </div>
-                            <input class="submit-btn" type="submit" value="Verificar">
-                        </form>
-                    </div>
+                            <input class="submit-btn" type="submit" id="send" value="Verificar"
+                            data-bs-toggle="modal"
+                            data-bs-target=".bd-example-modal-lg" />
+                        </div>
+<!-- modal on -->       
+                        <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg"></div>
+                            
+                        </div>
+                    </form>
+<!-- modal off -->
                 </div>
             </div>
         </div>
     </div>
-     <!-- veri off -->
-     <!-- statusapi on -->
+<!-- veri off -->
+<!-- statusapi on -->
         <div id="statusapi" style="background-color: rgb(221, 221, 216); padding-top: 1%;">
             <div class="container" style="width: auto !important; max-width: 1012px !important; padding-right: 1rem; padding-left: 1rem;">
                 <hr>
@@ -293,8 +296,8 @@
                 <br>
             </div>
         </div>
-     <!-- statusapi off -->
-    <!-- plan on -->
+<!-- statusapi off -->
+<!-- plan on -->
      <div id="tot" style="color: whitesmoke;">
         <div class="parallax2" style="padding: 0; --bs-gutter-x: none">
             <div class="container">
@@ -311,8 +314,8 @@
         </div>
     </div>
     </div>
-     <!-- plan off -->
-      <!-- team on -->
+<!-- plan off -->
+<!-- team on -->
     <div id="team" style="background-color: rgb(170, 170, 160); padding-top: 1%;">
         <div class="container">
             <div class="row">
@@ -334,8 +337,8 @@
             </div>
         </div>
     </div>
-    <!-- team off -->
-    <!-- contact on -->
+<!-- team off -->
+<!-- contact on -->
     <div id="contact" style="background-color: rgb(219, 214, 214); padding-top: 1%;">
         <a href="#contact" style="text-decoration: none;"></a>
         <form class="verfast-form">
@@ -368,7 +371,7 @@
                             <div class="pb-4 form-group">
                                 <textarea cols="6" rows="8" id="comments" name="comments" class="form-control input-lg" placeholder="Escreva sua mensagem"></textarea>
                             </div>
-                            <input name="submit" class="submit-btn" value="Enviar" type="submit">
+                            <input name="submit" class="submit-btn" value="Enviar" type="submit" />
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -380,7 +383,7 @@
         </div>
     </div>
   
-    <!-- contact off -->
+<!-- contact off -->
  
 mapa mundo atraas com: 
 Conte com o AlertSite para API, Aplicativo e Monitoramento de Sites
@@ -519,7 +522,7 @@ Integra-se com as ferramentas Ops e DevOps
       </section>
     </div>
   </footer>
-  <!-- footer off -->
+<!-- footer off -->
     <script src="./js/main.js"></script>
     <script src="./js/sec.js"></script>
     <script src="./js/particles.js"></script>
