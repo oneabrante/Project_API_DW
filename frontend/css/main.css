@@ -14,16 +14,6 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
   background-size: cover;
 }
 
-.parallax2 {
-background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../assets/plan.png);
-  height: 100%; 
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-
 @media only screen and (max-device-width: 1366px) {
   .parallax {
     background-attachment: scroll;
@@ -431,12 +421,3 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
     font-size: 25px;
 }
 
-#loading {
-    background: url('../assets/Loading_icon.gif') no-repeat center center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 9999999;
-}

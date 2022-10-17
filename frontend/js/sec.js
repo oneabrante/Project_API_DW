@@ -13,4 +13,3 @@ $('.navbar-nav li a').click(function (){
         $('.navbar-collapse').collapse('bd-example-modal-lg');
 });
 
-
