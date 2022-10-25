@@ -1,0 +1,19 @@
+{
+  "name": "eyesup",
+  "version": "1.0.0",
+  "description": "Monitoramento de API",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "ping": "^0.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

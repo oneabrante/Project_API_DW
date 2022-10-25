@@ -1,0 +1,9 @@
+@host = http://localhost:3000
+
+### Get latency
+
+GET {{host}}/hosts/1/times
+
+### Get latency
+
+GET {{host}}/hosts/1/times?count=5
