@@ -1,5 +1,33 @@
 @host = http://localhost:3000
 
+
+//¬~{&}13oct¬~{&}
+### get /
+GET {{host}}/
+
+
+### get /hello/en?name=
+# Query parameters
+GET {{host}}/hello/en?name=Thiago
+
+
+### get /hello/en/:name'
+# Route parameters
+GET {{host}}/hello/en/Thiago
+
+
+### post /hello/es
+# Body parameters
+POST {{host}}/hello/en
+Content-Type: application/json
+
+{
+  "name": "Thiago"
+}
+
+
+
+# =====19.oct=====
 ### Get latency
 
 GET {{host}}/hosts/1/times
@@ -7,3 +35,9 @@ GET {{host}}/hosts/1/times
 ### Get latency
 
 GET {{host}}/hosts/1/times?count=5
+
+
+
+# =====30.oct=====
+### Get 
+GET {{host}}/hostp1/1/status
