@@ -1,5 +1,5 @@
 @host = http://localhost:3000
-
+@createHostId = {{createHost.response.body.id}}
 
 //¬~{&}13oct¬~{&}
 ### get /
@@ -32,12 +32,98 @@ Content-Type: application/json
 
 GET {{host}}/hosts/1/times
 
-### Get latency
+### Get latency with specific count
 
 GET {{host}}/hosts/1/times?count=5
 
 
 
-# =====30.oct=====
+//¬~{&}30octprojct¬~{&}
 ### Get 
-GET {{host}}/hostp1/1/status
+GET {{host}}/api/1/status
+
+
+
+//¬~{&}9nov¬~{&}
+### List all Hosts
+GET {{host}}/hosts
+
+### Create Host
+# @name createHost
+POST {{host}}/hosts
+Content-Type: application/json
+
+{
+  "name": "Cloudflare",
+  "address": "1.1.1.0"
+}
+
+### Update Host
+
+PUT {{host}}/hosts/{{createHostId}}
+Content-Type: application/json
+
+{
+  "name": "Cloudflare",
+  "address": "1.1.1.1"
+}
+
+### Remove Host
+
+DELETE {{host}}/hosts/{{createHostId}}
+
+
+
+### List Users
+
+GET {{host}}/users
+
+### Create User
+
+# @name createUser
+POST {{host}}/users
+Content-Type: application/json
+
+{
+  "name": "Thiago",
+  "email": "thiago@gmail.com",
+  "password": "123"
+}
+
+
+
+### Get latency
+### only when create hosts exists
+GET {{host}}/hosts/{{createHostId}}/times
+
+### Get latency with specific count
+
+GET {{host}}/hosts/{{createHostId}}/times?count=3
+
+
+
+
+
+//¬~{&}12octprojct¬~{&}
+### Get All API
+GET {{host}}/status
+
+
+### Create API
+# @name createHost
+POST {{host}}/status
+Content-Type: application/json
+
+{
+  "name": "Projetos de Extensão",
+  "address": "https://dados.ifpb.edu.br/dataset/029b50a4-f50a-422d-867f-b457277b5168/resource/d3b1908b-e6d6-4437-aefb-281b7b1b57ea/download/projetos-extensao.json"
+}
+
+### Remove API
+
+DELETE {{host}}/status/{{createHostId}}
+
+
+### Get 
+### only when create API exists
+GET {{host}}/status/{{createHostId}}/

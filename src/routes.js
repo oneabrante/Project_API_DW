@@ -1,5 +1,9 @@
 import express from 'express';
 
+import Hosts from './models/Hosts.js';
+import Users from './models/Users.js';
+import Status from './models/Status.js';
+
 import { getHostLatency } from './lib/network.js';
 import { statusController } from './lib/statusController.js';
 
@@ -63,14 +67,97 @@ router.post('/hello/en', (req, res) => {
 
 //¬~{&}19oct¬~{&}
 // Route parameters
+// router.get('/hosts/:hostId/times', async (req, res) => {
+//   const hostId = req.params.hostId;
+
+//   const host = 'www.google.com';
+
+//   const count = req.query.count;
+
+//   const { times } = await getHostLatency(host, count);
+
+//   res.json({
+//     times,
+//   });
+// });
+
+
+
+//¬~{&}30octprojct¬~{&}
+// router.get('/api/:apiID/status', async (req, res) => {
+//   const apiID = req.params.apiID;
+//   const hostp1 = 'https://www.uol.com';
+//     const data = await statusController(hostp1);
+//     res.json({
+//         url: data.url,
+//         ok: data.ok,
+//         status: data.status,
+//         statusText: data.statusText,
+//     });
+
+// });
+
+
+
+//¬~{&}9nov¬~{&}
+router.get('/users', (req, res) => {
+  const users = Users.readAll();
+
+  res.json(users);
+});
+
+router.post('/users', async (req, res) => {
+  const user = req.body;
+
+
+  const newUser = await Users.create(user);
+
+
+  res.status(201).json(newUser);
+});
+
+router.get('/hosts', (req, res) => {
+  const hosts = Hosts.readAll();
+
+  res.json(hosts);
+});
+
+router.post('/hosts', (req, res) => {
+  const host = req.body;
+
+  const newHost = Hosts.create(host);
+
+  res.status(201).json(newHost);
+});
+
+router.put('/hosts/:id', (req, res) => {
+  const id = req.params.id;
+
+  const host = req.body;
+
+  const newHost = Hosts.update(host, id);
+
+  res.json(newHost);
+});
+
+router.delete('/hosts/:id', (req, res) => {
+  const id = req.params.id;
+
+  Hosts.remove(id);
+
+  res.status(204).send();
+});
+
+
+//¬~{&}9novTIMES¬~{&}
 router.get('/hosts/:hostId/times', async (req, res) => {
   const hostId = req.params.hostId;
 
-  const host = 'www.google.com';
+  const host = Hosts.read(hostId);
 
   const count = req.query.count;
 
-  const { times } = await getHostLatency(host, count);
+  const { times } = await getHostLatency(host.address, count);
 
   res.json({
     times,
@@ -78,23 +165,58 @@ router.get('/hosts/:hostId/times', async (req, res) => {
 });
 
 
+//¬~{&}12novproject¬~{&}
+router.get('/status', async (req, res) => {
+  const status = Status.readAll();
 
-//¬~{&}30octatv¬~{&}
-router.get('/hostp1/:apiID/status', async (req, res) => {
+  res.json(status);
+});
+
+
+router.post('/status', (req, res) => {
+  const status = req.body;
+
+  const newStatus = Status.create(status);
+
+  res.status(201).json(newStatus);
+});
+
+router.put('/status/:id', (req, res) => {
+  const id = req.params.id;
+
+  const status = req.body;
+
+  const newStatus = Status.update(status, id);
+
+  res.json(newStatus);
+});
+
+router.delete('/status/:id', (req, res) => {
+  const id = req.params.id;
+
+  Status.remove(id);
+
+  res.status(204).send();
+});
+
+
+
+
+//¬~{&}12octprojctstatus¬~{&}
+router.get('/status/:apiID/', async (req, res) => {
   const apiID = req.params.apiID;
-  const hostp1 = 'https://dados.ifpb.edu.br/dataset/2b36e2b7-4fcc-47c1-9eb6-9da314181780/resource/1b7e1a56-a23a-4392-9305-292a7149cff6/download/releases.json';
-    const data = await statusController(hostp1);
+  const hostp1 = Status.read(apiID);
+    const data = await statusController(hostp1.address);
     res.json({
         url: data.url,
         ok: data.ok,
         status: data.status,
         statusText: data.statusText,
+        name: hostp1.name,
+        Id: hostp1.id,
     });
 
 });
-
-
-
 
 
 

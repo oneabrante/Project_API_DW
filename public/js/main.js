@@ -313,11 +313,12 @@ function div_error({ name, address, status }){
 }
 
 
- fetch("http://localhost:3001/API-IFPB/")
+ fetch("http://localhost:3000/status/")
      .then(res => res.json())
      .then(json => {
          json.map(data => {
-             if (data.status == "Normal"){
+            console.log(data);
+             if (data.status == "online"){
                  apicomp.append(div_fun(data))
              }
                 else{
