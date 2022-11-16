@@ -1,5 +1,6 @@
 @host = http://localhost:3000
 @createHostId = {{createHost.response.body.id}}
+@token = {{signin.response.body.token}}
 
 //¬~{&}13oct¬~{&}
 ### get /
@@ -47,11 +48,13 @@ GET {{host}}/api/1/status
 //¬~{&}9nov¬~{&}
 ### List all Hosts
 GET {{host}}/hosts
+Authorization: bearer {{token}}
 
 ### Create Host
 # @name createHost
 POST {{host}}/hosts
 Content-Type: application/json
+Authorization: bearer {{token}}
 
 {
   "name": "Cloudflare",
@@ -62,6 +65,7 @@ Content-Type: application/json
 
 PUT {{host}}/hosts/{{createHostId}}
 Content-Type: application/json
+Authorization: bearer {{token}}
 
 {
   "name": "Cloudflare",
@@ -77,12 +81,14 @@ DELETE {{host}}/hosts/{{createHostId}}
 ### List Users
 
 GET {{host}}/users
+Authorization: bearer {{token}}
 
 ### Create User
 
 # @name createUser
 POST {{host}}/users
 Content-Type: application/json
+Authorization: bearer {{token}}
 
 {
   "name": "Thiago",
@@ -90,6 +96,32 @@ Content-Type: application/json
   "password": "123"
 }
 
+
+
+
+### Signin
+### only when create USER exists
+
+# @name signin
+POST {{host}}/signin
+Content-Type: application/json
+
+{
+  "email": "thiago@gmail.com",
+  "password": "123"
+}
+
+
+### Signin 401
+
+# @name signin
+POST {{host}}/signin
+Content-Type: application/json
+
+{
+  "email": "thiago@email.com",
+  "password": "321"
+}
 
 
 ### Get latency

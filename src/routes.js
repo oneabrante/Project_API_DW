@@ -1,8 +1,13 @@
 import express from 'express';
 
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+
 import Hosts from './models/Hosts.js';
 import Users from './models/Users.js';
 import Status from './models/Status.js';
+
+import { isAuthenticated } from './middleware/auth.js';
 
 import { getHostLatency } from './lib/network.js';
 import { statusController } from './lib/statusController.js';
@@ -100,7 +105,7 @@ router.post('/hello/en', (req, res) => {
 
 
 //¬~{&}9nov¬~{&}
-router.get('/users', (req, res) => {
+router.get('/users', isAuthenticated, (req, res) => {
   const users = Users.readAll();
 
   res.json(users);
@@ -109,6 +114,7 @@ router.get('/users', (req, res) => {
 router.post('/users', async (req, res) => {
   const user = req.body;
 
+  // delete user.confirmationPassword;
 
   const newUser = await Users.create(user);
 
@@ -116,13 +122,13 @@ router.post('/users', async (req, res) => {
   res.status(201).json(newUser);
 });
 
-router.get('/hosts', (req, res) => {
+router.get('/hosts', isAuthenticated, (req, res) => {
   const hosts = Hosts.readAll();
 
   res.json(hosts);
 });
 
-router.post('/hosts', (req, res) => {
+router.post('/hosts', isAuthenticated, (req, res) => {
   const host = req.body;
 
   const newHost = Hosts.create(host);
@@ -130,7 +136,7 @@ router.post('/hosts', (req, res) => {
   res.status(201).json(newHost);
 });
 
-router.put('/hosts/:id', (req, res) => {
+router.put('/hosts/:id', isAuthenticated, (req, res) => {
   const id = req.params.id;
 
   const host = req.body;
@@ -140,7 +146,7 @@ router.put('/hosts/:id', (req, res) => {
   res.json(newHost);
 });
 
-router.delete('/hosts/:id', (req, res) => {
+router.delete('/hosts/:id', isAuthenticated, (req, res) => {
   const id = req.params.id;
 
   Hosts.remove(id);
@@ -150,7 +156,7 @@ router.delete('/hosts/:id', (req, res) => {
 
 
 //¬~{&}9novTIMES¬~{&}
-router.get('/hosts/:hostId/times', async (req, res) => {
+router.get('/hosts/:hostId/times', isAuthenticated, async (req, res) => {
   const hostId = req.params.hostId;
 
   const host = Hosts.read(hostId);
@@ -166,7 +172,7 @@ router.get('/hosts/:hostId/times', async (req, res) => {
 
 
 //¬~{&}12novproject¬~{&}
-router.get('/status', async (req, res) => {
+router.get('/status', isAuthenticated, async (req, res) => {
   const status = Status.readAll();
 
   res.json(status);
@@ -200,6 +206,30 @@ router.delete('/status/:id', (req, res) => {
 });
 
 
+router.post('/signin', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const { id: userId, password: hash } = Users.readByEmail(email);
+
+    const match = await bcrypt.compare(password, hash);
+
+    if (match) {
+      const token = jwt.sign(
+        { userId },
+        process.env.SECRET,
+        { expiresIn: 3600 } // 1h
+      );
+
+      res.json({ auth: true, token });
+    } else {
+      throw new Error('User not found');
+    }
+  } catch (error) {
+    res.status(401).json({ error: 'User not found' });
+  }
+});
+
 
 
 //¬~{&}12octprojctstatus¬~{&}
@@ -217,6 +247,11 @@ router.get('/status/:apiID/', async (req, res) => {
     });
 
 });
+
+
+
+
+
 
 
 

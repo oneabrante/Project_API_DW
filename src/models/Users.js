@@ -15,6 +15,12 @@ function read(id) {
   return user;
 }
 
+function readByEmail(email) {
+  const user = db.users.find((user) => user.email === email);
+
+  return user;
+}
+
 async function create(user) {
   const id = uuidv4();
 
@@ -46,6 +52,7 @@ function remove(id) {
 export default {
   readAll,
   read,
+  readByEmail,
   create,
   remove,
   update,
