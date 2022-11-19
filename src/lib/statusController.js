@@ -3,7 +3,7 @@ import fetch from 'node-fetch'
 
 export async function statusController(hostp1) {
     try {
-        const response = await fetch(hostp1);
+        const response = await fetch('http://' + hostp1);
         return response;
 } 
     catch (error) {

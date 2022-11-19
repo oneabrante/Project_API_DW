@@ -183,7 +183,7 @@ router.get('/hosts/:hostId/times', isAuthenticated, async (req, res) => {
 
 
 //¬~{&}12novproject¬~{&}
-router.get('/status', isAuthenticated, async (req, res) => {
+router.get('/status', async (req, res) => {
   const status = Status.readAll();
 
   res.json(status);

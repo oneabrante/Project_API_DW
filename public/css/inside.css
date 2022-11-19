@@ -35,6 +35,34 @@ a {
     margin-left : 10px;
 }
 
+
+
+.login {
+    float : right;
+    width : 255px;
+    height : 82px;
+    padding-left : 3px;
+    padding-top : 6px;
+    border : silver solid 1px;
+    border-radius : 10px;
+    margin-top : 15px;
+  
+}
+   
+.logado {
+    float : left;
+    width : 230px;
+    margin : 10px 0 0 5px;
+    font-size : 14px;
+    color : #333;
+
+}
+
+.logado a:hover {
+    color: rgb(255, 157, 0);
+}
+
+
 .menu {
     float : left;
     clear : both;
@@ -68,7 +96,6 @@ li.last {
 
 .menu_center ul li a {
     float : left;
-    font-size : 15px;
     color : rgb(255, 157, 0);
     text-align : center;
     width : 182px;
@@ -241,3 +268,6 @@ li.last {
     color : #333;
     width : 625px;
 }
+
+
+
