@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EyesUp - Monitoramento</title>
+    <link rel="stylesheet" href="css/inside.css" />
+</head>
+<body>
+    <div id="pagina">
+        <div class="topo">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="./assets/small.jpg" alt="logo EyesUp" width="90px" style="border-radius: 50px;">
+                </a>
+            </div>
+            <br class="clear">
+            <div class="menu">
+                <div class="menu_center">
+                    <ul>
+                        <li>
+                            <a id="plan">Crie sua conta</a>
+                        </li>
+                        <li>
+                            <a href="/index#howtowork">Como funciona</a>
+                        </li>
+                        <li>
+                            <a id="plann">Planos de assinatura</a>
+                        </li>
+                        <li>
+                            <a id="verifastt">Verificação Rápida</a>
+                        </li>
+                        <li class="last">
+                            <a id="contactus">Fale conosco</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Fim div topo -->
+        <br class="clear">
+        <div class="conteudo">
+            <div class="engloba_menus_laterais">
+                <div class="menu_lateral">
+                    <div class="menu_lateral_center">
+                        <ul>
+                            <li>
+                                <a href="inside.html">Monitoramentos</a>
+                            </li>
+                            <li>
+                                <a href="/urls/novo">Novo monitoramento</a>
+                            </li>
+                            <li>
+                                <a href="/logs/menu_relatorios">Histórico de monitoramento</a>
+                            </li>
+                            <li class="last">
+                                <a href="index.html">Configurações</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Fim div menu lateral 02 -->
+                <div class="menu_lateral">
+                    <div class="menu_lateral_center">
+                        <ul>
+                            <li>
+                                <a id="verifast">Verificação Rápida</a>
+                            </li>
+                            <li>
+                                <a id="contactuss">Fale Conosco</a>
+                            </li>
+                            <li>
+                                <a href="/logs/menu_relatorios">Sair do Sistema</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Fim div menu lateral 02 -->
+            </div>
+            <!-- Fim div engloba menus laterais -->
+            <div class="miolo">
+                <div class="miolo_center" id="onload">
+                    <!-- Início do conteúdo -->
+                    <h1>Monitoramentos</h1>
+                    <div class="listagem_urls">
+                        <span>
+                            Você não possui nenhum monitoramento cadastrado.
+                            <br>
+                            <br>
+                            Para cadastrar um monitoramento, clique <a href="/urls/novo">aqui</a>.
+                        </span>
+                    </div>
+                    <!-- Fim do conteúdo -->
+                </div>
+            </div>
+            <!-- Fim div miolo -->
+        </div>
+        <!-- Fim div conteudo -->
+        <br class="clear">
+        <div class="rodape">
+            <span>
+                <br class="clear">
+                © 2022 EyesUp Ltda.
+            </span>
+        </div>
+        <!-- Fim div rodape -->
+    </div>
+    <!-- Fim div pagina -->
+    <script>
+        
+        function verifast() {
+            const ids = ['verifastt', 'verifast'];
+            ids.forEach(id => {
+                const element = document.getElementById(id);
+                element.addEventListener('click', () => {
+                    const miolon = `
+                <div class="miolo_center" id="onloadv">
+                    <h1>Verificação Rápida</h1>
+                    <div class="listagem_urls">
+                        <span>
+                            <div id="pageverifast" width="300px" style="max-width: 800px;"></div>
+                        </span>
+                    </div>
+                </div>`
+                document.getElementById("onload").innerHTML = miolon;
+                const pgver = document.querySelector('#pageverifast');
+                pgver.innerHTML = '<embed type="text/html" src="iverifast.html" width="100%" height="470" >';
+                });
+            });
+        }
+        verifast();
+
+        
+        function plan() {
+            const ids = ['plan', 'plann'];
+            ids.forEach(id => {
+                const element = document.getElementById(id);
+                element.addEventListener('click', () => {
+                    const miolon = `
+                <div class="miolo_center" id="onloadv">
+                    <h1>Planos de assinatura</h1>
+                    <div class="listagem_urls">
+                        <span>
+                            <div id="pageplan" width="300px" style="max-width: 800px;"></div>
+                        </span>
+                    </div>
+                </div>`
+                document.getElementById("onload").innerHTML = miolon;
+                const pgver = document.querySelector('#pageplan');
+                pgver.innerHTML = '<embed type="text/html" src="iplan.html" width="100%" height="470" >';
+                });
+            });
+        }
+        plan();
+
+        function contactus() {
+            const ids = ['contactus', 'contactuss'];
+            ids.forEach(id => {
+                const element = document.getElementById(id);
+                element.addEventListener('click', () => {
+                    const miolon = `
+                <div class="miolo_center" id="onloadv">
+                    <h1>Fale Conosco</h1>
+                    <div class="listagem_urls">
+                        <span>
+                            <div id="pagecontactus" width="300px" style="max-width: 800px;"></div>
+                        </span>
+                    </div>
+                </div>`
+                document.getElementById("onload").innerHTML = miolon;
+                const pgver = document.querySelector('#pagecontactus');
+                pgver.innerHTML = '<embed type="text/html" src="icontactus.html" width="100%" height="470" >';
+                });
+            });
+        }
+        contactus();
+         
+    </script>
+</body>
+</html>

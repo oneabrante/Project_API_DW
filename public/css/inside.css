@@ -1,0 +1,243 @@
+* {
+    margin : 0;
+    padding : 0;
+    border : none;
+}
+
+body {
+    margin : 0 auto;
+    text-align : center;
+    font-family : Verdana;
+    font-size : 16px;
+}
+
+.clear {
+    clear : both;
+}
+
+a {
+    border : none;
+    text-decoration : none;
+    cursor : pointer;
+}
+
+#pagina {
+    margin : 0 auto;
+    text-align : center;
+    width : 950px;
+}
+
+
+.logo {
+    float : left;
+    width : 210px;
+    margin-top : 10px;
+    margin-left : 10px;
+}
+
+.menu {
+    float : left;
+    clear : both;
+    width : 100%;
+    height : 37px;
+    margin-top : 30px;
+    border : rgb(100, 97, 97) solid 1px;
+    border-radius : 5px;
+}
+
+
+
+.menu_center ul {
+    list-style : none;
+    float : left;
+    width : 918px;
+}
+
+.menu_center ul li {
+    float : left;
+    width : 182px;
+    border-right : 1px solid rgb(96, 93, 93);
+    height : 22px;
+    text-align : center;
+    margin-top : 8px;
+}
+
+li.last {
+    border : none !important ;
+}
+
+.menu_center ul li a {
+    float : left;
+    font-size : 15px;
+    color : rgb(255, 157, 0);
+    text-align : center;
+    width : 182px;
+}
+
+.menu_center ul li a:hover {
+    color : rgb(43, 42, 42);
+}
+
+
+.conteudo {
+    float : left;
+    clear : both;
+    width : 950px;
+}
+
+
+.engloba_menus_laterais {
+    float : left;
+    clear : both;
+    width : 195px;
+}
+
+.menu_lateral {
+    float : left;
+    clear : both;
+    width : 186px;
+    margin-top : 15px;
+    border : silver solid 1px;
+    border-radius : 10px;
+    
+}
+
+.menu_lateral_center ul {
+    float : left;
+    width : 186px;
+    clear : both;
+    list-style : none;
+}
+
+.menu_lateral_center ul li {
+    float : left;
+    clear : both;
+    margin-left : 6px;
+    width : 170px;
+    padding-top : 5px;
+    padding-bottom : 6px;
+    border-bottom : 1px solid #CCC;
+}
+
+.menu_lateral_center ul li a {
+    float : left;
+    font-size : 14px;
+    color : #333;
+    clear : both;
+    width : 170px;
+}
+
+.menu_lateral_center ul li a:hover {
+    color : rgb(255, 157, 0);
+}
+
+.miolo {
+    float : left;
+    width : 748px;
+    margin-top : 16px;
+    margin-left : 5px;
+    border: 1px solid silver;
+    border-radius: 10px;
+}
+
+.miolo h1 a {
+    color : rgb(255, 157, 0);
+    text-decoration : none;
+}
+
+.miolo h1 a:hover {
+    text-decoration : underline;
+}
+
+.miolo_top {
+    float : left;
+    clear : both;
+    width : 750px;
+    height : 12px;
+}
+
+.miolo_bottom {
+    float : left;
+    clear : both;
+    width : 750px;
+    height : 12px;
+}
+
+.miolo_center {
+    float : left;
+    clear : both;
+    border-radius : 10px;
+    background-color: #dcdcdc;
+    width : 748px;
+    border-left : 1px solid #dcdcdc;
+    border-right : 1px solid #dcdcdc;
+    min-height : 312px;
+}
+
+.miolo h1 {
+    float : left;
+    clear : both;
+    font-size : 30px;
+    color : rgb(189, 118, 4);
+    margin : 8px 0 0 15px;
+    width : 715px;
+    padding-bottom : 8px;
+    font-weight : normal;
+    border-bottom : 1px solid rgb(22, 21, 21);
+}
+
+.miolo span {
+    float : left;
+    clear : both;
+    width : 700px;
+    color : #333;
+    line-height : 18px;
+    text-align : justify;
+    margin : 20px 0 10px 20px;
+}
+
+.miolo span.numero {
+    float : left;
+    line-height : 18px;
+    margin : 0 0 0 0;
+}
+
+.miolo span a {
+    color : rgb(255, 157, 0);
+    text-decoration : none;
+    clear : none !important ;
+    float : none !important ;
+}
+
+.miolo span a:hover {
+    text-decoration : underline;
+}
+
+.miolo h2 {
+    float : left;
+    clear : both;
+    font-size : 14px;
+    font-weight : bold;
+    color : #333;
+    margin-top : 15px;
+    margin-left : 15px;
+}
+
+.miolo form {
+    float : left;
+    width : 700px;
+    margin : 10px;
+}
+
+.miolo form.upgrade {
+    width : auto;
+    float : none;
+    margin : 0;
+}
+
+.miolo p {
+    float : left;
+    clear : both;
+    color : #333;
+    width : 625px;
+}

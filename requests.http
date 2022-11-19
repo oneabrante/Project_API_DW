@@ -97,6 +97,11 @@ Authorization: bearer {{token}}
 }
 
 
+### Delete User
+
+DELETE {{host}}/users/{{createHostId}}
+Authorization: bearer {{token}}
+
 
 
 ### Signin
@@ -127,10 +132,12 @@ Content-Type: application/json
 ### Get latency
 ### only when create hosts exists
 GET {{host}}/hosts/{{createHostId}}/times
+Authorization: bearer {{token}}
 
 ### Get latency with specific count
 
 GET {{host}}/hosts/{{createHostId}}/times?count=3
+Authorization: bearer {{token}}
 
 
 
@@ -139,6 +146,7 @@ GET {{host}}/hosts/{{createHostId}}/times?count=3
 //¬~{&}12octprojct¬~{&}
 ### Get All API
 GET {{host}}/status
+Authorization: bearer {{token}}
 
 
 ### Create API

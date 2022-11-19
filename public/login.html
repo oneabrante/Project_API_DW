@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>EyesUP-Login</title>
+    <title>EyesUp - Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="css/login.css" />
   </head>
@@ -11,28 +11,53 @@
     <div id="particles-js"></div>
     <a class="logo" href="index.html"><img src="./assets/small.jpg" alt="logo EyesUP" width="90px" style="border-radius: 50px;"></a>
     <div class="container mt-4" id="login">
+    <div class="container position-relative">
         <div class="row align-itens-center">
             <div class="col-md-10 mx-auto col-lg-5">
+
                 <form class="p-4 p-md-5 border rounded-3 bg-light">
                     <h1 style="text-align: center; margin-bottom:30px">Login</h1>
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="E-mail"/>
-                        <label for="inputEmail">E-mail</label>
+                      <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required />
+                      <label for="email">E-mail</label>
+                      <div class="invalid-feedback">Informe o email do usuário.</div>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Senha"/>
-                        <label for="inputPassword">Senha</label>
+                      <input type="password" class="form-control" id="password" name="password" placeholder="Senha" required />
+                      <label for="password">Senha</label>
+                      <div class="invalid-feedback">Informe a Senha.</div>
+                  </div>
+                    <div class="mb-3">
+                      <input class="w-100 btn btn-lg btn-danger" type="submit" id="botao" value="Entrar"/>
                     </div>
-                    <div class="checbox mb-3">
-                    </div>
-                    <button class="w-100 btn btn-lg btn-success" type="submit" id="botao">Entrar</button>
-                    <div class="sem-conta" <p>Ainda não tem uma conta? <a href="cadastro.html">Crie uma agora →</a></p></div>
+                    <div class="sem-conta" <p>Ainda não tem uma conta? <a href="cadastro.html">Crie uma agora →</a></p><div>
                 </form>
             </div> 
+        </div>
+        <div class="position-absolute top-0 end-1 p-4" style="z-index: 11">
+          <div
+            id="liveToast"
+            class="toast bg-warning"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+            data-bs-delay="4000"
+          >
+            <div class="toast-header">
+              <strong class="me-auto"></strong>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="toast"
+                aria-label="Close"
+              ></button>
+            </div>
+          </div>
         </div>
     </div>
     <script src="./js/particles.js"></script>
     <script src="./js/app.js"></script>
+    <script src="./js/lg.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   </body>
 </html>

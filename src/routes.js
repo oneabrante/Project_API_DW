@@ -122,6 +122,17 @@ router.post('/users', async (req, res) => {
   res.status(201).json(newUser);
 });
 
+
+router.delete('/users/:id', isAuthenticated, (req, res) => {
+  const id = req.params.id;
+
+  Users.remove(id);
+
+  res.status(204).send();
+});
+
+
+
 router.get('/hosts', isAuthenticated, (req, res) => {
   const hosts = Hosts.readAll();
 
@@ -206,6 +217,7 @@ router.delete('/status/:id', (req, res) => {
 });
 
 
+//¬~{&}16nov¬~{&}
 router.post('/signin', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -247,9 +259,6 @@ router.get('/status/:apiID/', async (req, res) => {
     });
 
 });
-
-
-
 
 
 

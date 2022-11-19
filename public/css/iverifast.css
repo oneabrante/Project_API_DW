@@ -1,0 +1,57 @@
+* {
+    margin : 0;
+    padding : 0;
+    border : none;
+}
+
+body {
+    margin : 0 auto;
+    font-family : Verdana;
+    font-size : 16px;
+}
+
+.clear {
+    clear : both;
+}
+
+
+.verfast-form .input-container{
+    margin-bottom: 20px;
+}
+
+.input-container label{
+    font-size: 20px;
+   
+}
+
+.verfast-form .input-container .link{
+    width: 400px;
+    height: 35px;
+    border: 1px solid #222;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.verfast-form .input-container .select_ver{
+    width: 100px;
+    height: 35px;
+    border: 1px solid #222;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 18px;
+}
+
+.verfast-form .submit-btn{
+    width: 70px;
+    height: 30px;
+    border: 1px solid #222;
+    
+}
+
+.verfast-form .submit-btn:hover{
+    background-color: rgb(219, 218, 218);
+    color: #222;
+}
+
