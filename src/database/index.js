@@ -13,6 +13,7 @@ const db = {
   ],
   users: [
     {
+
       fusoh: "GMT-3/Brasil - Brasília",
       horarioverao: "Sim",
       infoeyesup: "Sim",

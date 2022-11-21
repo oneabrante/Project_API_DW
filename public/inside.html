@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EyesUp - Monitoramento</title>
     <link rel="stylesheet" href="css/inside.css" />
@@ -115,8 +116,34 @@
     </div>
     <!-- Fim div pagina -->
     <script src="./js/iuser.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script>
         
+        function isAuthenticated() {
+            if (!getToken()) {
+            window.location.href = '/login.html';
+            } else {
+            return true;
+            }
+        }
+        
+        function getToken() {
+            return localStorage.getItem('@EyesUpToken:token');
+        }
+        
+        function signin(token) {
+            localStorage.setItem('@EyesUpToken:token', token);
+        
+            window.location.href = '/inside.html';
+        }
+        
+        function signout() {
+            localStorage.removeItem('@EyesUpToken:token');
+        
+            window.location.href = '/index.html';
+        }
+        
+
         function verifast() {
             const ids = ['verifastt', 'verifast'];
             ids.forEach(id => {
@@ -140,6 +167,7 @@
         verifast();
 
         
+
         function plan() {
             const ids = ['plan', 'plann'];
             ids.forEach(id => {
@@ -161,6 +189,7 @@
             });
         }
         plan();
+
 
         function contactus() {
             const ids = ['contactus', 'contactuss'];
@@ -184,6 +213,7 @@
         }
         contactus();
 
+
         function howfc() {
             const element = document.getElementById('howf');
             element.addEventListener('click', () => {
@@ -204,30 +234,276 @@
         howfc();
 
 
+
+
+        // function of config for the user
         function conf() {
             const element = document.getElementById('conf');
             element.addEventListener('click', () => {
                 const miolon = `
-                <div class="miolo_center" id="onloadv">
+              
                     <h1>Configurações</h1>
                     <div class="listagem_urls">
-                        <span>
-                            <div id="pageconf" width="300px" style="max-width: 800px;">
-                                <span id="hello" style="font-size: 20px; display: block; margin-bottom: 20px;">Nome: </span>
-                                <span id="mail" style="font-size: 20px;display: block; margin-bottom: 20px;">E-mail: </span>
-                                <span id="fusoh" style="font-size: 20px;display: block; margin-bottom: 20px;">Fuso horário: </span>
-                                <span id="horarioverao" style="font-size: 20px;display: block; margin-bottom: 20px;">Horário de Verão: </span>
-                                <span id="infoeyesup" style="font-size: 20px;display: block; margin-bottom: 20px;">Informações da EyesUp: </span>
-                                <span id="infoparc" style="font-size: 20px;">Informações de Parceiros da EyesUp: </span>
-                
+                        <div id="veri" class="verfast-form">
+                            <div class="textcenterunder">
+                                <div class="input-container">
+                                    <span id="named" style="font-size: 20px; display: block; margin-bottom: 20px;"></span>
+                                    <span id="mail" style="font-size: 20px;display: block; margin-bottom: 20px;"></span>
+                                    <span id="fusoh" style="font-size: 20px;display: block; margin-bottom: 20px;"></span>
+                                    <span id="horarioverao" style="font-size: 20px;display: block; margin-bottom: 20px;"></span>
+                                    <span id="infoeyesup" style="font-size: 20px;display: block; margin-bottom: 20px;"></span>
+                                    <span id="infoparc" style="font-size: 20px;"></span>
+                                </div>
+                                <form action="" id="formntz" class="verfast-form" style="margin-top:16%;">
+                                <input class="submit-btn" type="submit" id="senda" value="Editar Configurações" style="width: 25%;" data-bs-toggle="modal"
+                                data-bs-target=".bd-example-modal-lg"/>
+                                <input class="submit-btn" type="submit" id="sendb" value="Excluir Conta" style="margin-left: 2px; width: 15%;" data-bs-toggle="modal"
+                                data-bs-target=".bd-example-modal-lg"/>
+                   
+                                <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg"></div> 
+                                </form>
+                                </div>
                             </div>
-                        </span>
-                    </div>
-                </div>`
+                        </div>
+                    </div>`
                 document.getElementById("onload").innerHTML = miolon;
-                const pgver = document.querySelector('#pageconf');
-            });
+    
+                let user = document.getElementById('named');
+                let mail = document.getElementById('mail');
+                let fusoh = document.getElementById('fusoh');
+                let horarioverao = document.getElementById('horarioverao');
+                let infoeyesup = document.getElementById('infoeyesup');
+                let infoparc = document.getElementById('infoparc');
+                
+                function identityn({name}){
+                let div = document.createElement('div')
+                div.innerHTML = `Nome: <b>${name}</b>`
+                return div
+                }
+
+                function identitye({email}){
+                    let div = document.createElement('div')
+                    div.innerHTML = `Email: <b>${email}</b>`
+                    return div
+                }
+
+                function identityf({fusoh}){
+                    let div = document.createElement('div')
+                    div.innerHTML = `Fuso horário: <b>${fusoh}</b>`
+                    return div
+                }
+
+                function identityh({horarioverao}){
+                    let div = document.createElement('div')
+                    div.innerHTML = `Horário de Verão: <b>${horarioverao}</b>`
+                    return div
+                }
+
+                function identityi({infoeyesup}){
+                    let div = document.createElement('div')
+                    div.innerHTML = `Informações da EyesUp: <b>${infoeyesup}</b>`
+                    return div
+                }
+
+                function identityinfoparc({infoparc}){
+                    let div = document.createElement('div')
+                    div.innerHTML = `Informações de Parceiros da EyesUp: <b>${infoparc}</b>`
+                    return div
+                }
+
+                async function getUser(){
+                    const config = {
+                    method: 'GET',
+                    headers: {
+                        Authorization: `Bearer ${getToken()}`,
+                        'Content-Type': 'application/json'
+                    },
+                };
+
+                    const response = await fetch('http://localhost:3000/users', config);
+                    const data = await response.json();
+                    return data;
+                }
+
+                async function renderUser(){
+                    const data = await getUser();
+                    data.forEach(element => {
+                        if(element.name != null){
+                            user.appendChild(identityn(element));
+                        }
+                        if(element.email != null){
+                            mail.appendChild(identitye(element));
+                        }
+                        if(element.fusoh != null){
+                            fusoh.appendChild(identityf(element));
+                        }
+                        if(element.horarioverao != null){
+                            horarioverao.appendChild(identityh(element));
+                        }
+                        if(element.infoeyesup != null){
+                            infoeyesup.appendChild(identityi(element));
+                        }
+                        if(element.infoparc != null){
+                            infoparc.appendChild(identityinfoparc(element));
+                        }
+
+                    });
+                }
+
+                renderUser();
+                
+
+                // deletar conta
+                const del = document.querySelector('#sendb');
+                del.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    getUser().then((data) =>{
+                    console.log(data);
+                    const id = data[1].id;
+                    console.log(id);
+                    const name = data[1].name;
+                    console.log(name);
+                    
+
+                    const question = `
+                    <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Excluir Conta </h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h4>${name}, deseja realmente remover-se do site da EyesUp?</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <input class="submit-btn" type="submit" id="sendc" value="Sim" style="width: 15%;"/>
+                        <input class="submit-btn" type="submit" id="sendd" value="Não" style="margin-left: 2px; width: 15%;"/>
+                    </div>
+                </div>
+            </div>
+                    `
+                    document.getElementById('myModal').innerHTML = question;
+                    const sendc = document.querySelector('#sendc');
+                    sendc.addEventListener('click', () => {
+                        const config = {
+                            method: 'DELETE',
+                            headers: {
+                                Authorization: `Bearer ${getToken()}`,
+                                'Content-Type': 'application/json'
+                            },
+                        };
+                        const response = fetch(`http://localhost:3000/users/${id}`, config)
+                        .then((response) => {
+                            console.log(response);
+                            signout();
+                        }) 
+                            
+                        })
+                    })
+                })
+
+                // editar configurações
+                const edit = document.querySelector('#senda');
+                edit.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    getUser().then((data) =>{
+                    console.log(data);
+                    const id = data[1].id;
+                    console.log(id);
+                    const name = data[1].name;
+                    console.log(name);
+                    const email = data[1].email;
+                    console.log(email);
+                    const fusoh = data[0].fusoh;
+                    console.log(fusoh);
+                    const horarioverao = data[0].horarioverao;
+                    console.log(horarioverao);
+                    const infoeyesup = data[0].infoeyesup;
+                    console.log(infoeyesup);
+                    const infoparc = data[0].infoparc;
+                    console.log(infoparc);
+
+                    const question2 = `
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">Editar Configurações </h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body
+                            <form id="form">
+                                <div class="form-group
+                                    <label for="name">Nome</label>
+                                    <input type="text" class="form-control" id="name" value="${name}">
+                                </div>
+                                <div class="form-group
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" value="${email}">
+                                </div>
+                                <div class="form-group
+                                    <label for="fusoh">Fuso Horário</label>
+                                    <input type="text" class="form-control" id="fusoh" value="${fusoh}">
+                                </div>
+                                <div class="form-group
+                                    <label for="horarioverao">Horário de Verão</label>
+                                    <input type="text" class="form-control" id="horarioverao" value="${horarioverao}">
+                                </div>
+                                <div class="form-group
+                                    <label for="infoeyesup">Informações da EyesUp</label>
+                                    <input type="text" class="form-control" id="infoeyesup" value="${infoeyesup}">
+                                </div>
+                                <div class="form-group
+                                    <label for="infoparc">Informações do Parceiro</label>
+                                    <input type="text" class="form-control" id="infoparc" value="${infoparc}">
+                                </div>
+                            </form>
+                            </div>
+                            <div class="modal-footer">
+                                <input class="submit-btn" type="submit" id="sende" value="Salvar" style="width: 15%;"/>
+                                <input class="submit-btn" type="submit" id="sendf" value="Cancelar" style="margin-left: 2px; width: 15%;"/>
+                            </div>
+                        </div>
+                    </div>`
+                    document.getElementById('myModal').innerHTML = question2;
+                    const sende = document.querySelector('#sende');
+                    sende.addEventListener('click', () => {
+                        const name = document.querySelector('#name').value;
+                        const email = document.querySelector('#email').value;
+                        const fusoh = document.querySelector('#fusoh').value;
+                        const horarioverao = document.querySelector('#horarioverao').value;
+                        const infoeyesup = document.querySelector('#infoeyesup').value;
+                        const infoparc = document.querySelector('#infoparc').value;
+                        const config = {
+                            method: 'PUT',
+                            headers: {
+                                Authorization: `Bearer ${getToken()}`,
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                name,
+                                email,
+                                fusoh,
+                                horarioverao,
+                                infoeyesup,
+                                infoparc
+                            })
+                        };
+                        const response = fetch(`http://localhost:3000/users/${id}`, config)
+                        .then((response) => {
+                            console.log(response);
+
+                        }) 
+                            
+                        })
+
+                    })
+                })
+            })
         }
+
         conf();
 
     </script>
