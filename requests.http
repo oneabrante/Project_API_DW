@@ -97,11 +97,22 @@ Authorization: bearer {{token}}
 }
 
 
+### Update User
+
+PUT {{host}}/users/{{createHostId}}
+Content-Type: application/json
+Authorization: bearer {{token}}
+
+{
+  "name": "Roger",
+  "email": "tog@gmail.com"
+}
+
+
 ### Delete User
 
 DELETE {{host}}/users/{{createHostId}}
 Authorization: bearer {{token}}
-
 
 
 ### Signin
@@ -117,7 +128,7 @@ Content-Type: application/json
 }
 
 
-### Signin 401
+### Signin 401 not found
 
 # @name signin
 POST {{host}}/signin
@@ -129,6 +140,9 @@ Content-Type: application/json
 }
 
 
+
+
+
 ### Get latency
 ### only when create hosts exists
 GET {{host}}/hosts/{{createHostId}}/times
@@ -138,6 +152,7 @@ Authorization: bearer {{token}}
 
 GET {{host}}/hosts/{{createHostId}}/times?count=3
 Authorization: bearer {{token}}
+
 
 
 

@@ -2,11 +2,13 @@ import Auth from './auth.js';
 
 window.signout = Auth.signout
 
-let hello = document.getElementById('hello');
+let user = document.getElementById('hello');
 
-function identity({email}){
+
+
+function identityn({name}){
     let div = document.createElement('div')
-    div.innerHTML = `Usuário: <b>${email}</b>`
+    div.innerHTML = `Usuário: <b>${name}</b>`
     return div
 }
 
@@ -25,13 +27,12 @@ async function getUser(){
 }
 
 async function renderUser(){
-    const data = await getUser();
-    data.forEach(element => {
-        if(element.email != null){
-            hello.appendChild(identity(element));
-        }else{
-            hello.appendChild(identity({name: 'Usuário'}));
-        }
+    await getUser().then(data => {
+        data.forEach(element => {
+            if(element.name != null){
+                user.appendChild(identityn(element));
+            }
+        });
     });
 }
 

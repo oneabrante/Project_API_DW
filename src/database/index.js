@@ -11,7 +11,14 @@ const db = {
       address: "www.google.com",
     },
   ],
-  users: [],
+  users: [
+    {
+      fusoh: "GMT-3/Brasil - Brasília",
+      horarioverao: "Sim",
+      infoeyesup: "Sim",
+      infoparc: "Sim",
+    },
+  ],
   status: [
     {
       name: "Versões do SUAP",

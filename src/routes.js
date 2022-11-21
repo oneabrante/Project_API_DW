@@ -132,6 +132,19 @@ router.delete('/users/:id', isAuthenticated, (req, res) => {
 });
 
 
+router.put('/users/:id', isAuthenticated, (req, res) => {
+  const id = req.params.id;
+
+  const user = req.body;
+
+  const newUser = Users.update(user, id);
+
+  res.json(newUser);
+});
+
+
+
+
 
 router.get('/hosts', isAuthenticated, (req, res) => {
   const hosts = Hosts.readAll();
@@ -182,6 +195,7 @@ router.get('/hosts/:hostId/times', isAuthenticated, async (req, res) => {
 });
 
 
+
 //¬~{&}12novproject¬~{&}
 router.get('/status', async (req, res) => {
   const status = Status.readAll();
@@ -215,6 +229,7 @@ router.delete('/status/:id', (req, res) => {
 
   res.status(204).send();
 });
+
 
 
 //¬~{&}16nov¬~{&}
@@ -274,5 +289,6 @@ router.use((err, req, res, next) => {
   // console.error(err.stack);
   res.status(500).send('Something broke!');
 });
+
 
 export default router;

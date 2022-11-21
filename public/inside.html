@@ -17,7 +17,7 @@
             </div>
             <div class="login">
                 <div class="logado">
-                    <span id="hello"></span>
+                    <div id="hello"></div>
                     <br>
                     <a class="nav-link" href="#" onclick="signout()" style="color: red;">Sair do Sistema</a>
                 </div>   
@@ -27,19 +27,19 @@
                 <div class="menu_center">
                     <ul>
                         <li>
-                            <a id="plan">Crie sua conta</a>
+                            <a id="plan">Crie sua Conta</a>
                         </li>
                         <li>
-                            <a href="/index#howtowork">Como funciona</a>
+                            <a id="howf">Como Funciona</a>
                         </li>
                         <li>
-                            <a id="plann">Planos de assinatura</a>
+                            <a id="plann">Planos de Assinatura</a>
                         </li>
                         <li>
                             <a id="verifastt">Verificação Rápida</a>
                         </li>
                         <li class="last">
-                            <a id="contactus">Fale conosco</a>
+                            <a id="contactus">Fale Conosco</a>
                         </li>
                     </ul>
                 </div>
@@ -56,13 +56,13 @@
                                 <a href="inside.html">Monitoramentos</a>
                             </li>
                             <li>
-                                <a href="/urls/novo">Novo monitoramento</a>
+                                <a href="#">Novo monitoramento</a>
                             </li>
                             <li>
-                                <a href="/logs/menu_relatorios">Histórico de monitoramento</a>
+                                <a href="#">Histórico de monitoramento</a>
                             </li>
                             <li class="last">
-                                <a href="index.html">Configurações</a>
+                                <a id="conf">Configurações</a>
                             </li>
                         </ul>
                     </div>
@@ -183,7 +183,53 @@
             });
         }
         contactus();
-         
+
+        function howfc() {
+            const element = document.getElementById('howf');
+            element.addEventListener('click', () => {
+                const miolon = `
+                <div class="miolo_center" id="onloadv">
+                    <h1>Como Funciona</h1>
+                    <div class="listagem_urls">
+                        <span>
+                            <div id="pagehowfc" width="300px" style="max-width: 800px;"></div>
+                        </span>
+                    </div>
+                </div>`
+                document.getElementById("onload").innerHTML = miolon;
+                const pgver = document.querySelector('#pagehowfc');
+                pgver.innerHTML = '<embed type="text/html" src="ihow.html" width="100%" height="310" >';
+                });
+        }
+        howfc();
+
+
+        function conf() {
+            const element = document.getElementById('conf');
+            element.addEventListener('click', () => {
+                const miolon = `
+                <div class="miolo_center" id="onloadv">
+                    <h1>Configurações</h1>
+                    <div class="listagem_urls">
+                        <span>
+                            <div id="pageconf" width="300px" style="max-width: 800px;">
+                                <span id="hello" style="font-size: 20px; display: block; margin-bottom: 20px;">Nome: </span>
+                                <span id="mail" style="font-size: 20px;display: block; margin-bottom: 20px;">E-mail: </span>
+                                <span id="fusoh" style="font-size: 20px;display: block; margin-bottom: 20px;">Fuso horário: </span>
+                                <span id="horarioverao" style="font-size: 20px;display: block; margin-bottom: 20px;">Horário de Verão: </span>
+                                <span id="infoeyesup" style="font-size: 20px;display: block; margin-bottom: 20px;">Informações da EyesUp: </span>
+                                <span id="infoparc" style="font-size: 20px;">Informações de Parceiros da EyesUp: </span>
+                
+                            </div>
+                        </span>
+                    </div>
+                </div>`
+                document.getElementById("onload").innerHTML = miolon;
+                const pgver = document.querySelector('#pageconf');
+            });
+        }
+        conf();
+
     </script>
 </body>
 </html>

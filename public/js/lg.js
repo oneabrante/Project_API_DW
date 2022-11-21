@@ -22,7 +22,7 @@ form.onsubmit = async (event) => {
   if (auth) {
     Auth.signin(token);
   } else {
-    showToast('Usuário ou senha inválidos!');
+    showToast('E-mail ou senha inválidos');
   }
 };
 
