@@ -92,7 +92,7 @@
                     <!-- Início do conteúdo -->
                     <h1>Monitoramentos</h1>
                     <div class="listagem_urls">
-                        <span>
+                        <span style="text-align : justify; margin : 20px 0 10px 20px;">
                             Você não possui nenhum monitoramento cadastrado.
                             <br>
                             <br>
@@ -107,10 +107,9 @@
         <!-- Fim div conteudo -->
         <br class="clear">
         <div class="rodape">
-            <span>
-                <br class="clear">
+            <pre style="margin-left: 10%; margin-top: 30px;">
                 © 2022 EyesUp Ltda.
-            </span>
+            </pre>
         </div>
         <!-- Fim div rodape -->
     </div>
@@ -150,14 +149,12 @@
                 const element = document.getElementById(id);
                 element.addEventListener('click', () => {
                     const miolon = `
-                <div class="miolo_center" id="onloadv">
                     <h1>Verificação Rápida</h1>
                     <div class="listagem_urls">
-                        <span>
+                        <span style="text-align : justify; margin : 20px 0 10px 20px;">
                             <div id="pageverifast" width="300px" style="max-width: 800px;"></div>
                         </span>
-                    </div>
-                </div>`
+                    </div>`
                 document.getElementById("onload").innerHTML = miolon;
                 const pgver = document.querySelector('#pageverifast');
                 pgver.innerHTML = '<embed type="text/html" src="iverifast.html" width="100%" height="470" >';
@@ -174,17 +171,76 @@
                 const element = document.getElementById(id);
                 element.addEventListener('click', () => {
                     const miolon = `
-                <div class="miolo_center" id="onloadv">
                     <h1>Planos de assinatura</h1>
                     <div class="listagem_urls">
-                        <span>
-                            <div id="pageplan" width="300px" style="max-width: 800px;"></div>
-                        </span>
-                    </div>
-                </div>`
+                        <span style="text-align : justify; margin : 20px 0 20px 41px;">Escolha o plano que mais se encaixa com suas necessidades.</span>
+                        <div class="planos">
+                            <div class="planos_center">
+                                <div class="planos_center_conteudo">
+                                    <div class="planos_center_conteudo_box">
+                                        <div class="planos_center_conteudo_box_topo">
+                                            <h2 class="coluna01">Recursos</h2>
+                                            <h2 class="coluna02">Básico</h2>
+                                            <h2 class="coluna03">Intermediário</h2>
+                                            <h2 class="coluna04">Avançado</h2>
+                                        </div>
+                                        <div class="separador"></div>
+                                        <div class="linha_planos">
+                                            <span class="coluna01">Monitoramentos</span>
+                                            <span class="coluna02">1</span>
+                                            <span class="coluna03">3</span>
+                                            <span class="coluna04">10</span>
+                                        </div>
+                                        <div class="linha_planos">
+                                            <span class="coluna01">Relatórios Online</span>
+                                            <span class="coluna02">Sim</span>
+                                            <span class="coluna03">Sim</span>
+                                            <span class="coluna04">Sim</span>
+                                        </div>
+                                        <div class="linha_planos">
+                                            <span class="coluna01">Relatórios por Email</span>
+                                            <span class="coluna02">Mensal</span>
+                                            <span class="coluna03">Mensal</span>
+                                            <span class="coluna04">Mensal</span>
+                                        </div>
+                                        <div class="linha_planos">
+                                            <span class="coluna01">Protocolos</span>
+                                            <span class="coluna02">HTTP</span>
+                                            <span class="coluna03">HTTP/SMTP/<br>POP3/FTP</span>
+                                            <span class="coluna04">HTTP/SMTP/POP3/<br>FTP/DNS/HTTPS</span>
+                                        </div>
+                                        <div class="linha_planos">
+                                            <span class="coluna01">URLs</span>
+                                            <span class="coluna02">1</span>
+                                            <span class="coluna03">3</span>
+                                            <span class="coluna04">10</span>
+                                        </div>
+                                        <div class="planos_center_conteudo_box_topo">
+                                            <h2 class="coluna01">Assinatura</h2>
+                                            <h2 class="coluna02">Grátis!</h2>
+                                            <h2 class="coluna03">R$ 19,90/mês</h2>
+                                            <h2 class="coluna04">R$ 29,90/mês</h2>
+                                        </div>
+                                        <div class="planos_center_conteudo_box_topo">
+                                            <h2 class="coluna01"></h2>
+                                            <h2 class="coluna02"></h2>
+                                            <h2 class="coluna03">
+                                                <a href="https://www.paypal.com/br/home" target="_blank">
+                                                    <button type="button" class="btn btn-danger">Assinar!</button>
+                                                </a>
+                                            </h2>
+                                            <h2 class="coluna04">
+                                                <a href="https://www.paypal.com/br/home" target="_blank">
+                                                    <button type="button" class="btn btn-danger">Assinar!</button>
+                                                </a>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`
                 document.getElementById("onload").innerHTML = miolon;
-                const pgver = document.querySelector('#pageplan');
-                pgver.innerHTML = '<embed type="text/html" src="iplan.html" width="100%" height="470" >';
                 });
             });
         }
@@ -197,17 +253,45 @@
                 const element = document.getElementById(id);
                 element.addEventListener('click', () => {
                     const miolon = `
-                <div class="miolo_center" id="onloadv">
                     <h1>Fale Conosco</h1>
                     <div class="listagem_urls">
-                        <span>
-                            <div id="pagecontactus" width="300px" style="max-width: 800px;"></div>
-                        </span>
-                    </div>
-                </div>`
+                            <div id="contact">
+                            <div class="pt-0">
+                            <form class="verfast-form" style="margin-left: 10px;">
+                                <form action="https://formsubmit.co/eyesup@eyesup.com.br" method="POST">
+                                    <div class="col-7">
+                                        <div class="pt-0 row">
+                                            <div class="col-md-5">
+                                                <div class="pb-4 form-group">
+                                                    <input id="fname" name="First Name" required="" class="form-control input-lg" placeholder="Primeiro nome*" type="text">
+                                                </div>
+                                                <div class="pb-4 form-group">
+                                                    <input id="lname" name="Last Name" class="form-control input-lg" placeholder="Sobrenome" type="text">
+                                                </div>
+                                                <div class="pb-4 form-group">
+                                                    <input id="email" name="email" required="" class="form-control input-lg" placeholder="Seu e-mail*" type="email">
+                                                </div>
+                                                <div class="pb-4 form-group">
+                                                    <input id="phone" name="phone" class="form-control input-lg" placeholder="Seu telefone" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="col-md-7">
+                                            <div class="pb-4 form-group">
+                                                <textarea cols="6" rows="5" id="comments" name="comments" class="form-control input-lg" placeholder="Escreva sua mensagem"></textarea>
+                                            </div>
+                                            <input name="submit" class="submit-btn" value="Enviar" type="submit" />
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div id="message"></div>
+                                    </div> 
+                                </form>
+                            </div>
+                        </div>
+                    </div>`
                 document.getElementById("onload").innerHTML = miolon;
-                const pgver = document.querySelector('#pagecontactus');
-                pgver.innerHTML = '<embed type="text/html" src="icontactus.html" width="100%" height="470" >';
                 });
             });
         }
@@ -218,18 +302,15 @@
             const element = document.getElementById('howf');
             element.addEventListener('click', () => {
                 const miolon = `
-                <div class="miolo_center" id="onloadv">
                     <h1>Como Funciona</h1>
-                    <div class="listagem_urls">
-                        <span>
-                            <div id="pagehowfc" width="300px" style="max-width: 800px;"></div>
+                    <div class="listagem_urls" style="font-size: 20px;">
+                        <span style="line-height: 170%; text-align : justify; margin : 20px 0 10px 20px;">
+                            A EyesUp testa a sua aplicação para garantir que seus clientes tenham uma boa experiência acessando as suas informações e serviços. Você pode acompanhar os resultados dos testes em tempo real e receber relatórios por e-mail. Além dos testes de disponibilidade, você pode monitorar a performance da sua aplicação e receber alertas quando a performance estiver abaixo do esperado. Estamos disponíveis 24 horas por dia, 7 dias por semana, 365 dias por ano, sendo possível monitorar até dez aplicações a partir do nosso plano mais avançado e três aplicações no plano intermediário, além de oferecer um <b>plano gratuito</b> com uma aplicação monitorada.
+                            <br><br><a href="#contact">Contrate já</a> e comece a monitorar suas aplicações!<br>Qualquer dúvida entre em contato conosco.
                         </span>
-                    </div>
-                </div>`
+                    </div>`
                 document.getElementById("onload").innerHTML = miolon;
-                const pgver = document.querySelector('#pagehowfc');
-                pgver.innerHTML = '<embed type="text/html" src="ihow.html" width="100%" height="310" >';
-                });
+            });
         }
         howfc();
 
@@ -246,7 +327,8 @@
                     <div class="listagem_urls">
                         <div id="veri" class="verfast-form">
                             <div class="textcenterunder">
-                                <div class="input-container">
+                                <div class="input-container" style="text-align : justify; margin : 20px 0 10px 20px;">
+                                    <br><br>
                                     <span id="named" style="font-size: 20px; display: block; margin-bottom: 20px;"></span>
                                     <span id="mail" style="font-size: 20px;display: block; margin-bottom: 20px;"></span>
                                     <span id="fusoh" style="font-size: 20px;display: block; margin-bottom: 20px;"></span>
@@ -257,7 +339,7 @@
                                 <form action="" id="formntz" class="verfast-form" style="margin-top:16%;">
                                 <input class="submit-btn" type="submit" id="senda" value="Editar Configurações" style="width: 25%;" data-bs-toggle="modal"
                                 data-bs-target=".bd-example-modal-lg"/>
-                                <input class="submit-btn" type="submit" id="sendb" value="Excluir Conta" style="margin-left: 2px; width: 15%;" data-bs-toggle="modal"
+                                <input class="submit-btn" type="submit" id="sendb" value="Excluir Conta" style="margin-left: 10px; width: 15%;" data-bs-toggle="modal"
                                 data-bs-target=".bd-example-modal-lg"/>
                    
                                 <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">

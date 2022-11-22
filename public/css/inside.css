@@ -206,11 +206,13 @@ li.last {
     float : left;
     clear : both;
     border-radius : 10px;
-    background-color: #dcdcdc;
     width : 748px;
     border-left : 1px solid #dcdcdc;
     border-right : 1px solid #dcdcdc;
-    min-height : 582px;
+    min-height : 482px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #000;
 }
 
 
@@ -228,12 +230,9 @@ li.last {
 
 .miolo span {
     float : left;
-    clear : both;
     width : 700px;
     color : #333;
     line-height : 18px;
-    text-align : justify;
-    margin : 20px 0 10px 20px;
 }
 
 .miolo span.numero {
@@ -253,16 +252,6 @@ li.last {
     text-decoration : underline;
 }
 
-.miolo h2 {
-    float : left;
-    clear : both;
-    font-size : 14px;
-    font-weight : bold;
-    color : #333;
-    margin-top : 15px;
-    margin-left : 15px;
-}
-
 .miolo form {
     float : left;
     width : 700px;
@@ -279,7 +268,7 @@ li.last {
     float : left;
     clear : both;
     color : #333;
-    width : 625px;
+   
 }
 
 
@@ -327,3 +316,69 @@ li.last {
 }
 
 
+
+.verfast-form .input-container .link:hover{
+    background-color: rgb(219, 218, 218);
+    color: #222;
+}
+
+.planos{
+    float: left;
+    clear: both;
+    margin-left: 6.5%;
+    border: 1px solid silver;
+    border-radius: 10px;
+    
+}
+
+.planos_center{
+    float: left;
+    clear: both;
+    width: 638px;
+    border-radius: 10px;
+}
+
+
+.coluna01, .coluna02, .coluna03, .coluna04{
+    font-size: 1.0em;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    line-height: normal !important;
+    margin-bottom: 10px !important;
+    margin-top: 5px !important;
+    cursor: default;
+    float: left;
+    width: 215px !important;
+}
+
+.coluna02, .coluna03, .coluna04{
+    float: left;
+    width: 135px !important;
+}
+
+
+.separador{
+    float: left;
+    width: 638px;
+    height: 1px;
+    background-color: rgb(184, 183, 183);
+  
+}
+
+.linha_planos{
+    float: left;
+    width: 665px;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    
+}
+
+span.coluna01, span.coluna02, span.coluna03, span.coluna04{
+    font-weight: normal;
+
+
+    
+  
+    
+}
