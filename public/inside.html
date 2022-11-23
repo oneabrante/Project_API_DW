@@ -54,10 +54,10 @@
                     <div class="menu_lateral_center">
                         <ul>
                             <li>
-                                <a href="inside.html">Monitoramentos</a>
+                                <a id ="listmonitoring">Monitoramentos</a>
                             </li>
                             <li>
-                                <a href="#">Novo monitoramento</a>
+                                <a id="newmonitoring">Novo monitoramento</a>
                             </li>
                             <li>
                                 <a href="#">Histórico de monitoramento</a>
@@ -90,13 +90,12 @@
             <div class="miolo">
                 <div class="miolo_center" id="onload">
                     <!-- Início do conteúdo -->
-                    <h1>Monitoramentos</h1>
+                    <h1>EyesUp</h1>
                     <div class="listagem_urls">
                         <span style="text-align : justify; margin : 20px 0 10px 20px;">
-                            Você não possui nenhum monitoramento cadastrado.
-                            <br>
-                            <br>
-                            Para cadastrar um monitoramento, clique <a href="/urls/novo">aqui</a>.
+                            Olá, <span id="user"></span>! Aqui você pode criar um monitoramento para um site ou aplicativo. 
+                            Para isso, basta clicar no botão "Novo monitoramento" e preencher os campos com as informações necessárias.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis placeat impedit harum aliquam fuga sed a distinctio tempore repudiandae aut modi rem facere est nihil possimus voluptates, fugit quo eligendi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis molestiae dicta odio mollitia ullam dolore laudantium, quam quae natus cum omnis, suscipit reprehenderit, necessitatibus explicabo eligendi non eius sapiente deleniti! Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure odio quis doloremque recusandae, nisi vitae cumque qui a labore optio distinctio. Aut obcaecati explicabo laboriosam nihil. Vitae, porro. Perferendis, obcaecati?
                         </span>
                     </div>
                     <!-- Fim do conteúdo -->
@@ -313,6 +312,191 @@
             });
         }
         howfc();
+
+        // function new monitoring
+        function newmonitoring() {
+            const element = document.getElementById('newmonitoring');
+            element.addEventListener('click', () => {
+                const miolon = `
+                <style>
+                    .form-control {
+                        width: 40%;
+                        margin-left: 20px;
+                        margin-bottom: 5%;
+                    }
+                    .select_medio{
+                        height: 40px;
+                        border: 1px solid #ced4da;
+                        border-radius: .25rem;
+                        display: block;
+                        padding: .375rem .75rem;
+                        font-size: 1rem;
+                        margin-left: 20px;
+                        margin-bottom: 5%;
+                    }
+                    label{
+                        padding: 10px 10px 0 0;
+                    }
+                    .col-10{
+                        float: left;
+                        width:10%;
+                        margin-top: 6px;
+                    }
+                    .col-90{
+                        float: left;
+                        width: 90%;
+                        margin-top: 6px;
+                    }
+                    input[type=submit] {
+                        margin-left: 12%;
+                    }
+                </style>
+                    <h1>Novo Monitoramento</h1>
+                    <div class="listagem_urls">
+                        <div id="contact">
+                            <div class="pt-0">
+                                <form class="verfast-form" style="margin-left: 10px;"/>
+                                    <div class="col-10">
+                                        <label for="fname">Nome:</label>
+                                    </div>
+                                    <div class="col-90">
+                                        <input id="fname" name="fname" required="" class="form-control input-lg" type="text" required>
+                                    </div>
+
+                                    <div class="col-10">
+                                        <label for="protocolo">Protocolo:</label>
+                                    </div>
+                                    <div class="col-90">
+                                    <select id="protocolo" name="protocolo" class="select_medio" include_blank="false" />
+                                        <option value="http">http</option>
+                                        <option value="https">https</option>
+                                        <option value="dns">dns</option>
+                                        <option value="pop3">pop3</option>
+                                        <option value="smtp">smpt</option>
+                                        <option value="ftp">ftp</option>
+                                    </select>
+                                    </div>
+
+                                    <div class="col-10">
+                                        <label for="url">URL: </label>
+                                    </div>
+                                    <div class="col-90">
+                                        <input id="url" name="url" required="" class="form-control input-lg" type="text" required />
+                                    </div>
+                                    <input name="submit" class="submit-btn" value="Criar" type="submit" />
+                                    <div class="clearfix"></div>
+                                    <div id="message"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>`
+                document.getElementById("onload").innerHTML = miolon;
+                const form = document.querySelector('form');
+
+                form.addEventListener('submit', handleSubmit);
+
+                function handleSubmit(event) {
+                    event.preventDefault();
+                    const data = new FormData(event.target);
+
+                    const value = Object.fromEntries(data.entries());
+
+
+                    fetch('http://localhost:3000/status', {
+                        method: 'POST',
+                        body: JSON.stringify(value),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }).then(response => {
+                        if (response.ok) {
+                            document.getElementById('fname').value = '';
+                            document.getElementById('url').value = '';
+                            document.getElementById('protocolo').value = '';
+                            document.getElementById('message').innerHTML = '<br><br><div class="alert alert-success" role="alert" style="width:45%; margin-left:30%;">Cadastro realizado com sucesso! <a href="#"><strong>Veja aqui</strong></a></div>';
+                        } else {
+                            document.getElementById('message').innerHTML = '<br><br><div class="alert alert-danger" role="alert" style="width:45%; margin-left:30%;">Erro ao cadastrar!</div>';
+                        }
+                        return response.json();
+                    }).then(data => {
+                        console.log(data);
+                    });
+                    
+
+
+                }
+
+            });
+
+        }
+        newmonitoring();
+
+
+
+
+
+
+
+        // function list monitoring
+        const monitor = document.getElementById('listmonitoring');
+
+        function withoutmonitor(){
+            let div = document.getElementById('onload');
+            div.innerHTML = `<h1>Monitoramentos</h1>
+                    <div class="listagem_urls">
+                        <span style="text-align : justify; margin : 20px 0 10px 20px;">
+                            Você não possui nenhum monitoramento cadastrado.
+                            <br>
+                            <br>
+                            Para cadastrar um monitoramento, clique <a href="#">aqui</a>.
+                        </span>
+                    </div>`;
+            return div
+        }
+
+        function listmonitoring() {
+            monitor.addEventListener('click', () => {
+                fetch('http://localhost:3000/status')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.length == 0) {
+                            withoutmonitor();
+                        } else {
+                            let div = document.getElementById('onload');
+                            div.innerHTML = `<h1>Monitoramentos</h1>
+                    <div class="listagem_urls">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">URL</th>
+                                    <th scope="col">Protocolo</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>`;
+                            let tbody = document.querySelector('tbody');
+                            for (let i = 0; i < data.length; i++) {
+                                let tr = document.createElement('tr');
+                                tr.innerHTML = `<td>${data[i].fname}</td>
+                                <td>${data[i].url}</td>
+                                <td>${data[i].protocolo}</td>
+                                <td>${data[i].status}</td>
+                                <td><a href="#">Editar</a> | <a href="#">Excluir</a></td>`;
+                                tbody.appendChild(tr);
+                            }
+                            return div
+
+                        }
+                    });
+            });
+        }
+        listmonitoring();
+
 
 
 

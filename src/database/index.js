@@ -21,12 +21,7 @@ const db = {
     },
   ],
   status: [
-    {
-      name: "Versões do SUAP",
-      address: "dados.ifpb.edu.br/dataset/2b36e2b7-4fcc-47c1-9eb6-9da314181780/resource/1b7e1a56-a23a-4392-9305-292a7149cff6/download/releases.json",
-      id: "3bbe1ccb-0add-47c3-9009-1cd8ceaf541f",
-      status: "Disponível",
-    },
+  
   ],
 };
 
