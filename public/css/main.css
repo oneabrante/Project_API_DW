@@ -191,7 +191,7 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.
   text-align: center;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   margin: 10px;
   border-width: 2px;
   background-color: rgb(235, 235, 236);

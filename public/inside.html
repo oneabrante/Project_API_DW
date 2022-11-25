@@ -92,10 +92,8 @@
                     <!-- Início do conteúdo -->
                     <h1>EyesUp</h1>
                     <div class="listagem_urls">
-                        <span style="text-align : justify; margin : 20px 0 10px 20px;">
-                            Olá, <span id="user"></span>! Aqui você pode criar um monitoramento para um site ou aplicativo. 
-                            Para isso, basta clicar no botão "Novo monitoramento" e preencher os campos com as informações necessárias.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis placeat impedit harum aliquam fuga sed a distinctio tempore repudiandae aut modi rem facere est nihil possimus voluptates, fugit quo eligendi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis molestiae dicta odio mollitia ullam dolore laudantium, quam quae natus cum omnis, suscipit reprehenderit, necessitatibus explicabo eligendi non eius sapiente deleniti! Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure odio quis doloremque recusandae, nisi vitae cumque qui a labore optio distinctio. Aut obcaecati explicabo laboriosam nihil. Vitae, porro. Perferendis, obcaecati?
+                        <span style="text-align : justify; margin : 20px 0 10px 20px; line-height: 170%;">
+                            <div id="helloo" style="font-size: 20px;"></div> 
                         </span>
                     </div>
                     <!-- Fim do conteúdo -->
@@ -256,7 +254,7 @@
                     <div class="listagem_urls">
                             <div id="contact">
                             <div class="pt-0">
-                            <form class="verfast-form" style="margin-left: 10px;">
+                            <form class="verfast-form" style="margin-left: 10px; float : left; width : 700px; margin : 20px;">
                                 <form action="https://formsubmit.co/eyesup@eyesup.com.br" method="POST">
                                     <div class="col-7">
                                         <div class="pt-0 row">
@@ -355,7 +353,7 @@
                     <div class="listagem_urls">
                         <div id="contact">
                             <div class="pt-0">
-                                <form class="verfast-form" style="margin-left: 10px;"/>
+                                <form class="verfast-form" style="margin-left: 10px; float : left; width : 700px; margin : 20px;"/>
                                     <div class="col-10">
                                         <label for="fname">Nome:</label>
                                     </div>
@@ -433,12 +431,17 @@
 
 
 
-
-
-
-
-        // function list monitoring
+        // list monitoring
         const monitor = document.getElementById('listmonitoring');
+            fetch('http://localhost:3000/status')
+                .then(response => response.json())
+                .then(data => {
+                    monitor.innerHTML = ` Monitoramentos (${data.length})`;
+                    
+            });
+       
+
+        
 
         function withoutmonitor(){
             let div = document.getElementById('onload');
@@ -461,7 +464,9 @@
                     .then(data => {
                         if (data.length == 0) {
                             withoutmonitor();
+                            monitor.innerHTML = `Monitoramentos (${data.length})`;
                         } else {
+                            monitor.innerHTML = `Monitoramentos (${data.length})`;
                             let div = document.getElementById('onload');
                             div.innerHTML = `<h1>Monitoramentos</h1>
                     <div class="listagem_urls">
@@ -481,23 +486,79 @@
                     </div>`;
                             let tbody = document.querySelector('tbody');
                             for (let i = 0; i < data.length; i++) {
-                                let tr = document.createElement('tr');
-                                tr.innerHTML = `<td>${data[i].fname}</td>
-                                <td>${data[i].url}</td>
-                                <td>${data[i].protocolo}</td>
-                                <td>${data[i].status}</td>
-                                <td><a href="#">Editar</a> | <a href="#">Excluir</a></td>`;
-                                tbody.appendChild(tr);
+                                tbody.innerHTML += `<tr style="display:none">
+                                    <td>${data[i].fname}</td>
+                                    <td>${data[i].url}</td>
+                                    <td>${data[i].protocolo}</td>
+                                    <td>${data[i].status}</td>
+                                    
+                                    <td><a href="#" class="btn btn-danger" id="btnremove">Excluir</a></td>
+
+                                </tr>`;
+
+                                document.getElementById('btnremove').addEventListener('click', () => {
+                                    fetch(`http://localhost:3000/status/${data[i].id}`, {
+                                        method: 'DELETE'
+                                    }).then(response => {
+                                        if (response.ok) {
+                                            btn.parentElement.parentElement.remove();
+                                            btn.parentNode.parentNode.remove();
+                                        }
+                                    });
+                                });
+
+                            // const ids = data[i].id;
+                            
+                            // fetch(`http://localhost:3000/status/${ids}`)
+                            //     .then(response => response.json())
+                            //     .then(data => {
+                            //         if (data.status == 'online') {
+                            //             document.getElementById('status').innerHTML = `<span class="badge badge-success">Online</span>`;
+                            //         } else {
+                            //             document.getElementById('status').innerHTML = `<span class="badge badge-danger">Offline</span>`;
+                            //         }
+                            //     });
+
+
                             }
-                            return div
+                            
+                            data.forEach((item) => {
+                                data.push(item.id);
+                                tbody.innerHTML += `<tr>
+                                    <td>${item.fname}</td>
+                                    <td>${item.url}</td>
+                                    <td>${item.protocolo}</td>
+                                    <td>${item.status}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-primary btn-sm" style="margin-right: 5px;">Editar</a>
+                                        <a href="#" class="btn btn-danger btn-sm" style="margin-right: 5px;">Excluir</a>
+                                    </td>
+                                </tr>`;
+                            });
+                            const ids = data
+                            const btns = document.querySelectorAll('.btn-danger');
+                            btns.forEach((btn, index) => {
+                                btn.addEventListener('click', () => {
+                                    fetch(`http://localhost:3000/status/${ids[index]}`, {
+                                        method: 'DELETE'
+                                    }).then(response => {
+                                        if (response.ok) {
+
+                                            btn.parentElement.parentElement.remove();
+                                            btn.parentNode.parentNode.remove();
+
+                                            
+                                        }
+                                    });
+                                });
+                            });
 
                         }
                     });
             });
         }
+
         listmonitoring();
-
-
 
 
 
@@ -520,7 +581,7 @@
                                     <span id="infoeyesup" style="font-size: 20px;display: block; margin-bottom: 20px;"></span>
                                     <span id="infoparc" style="font-size: 20px;"></span>
                                 </div>
-                                <form action="" id="formntz" class="verfast-form" style="margin-top:16%;">
+                                <form action="" id="formntz" class="verfast-form" style="padding-top:13%; float : left; width : 700px; margin : 10px;">
                                 <input class="submit-btn" type="submit" id="senda" value="Editar Configurações" style="width: 25%;" data-bs-toggle="modal"
                                 data-bs-target=".bd-example-modal-lg"/>
                                 <input class="submit-btn" type="submit" id="sendb" value="Excluir Conta" style="margin-left: 10px; width: 15%;" data-bs-toggle="modal"

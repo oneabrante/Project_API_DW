@@ -252,12 +252,6 @@ li.last {
     text-decoration : underline;
 }
 
-.miolo form {
-    float : left;
-    width : 700px;
-    margin : 10px;
-}
-
 .miolo form.upgrade {
     width : auto;
     float : none;

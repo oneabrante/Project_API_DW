@@ -175,7 +175,19 @@ Content-Type: application/json
 
 ### Remove API
 
-DELETE {{host}}/status/{{createHostId}}
+DELETE {{host}}/status/c5cc453d-4538-451f-a7dd-33ce9bd1d11b
+
+
+### Update API
+
+PUT {{host}}/status/{{createHostId}}
+Content-Type: application/json
+
+{
+  "fname": "cuco",
+  "url": "dados.ifpb.edu.brrrrrrrr"
+}
+
 
 
 ### Get 
