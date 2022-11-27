@@ -169,8 +169,9 @@ POST {{host}}/status
 Content-Type: application/json
 
 {
-  "name": "Projetos de Extensão",
-  "address": "dados.ifpb.edu.br/dataset/029b50a4-f50a-422d-867f-b457277b5168/resource/d3b1908b-e6d6-4437-aefb-281b7b1b57ea/download/projetos-extensao.json"
+  "name": "Uol",
+  "protocolo": "http",
+  "address": "asgoogle.com.br"
 }
 
 ### Remove API
@@ -184,8 +185,8 @@ PUT {{host}}/status/{{createHostId}}
 Content-Type: application/json
 
 {
-  "fname": "cuco",
-  "url": "dados.ifpb.edu.brrrrrrrr"
+  "name": "ifpb",
+  "address": "dados.ifpb.edu.brrrrrrrr"
 }
 
 
@@ -193,3 +194,7 @@ Content-Type: application/json
 ### Get 
 ### only when create API exists
 GET {{host}}/status/{{createHostId}}/
+
+### Get status api
+### only when create API exists
+GET {{host}}/status/api

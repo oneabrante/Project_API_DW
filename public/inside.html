@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>EyesUp - Monitoramento</title>
     <link rel="stylesheet" href="css/inside.css" />
 </head>
@@ -90,10 +91,10 @@
             <div class="miolo">
                 <div class="miolo_center" id="onload">
                     <!-- Início do conteúdo -->
-                    <h1>EyesUp</h1>
+                    <h1>Monitoramentos</h1>
                     <div class="listagem_urls">
                         <span style="text-align : justify; margin : 20px 0 10px 20px; line-height: 170%;">
-                            <div id="helloo" style="font-size: 20px;"></div> 
+                            <div id="monitoringg" style="font-size: 20px;"></div> 
                         </span>
                     </div>
                     <!-- Fim do conteúdo -->
@@ -147,11 +148,9 @@
                 element.addEventListener('click', () => {
                     const miolon = `
                     <h1>Verificação Rápida</h1>
-                    <div class="listagem_urls">
                         <span style="text-align : justify; margin : 20px 0 10px 20px;">
                             <div id="pageverifast" width="300px" style="max-width: 800px;"></div>
-                        </span>
-                    </div>`
+                        </span>`
                 document.getElementById("onload").innerHTML = miolon;
                 const pgver = document.querySelector('#pageverifast');
                 pgver.innerHTML = '<embed type="text/html" src="iverifast.html" width="100%" height="470" >';
@@ -169,7 +168,6 @@
                 element.addEventListener('click', () => {
                     const miolon = `
                     <h1>Planos de assinatura</h1>
-                    <div class="listagem_urls">
                         <span style="text-align : justify; margin : 20px 0 20px 41px;">Escolha o plano que mais se encaixa com suas necessidades.</span>
                         <div class="planos">
                             <div class="planos_center">
@@ -235,8 +233,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>`
+                        </div>`
                 document.getElementById("onload").innerHTML = miolon;
                 });
             });
@@ -251,7 +248,6 @@
                 element.addEventListener('click', () => {
                     const miolon = `
                     <h1>Fale Conosco</h1>
-                    <div class="listagem_urls">
                             <div id="contact">
                             <div class="pt-0">
                             <form class="verfast-form" style="margin-left: 10px; float : left; width : 700px; margin : 20px;">
@@ -260,7 +256,7 @@
                                         <div class="pt-0 row">
                                             <div class="col-md-5">
                                                 <div class="pb-4 form-group">
-                                                    <input id="fname" name="First Name" required="" class="form-control input-lg" placeholder="Primeiro nome*" type="text">
+                                                    <input id="name" name="First Name" required="" class="form-control input-lg" placeholder="Primeiro nome*" type="text">
                                                 </div>
                                                 <div class="pb-4 form-group">
                                                     <input id="lname" name="Last Name" class="form-control input-lg" placeholder="Sobrenome" type="text">
@@ -286,8 +282,7 @@
                                     </div> 
                                 </form>
                             </div>
-                        </div>
-                    </div>`
+                        </div>`
                 document.getElementById("onload").innerHTML = miolon;
                 });
             });
@@ -300,9 +295,9 @@
             element.addEventListener('click', () => {
                 const miolon = `
                     <h1>Como Funciona</h1>
-                    <div class="listagem_urls" style="font-size: 20px;">
+                    <div style="font-size: 20px;">
                         <span style="line-height: 170%; text-align : justify; margin : 20px 0 10px 20px;">
-                            A EyesUp testa a sua aplicação para garantir que seus clientes tenham uma boa experiência acessando as suas informações e serviços. Você pode acompanhar os resultados dos testes em tempo real e receber relatórios por e-mail. Além dos testes de disponibilidade, você pode monitorar a performance da sua aplicação e receber alertas quando a performance estiver abaixo do esperado. Estamos disponíveis 24 horas por dia, 7 dias por semana, 365 dias por ano, sendo possível monitorar até dez aplicações a partir do nosso plano mais avançado e três aplicações no plano intermediário, além de oferecer um <b>plano gratuito</b> com uma aplicação monitorada.
+                            A EyesUp monitora a sua aplicação para garantir que seus clientes tenham uma boa experiência acessando as suas informações e serviços. Você pode acompanhar os resultados dos testes em tempo real e receber relatórios por e-mail. Além dos testes de disponibilidade, você pode monitorar a performance da sua aplicação e receber alertas quando a performance estiver abaixo do esperado. Estamos disponíveis 24 horas por dia, 7 dias por semana, 365 dias por ano, sendo possível monitorar até dez aplicações a partir do nosso plano mais avançado e três aplicações no plano intermediário, além de oferecer um <b>plano gratuito</b> com uma aplicação monitorada.
                             <br><br><a href="#contact">Contrate já</a> e comece a monitorar suas aplicações!<br>Qualquer dúvida entre em contato conosco.
                         </span>
                     </div>`
@@ -311,7 +306,38 @@
         }
         howfc();
 
-        // function new monitoring
+        function monitoringg() {
+            const monitor = document.getElementById('monitoringg');
+            fetch('http://localhost:3000/status')
+            .then(response => response.json())
+            .then(data =>{
+                if (data.length == 0){
+                    let div = document.createElement('div');
+                    div.innerHTML = `<h1>Monitoramentos</h1>
+                        <span style="text-align : justify; margin : 20px 0 10px 20px;">
+                            Você não possui nenhum monitoramento cadastrado.
+                            <br>
+                            <br>
+                            Para cadastrar um monitoramento, clique <a href="#">aqui</a>.
+                        </span>`;
+                    document.getElementById("onload").innerHTML = div.innerHTML;
+                } else {
+                    let div = document.createElement('div');
+                    div.innerHTML = `<h1>Monitoramentos</h1>
+                        <span style="text-align : justify; margin : 20px 0 10px 20px;">
+                            Você possui ${data.length} monitoramento(s) cadastrado(s).
+                            <br>
+                            <br>
+                            Para cadastrar um monitoramento, clique <a href="#">aqui</a>.
+                        </span>`;
+                    document.getElementById("onload").innerHTML = div.innerHTML;
+                }
+            });
+        }
+        monitoringg();
+
+
+        // function new monitoring status api
         function newmonitoring() {
             const element = document.getElementById('newmonitoring');
             element.addEventListener('click', () => {
@@ -350,22 +376,21 @@
                     }
                 </style>
                     <h1>Novo Monitoramento</h1>
-                    <div class="listagem_urls">
                         <div id="contact">
                             <div class="pt-0">
                                 <form class="verfast-form" style="margin-left: 10px; float : left; width : 700px; margin : 20px;"/>
                                     <div class="col-10">
-                                        <label for="fname">Nome:</label>
+                                        <label for="name">Nome:</label>
                                     </div>
                                     <div class="col-90">
-                                        <input id="fname" name="fname" required="" class="form-control input-lg" type="text" required>
+                                        <input id="name" name="name" required="" class="form-control input-lg" type="text" required>
                                     </div>
 
                                     <div class="col-10">
                                         <label for="protocolo">Protocolo:</label>
                                     </div>
                                     <div class="col-90">
-                                    <select id="protocolo" name="protocolo" class="select_medio" include_blank="false" />
+                                    <select id="protocolo" name="protocolo" class="select_medio" include_blank="false"  />
                                         <option value="http">http</option>
                                         <option value="https">https</option>
                                         <option value="dns">dns</option>
@@ -379,15 +404,14 @@
                                         <label for="url">URL: </label>
                                     </div>
                                     <div class="col-90">
-                                        <input id="url" name="url" required="" class="form-control input-lg" type="text" required />
+                                        <input id="address" name="address" required="" class="form-control input-lg" type="text" required />
                                     </div>
                                     <input name="submit" class="submit-btn" value="Criar" type="submit" />
                                     <div class="clearfix"></div>
                                     <div id="message"></div>
                                 </form>
                             </div>
-                        </div>
-                    </div>`
+                        </div>`
                 document.getElementById("onload").innerHTML = miolon;
                 const form = document.querySelector('form');
 
@@ -408,10 +432,11 @@
                         }
                     }).then(response => {
                         if (response.ok) {
-                            document.getElementById('fname').value = '';
-                            document.getElementById('url').value = '';
+                            document.getElementById('name').value = '';
+                            document.getElementById('address').value = '';
                             document.getElementById('protocolo').value = '';
-                            document.getElementById('message').innerHTML = '<br><br><div class="alert alert-success" role="alert" style="width:45%; margin-left:30%;">Cadastro realizado com sucesso! <a href="#"><strong>Veja aqui</strong></a></div>';
+                            alert('Monitoramento criado com sucesso!');
+                            window.location.reload();
                         } else {
                             document.getElementById('message').innerHTML = '<br><br><div class="alert alert-danger" role="alert" style="width:45%; margin-left:30%;">Erro ao cadastrar!</div>';
                         }
@@ -431,7 +456,10 @@
 
 
 
-        // list monitoring
+
+
+        // all config list monitoring status api
+
         const monitor = document.getElementById('listmonitoring');
             fetch('http://localhost:3000/status')
                 .then(response => response.json())
@@ -439,137 +467,235 @@
                     monitor.innerHTML = ` Monitoramentos (${data.length})`;
                     
             });
-       
-
-        
 
         function withoutmonitor(){
             let div = document.getElementById('onload');
             div.innerHTML = `<h1>Monitoramentos</h1>
-                    <div class="listagem_urls">
                         <span style="text-align : justify; margin : 20px 0 10px 20px;">
                             Você não possui nenhum monitoramento cadastrado.
                             <br>
                             <br>
                             Para cadastrar um monitoramento, clique <a href="#">aqui</a>.
-                        </span>
-                    </div>`;
+                        </span>`;
             return div
         }
 
-        function listmonitoring() {
-            monitor.addEventListener('click', () => {
-                fetch('http://localhost:3000/status')
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.length == 0) {
-                            withoutmonitor();
-                            monitor.innerHTML = `Monitoramentos (${data.length})`;
-                        } else {
-                            monitor.innerHTML = `Monitoramentos (${data.length})`;
-                            let div = document.getElementById('onload');
-                            div.innerHTML = `<h1>Monitoramentos</h1>
-                    <div class="listagem_urls">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">URL</th>
-                                    <th scope="col">Protocolo</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Ações</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>`;
-                            let tbody = document.querySelector('tbody');
-                            for (let i = 0; i < data.length; i++) {
-                                tbody.innerHTML += `<tr style="display:none">
-                                    <td>${data[i].fname}</td>
-                                    <td>${data[i].url}</td>
-                                    <td>${data[i].protocolo}</td>
-                                    <td>${data[i].status}</td>
-                                    
-                                    <td><a href="#" class="btn btn-danger" id="btnremove">Excluir</a></td>
 
-                                </tr>`;
-
-                                document.getElementById('btnremove').addEventListener('click', () => {
-                                    fetch(`http://localhost:3000/status/${data[i].id}`, {
-                                        method: 'DELETE'
-                                    }).then(response => {
-                                        if (response.ok) {
-                                            btn.parentElement.parentElement.remove();
-                                            btn.parentNode.parentNode.remove();
-                                        }
-                                    });
-                                });
-
-                            // const ids = data[i].id;
-                            
-                            // fetch(`http://localhost:3000/status/${ids}`)
-                            //     .then(response => response.json())
-                            //     .then(data => {
-                            //         if (data.status == 'online') {
-                            //             document.getElementById('status').innerHTML = `<span class="badge badge-success">Online</span>`;
-                            //         } else {
-                            //             document.getElementById('status').innerHTML = `<span class="badge badge-danger">Offline</span>`;
-                            //         }
-                            //     });
-
-
-                            }
-                            
-                            data.forEach((item) => {
-                                data.push(item.id);
-                                tbody.innerHTML += `<tr>
-                                    <td>${item.fname}</td>
-                                    <td>${item.url}</td>
-                                    <td>${item.protocolo}</td>
-                                    <td>${item.status}</td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary btn-sm" style="margin-right: 5px;">Editar</a>
-                                        <a href="#" class="btn btn-danger btn-sm" style="margin-right: 5px;">Excluir</a>
-                                    </td>
-                                </tr>`;
-                            });
-                            const ids = data
-                            const btns = document.querySelectorAll('.btn-danger');
-                            btns.forEach((btn, index) => {
-                                btn.addEventListener('click', () => {
-                                    fetch(`http://localhost:3000/status/${ids[index]}`, {
-                                        method: 'DELETE'
-                                    }).then(response => {
-                                        if (response.ok) {
-
-                                            btn.parentElement.parentElement.remove();
-                                            btn.parentNode.parentNode.remove();
-
-                                            
-                                        }
-                                    });
-                                });
-                            });
-
-                        }
-                    });
-            });
+        async function getfetch() {
+            const config = {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+            const response = await fetch('http://localhost:3000/status/api', config)
+            const data = await response.json()
+            return data
         }
 
-        listmonitoring();
+        async function renderapi(){
+            monitor.addEventListener('click', async () => {
+            const data = await getfetch()
+            const div = document.getElementById('onload');
+
+            if (data.length > 0) {
+                div.innerHTML = `<h1>Monitoramentos</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Protocolo</th>
+                            <th scope="col">URL</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        ${data.map(item => `
+                            <tr>
+                                <td>${item.name}</td>
+                                <td>${item.protocolo}</td>
+                                <td>${item.address}</td>
+                                <td id="status">${item.status}</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-sm" style="margin-right: 5px;">Editar</a>
+                                    <a href="#" class="btn btn-danger btn-sm" style="margin-right: 5px;">Excluir</a>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>`;
+                let tbody = document.querySelector('tbody');
+
+                for (let i = 0; i < tbody.children.length; i++) {
+                    let status = tbody.children[i].children[3].textContent;
+                    if (status == 200) {
+                        tbody.children[i].children[3].innerHTML = '<i class="icon-indicator fa fa-check" style="color:green; font-size:25px"></i>';
+                    } else {
+                        tbody.children[i].children[3].innerHTML = `<i class="icon-indicator fa fa-times" style="color:red; font-size:25px"></i>`;
+                    }
+                }
+
+                // delete monitoring api status
+                const ids = data
+                const btns = document.querySelectorAll('.btn-danger');
+                btns.forEach((btn, index) => {
+                    btn.addEventListener('click', () => {
+                        if (confirm('Deseja realmente excluir este monitoramento?')) {
+                            fetch(`http://localhost:3000/status/${ids[index].id}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            }).then(response => {
+                                if (response.ok) {
+                                    alert('Monitoramento excluído com sucesso!');
+                                    window.location.reload();
+                                } else {
+                                    alert('Erro ao excluir o monitoramento!');
+                                }
+                                return response.json();
+                            }).then(data => {
+                                console.log(data);
+                            });
+                        }
+                    });
+                });
+
+                // edit monitoring 
+                const btnsedit = document.querySelectorAll('.btn-primary');
+                btnsedit.forEach((btn, index) => {
+                    btn.addEventListener('click', () => {
+                        let name = tbody.children[index].children[0].textContent;
+                        let protocolo = tbody.children[index].children[1].textContent;
+                        let address = tbody.children[index].children[2].textContent;
+                        let status = tbody.children[index].children[3].textContent;
+                        let id = ids[index].id;
+                        let div = document.getElementById('onload');
+                        div.innerHTML = `
+                        <style>
+                            .form-control {
+                        width: 40%;
+                        margin-left: 20px;
+                        margin-bottom: 5%;
+                            }
+                            .select_medio{
+                                height: 40px;
+                                border: 1px solid #ced4da;
+                                border-radius: .25rem;
+                                display: block;
+                                padding: .375rem .75rem;
+                                font-size: 1rem;
+                                margin-left: 20px;
+                                margin-bottom: 5%;
+                            }
+                            label{
+                                padding: 10px 10px 0 0;
+                            }
+                            .col-10{
+                                float: left;
+                                width:10%;
+                                margin-top: 6px;
+                            }
+                            .col-90{
+                                float: left;
+                                width: 90%;
+                                margin-top: 6px;
+                            }
+                            input[type=submit] {
+                                margin-left: 12%;
+                            }
+                    </style>
+                        <div class="row">
+                            <div class="col-12">
+                                <h1>Editar Monitoramento</h1>
+                                <form id="form" class="verfast-form" method="post" action="http://localhost:3000/status/${id}" style="margin-left: 10px; float : left; width : 700px; margin : 20px;">
+                                    <div class="col-10">
+                                        <label for="name">Nome</label>
+                                    </div>
+                                    <div class="col-90">
+                                        <input id="name" name="name" required="" class="form-control input-lg" type="text" value="${name}" required />
+                                    </div>
+                                    <div class="col-10">
+                                        <label for="protocolo">Protocolo</label>
+                                    </div>
+                                    <div class="col-90">
+                                        <select id="protocolo" name="protocolo" class="form-control input-lg" required>
+                                            <option value="http" ${protocolo == 'http' ? 'selected' : ''}>http</option>
+                                            <option value="https" ${protocolo == 'https' ? 'selected' : ''}>https</option>
+                                            <option value="ftp" ${protocolo == 'ftp' ? 'selected' : ''}>ftp</option>
+                                            <option value="dns" ${protocolo == 'dns' ? 'selected' : ''}>dns</option>
+                                            <option value="smtp" ${protocolo == 'smtp' ? 'selected' : ''}>smtp</option>
+                                            <option value="pop3" ${protocolo == 'pop3' ? 'selected' : ''}>pop3</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-10">
+                                        <label for="address">URL</label>
+                                    </div>
+                                    <div class="col-90">
+                                        <input id="address" name="address" required="" class="form-control input-lg" type="text" value="${address}" required />
+                                    </div>
+                                    <input name="submit" class="submit-btn" value="Editar" type="submit" />
+                                    <div class="clearfix"></div>
+                                    <div id="message"></div>
+                                </form>
+                            </div>
+                        </div>`;
+                        const form = document.querySelector('form');
+
+                        form.addEventListener('submit', handleSubmit);
+
+                        function handleSubmit(event) {
+                            event.preventDefault();
+                            const data = new FormData(event.target);
+
+                            const value = Object.fromEntries(data
+                                .entries());
+
+                            fetch(`http://localhost:3000/status/${id}`, {
+                                method: 'PUT',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(value)
+                            }).then(response => {
+                                if (response.ok) {
+                                    alert('Monitoramento editado com sucesso!');
+                                    window.location.reload();
+                                } else {
+                                    alert('Erro ao editar o monitoramento!');
+                                }
+                                return response.json();
+                            }).then(data => {
+                                console.log(data);
+                            });
+                        }
+                    });
+                });
+
+            } else {
+                withoutmonitor();
+            }
+        });
+        }
+        renderapi();
 
 
 
-        // function of config for the user
+
+
+
+
+
+        // functions of config for the user
+
         function conf() {
             const element = document.getElementById('conf');
             element.addEventListener('click', () => {
                 const miolon = `
               
                     <h1>Configurações</h1>
-                    <div class="listagem_urls">
                         <div id="veri" class="verfast-form">
                             <div class="textcenterunder">
                                 <div class="input-container" style="text-align : justify; margin : 20px 0 10px 20px;">
@@ -592,8 +718,7 @@
                                 </form>
                                 </div>
                             </div>
-                        </div>
-                    </div>`
+                        </div>`
                 document.getElementById("onload").innerHTML = miolon;
     
                 let user = document.getElementById('named');
@@ -681,7 +806,7 @@
                 renderUser();
                 
 
-                // deletar conta
+                // del user
                 const del = document.querySelector('#sendb');
                 del.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -731,7 +856,7 @@
                     })
                 })
 
-                // editar configurações
+                // update user account
                 const edit = document.querySelector('#senda');
                 edit.addEventListener('click', (e) => {
                     e.preventDefault();

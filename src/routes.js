@@ -11,6 +11,7 @@ import { isAuthenticated } from './middleware/auth.js';
 
 import { getHostLatency } from './lib/network.js';
 import { statusController } from './lib/statusController.js';
+import { statusControllerr } from './lib/statusController.js';
 
 const router = express.Router();
 
@@ -260,10 +261,27 @@ router.post('/signin', async (req, res) => {
 
 
 //¬~{&}12octprojctstatus¬~{&}
+router.get('/status/api', async (req, res) => {
+  const statys = Status.readAll();
+  const address = statys.map((staty) => staty.address);
+  const name = statys.map((staty) => staty.name);
+  const protocolo = statys.map((staty) => staty.protocolo);
+  await Promise.all(
+    address.map(async (address, index) => {
+      const { ok, status, statusText } = await statusController(address, protocolo[index]);
+      statys[index].ok = ok;
+      statys[index].status = status;
+      statys[index].statusText = statusText;
+    })
+  );
+  res.json(statys);
+});
+
+
 router.get('/status/:apiID/', async (req, res) => {
   const apiID = req.params.apiID;
   const hostp1 = Status.read(apiID);
-    const data = await statusController(hostp1.address);
+    const data = await statusControllerr(hostp1.address);
     res.json({
         url: data.url,
         ok: data.ok,
@@ -274,6 +292,12 @@ router.get('/status/:apiID/', async (req, res) => {
     });
 
 });
+
+
+
+
+
+
 
 
 
