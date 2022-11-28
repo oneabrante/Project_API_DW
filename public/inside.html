@@ -61,7 +61,7 @@
                                 <a id="newmonitoring">Novo monitoramento</a>
                             </li>
                             <li>
-                                <a href="#">Histórico de monitoramento</a>
+                                <a id="historic">Histórico de monitoramento</a>
                             </li>
                             <li class="last">
                                 <a id="conf">Configurações</a>
@@ -113,6 +113,7 @@
     </div>
     <!-- Fim div pagina -->
     <script src="./js/iuser.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script>
         
@@ -251,7 +252,7 @@
                             <div id="contact">
                             <div class="pt-0">
                             <form class="verfast-form" style="margin-left: 10px; float : left; width : 700px; margin : 20px;">
-                                <form action="https://formsubmit.co/eyesup@eyesup.com.br" method="POST">
+                                <form action="https://formsubmit.co/vibat23184@turuma.com" method="POST">
                                     <div class="col-7">
                                         <div class="pt-0 row">
                                             <div class="col-md-5">
@@ -683,11 +684,119 @@
 
 
 
+        // monitoring history log report
+        function histmonitor(){
+            const historic = document.getElementById('historic');
+            historic.addEventListener('click', async () => {
+            const data = await getfetch()
+            const div = document.getElementById('onload');
 
+            if (data.length > 0) {
+                div.innerHTML = `
+                <h1>Histórico de Monitoramento</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">URL</th>
+                            <th scope="col">Informações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                    ${data.map(item => `
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>${item.address}</td>
+                            <td>
+                                <a href="#" id="result"><i class="fa-solid fa-chart-simple" style="color:blue;font-size:25px"></i></a>
+                            </td>
+                        </tr>
+                        `).join('')}
+                    </tbody>
+                </table>`
+                const tbody = document.getElementById('tbody');
+                
+                for (let i = 0; i < tbody.children.length; i++) {
+                    
+                    tbody.children[i].children[2].children[0].addEventListener('click', async () => {
+                        const id = data[i].id;
+                        const div = document.getElementById('onload');
+                        const result = await getfetch(`http://localhost:3000/status/api`);
+                        div.innerHTML = `
+                        <h1>Relatório de Monitoramento</h1>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Tempo de Resposta</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+                            ${result.map(item => `
+                                <tr>
+                                    <td>${item.name}</td>
+                                    <td>${item.status}</td>
+                                    <td>${item.response_time}</td>
+                                </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-12">
+                                <h1>Gráfico de Monitoramento</h1>
+                                <canvas id="myChart"></canvas>
+                            </div>
+                        </div>`;
+                        const ctx = document.getElementById('myChart').getContext('2d');
+                        const myChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: result.map(item => item.name),
+                                datasets: [{
+                                    label: 'Online',
+                                    data: result.map(item => item.status == 200 ? 1 : 0),
+                                    backgroundColor: [
+                                        'rgba(0, 255, 0, 0.2)',
+                                    ],
+                                    borderColor: [
+                                        'rgba(0, 255, 0, 1)',
+                                    ],
+                                    borderWidth: 1
+                                },
+                                {
+                                    label: 'Offline',
+                                    data: result.map(item => item.status != 200 ? 1 : 0),
+                                    backgroundColor: [
+                                        'rgba(255, 0, 0, 0.2)',
+                                    ],
+                                    borderColor: [
+                                        'rgba(255, 0, 0, 1)',
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
+                            }
+                        });
+                        
+                    })
 
+                }   
+               
+            } else {
+                withoutmonitor();
+            }
+        });
+        }
+        histmonitor();
 
-
-
+        
         // functions of config for the user
 
         function conf() {
