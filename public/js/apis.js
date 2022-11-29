@@ -5,6 +5,10 @@ let apicomp = document.getElementById('container-api');
 function div_fun({ name, address}){
     let div = document.createElement('div');
     div.innerHTML = `
+        <div class="textcenterunder">
+            <p style="font-size:18px; margin-top: 3%;">Neste exato momento, a tabela a seguir está monitorando algumas aplicações.
+            </p>
+        </div>
         <div id="component-container">
             <div class="component-inner status-green">
                 <span class="name"> ${name} </span>

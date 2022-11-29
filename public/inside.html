@@ -61,7 +61,7 @@
                                 <a id="newmonitoring">Novo monitoramento</a>
                             </li>
                             <li>
-                                <a id="historic">Histórico de monitoramento</a>
+                                <a id="historic">Check</a>
                             </li>
                             <li class="last">
                                 <a id="conf">Configurações</a>
@@ -684,6 +684,21 @@
 
 
 
+        function datehour() {
+            let date = new Date();
+            let day = date.getDate();
+            let month = date.getMonth() + 1;
+            let year = date.getFullYear();
+            let hour = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+            let datehour = `${day}/${month}/${year} ${hour}:${minutes}:${seconds}`;
+            return datehour;
+        }
+
+        datehour();
+
+
         // monitoring history log report
         function histmonitor(){
             const historic = document.getElementById('historic');
@@ -693,7 +708,7 @@
 
             if (data.length > 0) {
                 div.innerHTML = `
-                <h1>Histórico de Monitoramento</h1>
+                <h1>Check</h1>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -727,63 +742,119 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col">Data</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Tempo de Resposta</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Endereço</th>
+                                    <th scope="col">Última Verificação</th>
                                 </tr>
                             </thead>
                             <tbody id="tbody">
                             ${result.map(item => `
                                 <tr>
                                     <td>${item.name}</td>
-                                    <td>${item.status}</td>
-                                    <td>${item.response_time}</td>
+                                    <td>${item.address}</td>
+                                    <td>${datehour()}</td>
                                 </tr>
                                 `).join('')}
                             </tbody>
                         </table>
-                        <div class="row">
-                            <div class="col-12">
-                                <h1>Gráfico de Monitoramento</h1>
-                                <canvas id="myChart"></canvas>
-                            </div>
-                        </div>`;
+                        <div>
+                            <h1>Gráfico de Monitoramento</h1>
+                            <canvas id="myChart"></canvas>
+                        </div>
+                        `;
                         const ctx = document.getElementById('myChart').getContext('2d');
                         const myChart = new Chart(ctx, {
                             type: 'line',
                             data: {
                                 labels: result.map(item => item.name),
                                 datasets: [{
-                                    label: 'Online',
+                                    label: 'Status',
                                     data: result.map(item => item.status == 200 ? 1 : 0),
+                                    pointRadius: 6,
+                                    boxHeight: 6,
+                                    pointHoverRadius: 10,
                                     backgroundColor: [
-                                        'rgba(0, 255, 0, 0.2)',
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
                                     ],
                                     borderColor: [
-                                        'rgba(0, 255, 0, 1)',
-                                    ],
-                                    borderWidth: 1
-                                },
-                                {
-                                    label: 'Offline',
-                                    data: result.map(item => item.status != 200 ? 1 : 0),
-                                    backgroundColor: [
-                                        'rgba(255, 0, 0, 0.2)',
-                                    ],
-                                    borderColor: [
-                                        'rgba(255, 0, 0, 1)',
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
                                     ],
                                     borderWidth: 1
                                 }]
                             },
-                            options: {
+                            options: { 
+                                plugins: {
+                                    legend: {
+                                        display: true,
+                                        labels: {
+                                            boxWidth: 40,
+                                            boxHeight: 1,
+                                            font: {
+                                                size: 17
+                                            },
+                                            padding: 20,
+                                            color: 'black'
+                                        },
+                                    },
+                                },
                                 scales: {
                                     y: {
-                                        beginAtZero: true
-                                    }
+                                        offset: true,
+                                        grid: { offset: true },
+                                        beginAtZero: true,
+                                        ticks: {
+                                            font: {
+                                                size: 14
+                                            },
+                                            color: 'black',
+                                            stepSize: 1,
+                                            callback: function (value, index, values) {
+                                                if (value == 1) {
+                                                    return 'Online';
+                                                } else {
+                                                    return 'Offline';
+                                                }
+                                            }
+                                            
+                                        },
+
+                                    },
+                                    x: {
+                                        title: {
+                                            display: true,
+                                            text: 'Hosts',
+                                            color: 'black',
+                                            font: {
+                                                size: 20,
+                                                weight: 'bold'
+                                            },
+                                            padding: {
+                                                top: 10,
+                                                bottom: 30
+                                            },
+                                        },
+                                        ticks: {
+                                            color: 'black',
+                                            font: {
+                                                size: 14,
+                                            },
+                                        }
+                                },
+
                                 }
                             }
                         });
+                        
                         
                     })
 
@@ -803,7 +874,6 @@
             const element = document.getElementById('conf');
             element.addEventListener('click', () => {
                 const miolon = `
-              
                     <h1>Configurações</h1>
                         <div id="veri" class="verfast-form">
                             <div class="textcenterunder">
