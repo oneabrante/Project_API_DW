@@ -532,9 +532,9 @@
                 for (let i = 0; i < tbody.children.length; i++) {
                     let status = tbody.children[i].children[3].textContent;
                     if (status == 200) {
-                        tbody.children[i].children[3].innerHTML = '<i class="icon-indicator fa fa-check" style="color:green; font-size:25px"></i>';
+                        tbody.children[i].children[3].innerHTML = '<td><div class="pulse"></div></td>';
                     } else {
-                        tbody.children[i].children[3].innerHTML = `<i class="icon-indicator fa fa-times" style="color:red; font-size:25px"></i>`;
+                        tbody.children[i].children[3].innerHTML = `<i class="icon-indicator fa fa-times" style="color:red; font-size:25px;"></i>`;
                     }
                 }
 
@@ -613,13 +613,13 @@
                                 <h1>Editar Monitoramento</h1>
                                 <form id="form" class="verfast-form" method="post" action="http://localhost:3000/status/${id}" style="margin-left: 10px; float : left; width : 700px; margin : 20px;">
                                     <div class="col-10">
-                                        <label for="name">Nome</label>
+                                        <label for="name">Nome:</label>
                                     </div>
                                     <div class="col-90">
                                         <input id="name" name="name" required="" class="form-control input-lg" type="text" value="${name}" required />
                                     </div>
                                     <div class="col-10">
-                                        <label for="protocolo">Protocolo</label>
+                                        <label for="protocolo">Protocolo:</label>
                                     </div>
                                     <div class="col-90">
                                         <select id="protocolo" name="protocolo" class="form-control input-lg" required>
@@ -632,7 +632,7 @@
                                         </select>
                                     </div>
                                     <div class="col-10">
-                                        <label for="address">URL</label>
+                                        <label for="address">URL:</label>
                                     </div>
                                     <div class="col-90">
                                         <input id="address" name="address" required="" class="form-control input-lg" type="text" value="${address}" required />
@@ -887,8 +887,7 @@
                                     <span id="infoparc" style="font-size: 20px;"></span>
                                 </div>
                                 <form action="" id="formntz" class="verfast-form" style="padding-top:13%; float : left; width : 700px; margin : 10px;">
-                                <input class="submit-btn" type="submit" id="senda" value="Editar Configurações" style="width: 25%;" data-bs-toggle="modal"
-                                data-bs-target=".bd-example-modal-lg"/>
+                                <input class="submit-btn" type="submit" id="senda" value="Editar Configurações" style="width: 25%;"/>
                                 <input class="submit-btn" type="submit" id="sendb" value="Excluir Conta" style="margin-left: 10px; width: 15%;" data-bs-toggle="modal"
                                 data-bs-target=".bd-example-modal-lg"/>
                    
@@ -1057,56 +1056,86 @@
                     const infoparc = data[0].infoparc;
                     console.log(infoparc);
 
-                    const question2 = `
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="myModalLabel">Editar Configurações </h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body
-                            <form id="form">
-                                <div class="form-group
-                                    <label for="name">Nome</label>
-                                    <input type="text" class="form-control" id="name" value="${name}">
+                    let div = document.getElementById('onload');
+                    div.innerHTML = `
+                    <style>
+                            .form-control {
+                            width: 40%;
+                            margin-left: 20px;
+                            margin-bottom: 5%;
+                            }
+                            .select_medio{
+                                height: 40px;
+                                border: 1px solid #ced4da;
+                                border-radius: .25rem;
+                                display: block;
+                                padding: .375rem .75rem;
+                                font-size: 1rem;
+                                margin-left: 20px;
+                                margin-bottom: 5%;
+                            }
+                            .col-10{
+                                float: left;
+                                width:30%;
+                                margin-top: 6px;
+                            }
+                            input[type=submit] {
+                                margin-left: 12%;
+                            }
+                    </style>
+                    <div class="row">
+                        <div class="col-12">
+                            <h1>Editar Configurações</h1>
+                            <form id="form" class="verfast-form" method="post" action="http://localhost:3000/users/${id}" style="margin-left: 10px; float : left; width : 700px; margin : 20px;">
+                                <div class="col-10">
+                                    <label for="name" style="margin:auto">Nome:</label>
                                 </div>
-                                <div class="form-group
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" value="${email}">
+                                    <div class="col-90">
+                                        <input type="text" class="form-control" id="name" name="name" value="${name}">
+                                    </div>  
+                                <div class="col-10">
+                                    <label for="email">Email:</label>
                                 </div>
-                                <div class="form-group
-                                    <label for="fusoh">Fuso Horário</label>
-                                    <input type="text" class="form-control" id="fusoh" value="${fusoh}">
+                                    <div class="col-90">
+                                        <input type="email" class="form-control" id="email" name="email" value="${email}">
+                                    </div>
+                             
+                                <div class="col-10">
+                                    <label for="fusoh">Fuso Horário:</label>
                                 </div>
-                                <div class="form-group
-                                    <label for="horarioverao">Horário de Verão</label>
-                                    <input type="text" class="form-control" id="horarioverao" value="${horarioverao}">
+                                    <div class="col-90">
+                                        <input type="text" class="form-control" id="fusoh" name="fusoh" value="${fusoh}">
+                                    </div>
+                               
+                                <div class="col-10">
+                                    <label for="horarioverao">Horário de Verão:</label>
                                 </div>
-                                <div class="form-group
-                                    <label for="infoeyesup">Informações da EyesUp</label>
-                                    <input type="text" class="form-control" id="infoeyesup" value="${infoeyesup}">
+                                    <div class="col-90">
+                                        <input type="text" class="form-control" id="horarioverao" name="horarioverao" value="${horarioverao}">
+                                    </div>
+                            
+                                <div class="col-10">
+                                    <label for="infoeyesup">Informações EyesUp:</label>
                                 </div>
-                                <div class="form-group
-                                    <label for="infoparc">Informações do Parceiro</label>
-                                    <input type="text" class="form-control" id="infoparc" value="${infoparc}">
+                                    <div class="col-90">
+                                        <input type="text" class="form-control" id="infoeyesup" name="infoeyesup" value="${infoeyesup}">
+                                    </div>
+                             
+                                <div class="col-10">
+                                    <label for="infoparc">Informações Parceiros:</label>
                                 </div>
+                                    <div class="col-90">
+                                        <input type="text" class="form-control" id="infoparc" name="infoparc" value="${infoparc}">
+                                    </div>
+                               
+                                <input name="submit" id="sende" class="submit-btn" value="Editar" type="submit" />
                             </form>
-                            </div>
-                            <div class="modal-footer">
-                                <input class="submit-btn" type="submit" id="sende" value="Salvar" style="width: 15%;"/>
-                                <input class="submit-btn" type="submit" id="sendf" value="Cancelar" style="margin-left: 2px; width: 15%;"/>
-                            </div>
                         </div>
-                    </div>`
-                    document.getElementById('myModal').innerHTML = question2;
-                    const sende = document.querySelector('#sende');
-                    sende.addEventListener('click', () => {
-                        const name = document.querySelector('#name').value;
-                        const email = document.querySelector('#email').value;
-                        const fusoh = document.querySelector('#fusoh').value;
-                        const horarioverao = document.querySelector('#horarioverao').value;
-                        const infoeyesup = document.querySelector('#infoeyesup').value;
-                        const infoparc = document.querySelector('#infoparc').value;
+                    </div>
+                    `
+                    const form = document.querySelector('#form');
+                    form.addEventListener('submit', (e) => {
+                        e.preventDefault();
                         const config = {
                             method: 'PUT',
                             headers: {
@@ -1114,29 +1143,30 @@
                                 'Content-Type': 'application/json'
                             },
                             body: JSON.stringify({
-                                name,
-                                email,
-                                fusoh,
-                                horarioverao,
-                                infoeyesup,
-                                infoparc
+                                name: form.name.value,
+                                email: form.email.value,
+                                fusoh: form.fusoh.value,
+                                horarioverao: form.horarioverao.value,
+                                infoeyesup: form.infoeyesup.value,
+                                infoparc: form.infoparc.value
                             })
                         };
                         const response = fetch(`http://localhost:3000/users/${id}`, config)
                         .then((response) => {
-                            console.log(response);
-
-                        }) 
-                            
+                            if (response.status === 200) {
+                                alert('Dados atualizados com sucesso!');
+                                window.location.reload();
+                            } else {
+                                alert('Erro ao atualizar dados!');
+                            }
                         })
-
                     })
                 })
             })
-        }
-
-        conf();
-
+        })
+    }
+    conf();
+        
     </script>
 </body>
 </html>

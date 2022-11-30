@@ -369,10 +369,39 @@ li.last {
 }
 
 span.coluna01, span.coluna02, span.coluna03, span.coluna04{
-    font-weight: normal;
-
-
-    
-  
-    
+    font-weight: normal;   
 }
+
+
+
+.pulse{
+    border-radius: 50%;
+    background-color: rgba(28, 156, 28, 0.7);
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 27px;
+    animation: pulse 1.8s infinite;
+
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(28, 156, 28, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+}
+    
+
+
+
+
