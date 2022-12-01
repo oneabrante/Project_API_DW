@@ -99,7 +99,7 @@ Authorization: bearer {{token}}
 
 ### Update User
 
-PUT {{host}}/users/{{createHostId}}
+PUT {{host}}/users/4c514cfc-030c-4f00-bc42-42e32a677da4
 Content-Type: application/json
 Authorization: bearer {{token}}
 

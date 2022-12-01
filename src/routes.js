@@ -106,8 +106,8 @@ router.post('/hello/en', (req, res) => {
 
 
 //¬~{&}9nov¬~{&}
-router.get('/users', isAuthenticated, (req, res) => {
-  const users = Users.readAll();
+router.get('/users', isAuthenticated, async (req, res) => {
+  const users = await Users.readAll();
 
   res.json(users);
 });
@@ -115,7 +115,7 @@ router.get('/users', isAuthenticated, (req, res) => {
 router.post('/users', async (req, res) => {
   const user = req.body;
 
-  // delete user.confirmationPassword;
+  delete user.confirmationPassword;
 
   const newUser = await Users.create(user);
 
@@ -124,8 +124,8 @@ router.post('/users', async (req, res) => {
 });
 
 
-router.delete('/users/:id', isAuthenticated, (req, res) => {
-  const id = req.params.id;
+router.delete('/users/:id', isAuthenticated, async (req, res) => {
+  const id = Number(req.params.id);
 
   Users.remove(id);
 
@@ -133,12 +133,12 @@ router.delete('/users/:id', isAuthenticated, (req, res) => {
 });
 
 
-router.put('/users/:id', isAuthenticated, (req, res) => {
-  const id = req.params.id;
+router.put('/users/:id', isAuthenticated, async (req, res) => {
+  const id = Number(req.params.id);
 
   const user = req.body;
 
-  const newUser = Users.update(user, id);
+  const newUser = await Users.update(user, id);
 
   res.json(newUser);
 });
@@ -199,32 +199,32 @@ router.get('/hosts/:hostId/times', isAuthenticated, async (req, res) => {
 
 //¬~{&}12novproject¬~{&}
 router.get('/status', async (req, res) => {
-  const status = Status.readAll();
+  const status = await Status.readAll();
 
   res.json(status);
 });
 
 
-router.post('/status', (req, res) => {
+router.post('/status', async (req, res) => {
   const status = req.body;
 
-  const newStatus = Status.create(status);
+  const newStatus = await Status.create(status);
 
   res.status(201).json(newStatus);
 });
 
-router.put('/status/:id', (req, res) => {
-  const id = req.params.id;
+router.put('/status/:id', async (req, res) => {
+  const id = Number(req.params.id);
 
   const status = req.body;
 
-  const newStatus = Status.update(status, id);
+  const newStatus = await Status.update(status, id);
 
   res.json(newStatus);
 });
 
-router.delete('/status/:id', (req, res) => {
-  const id = req.params.id;
+router.delete('/status/:id', async (req, res) => {
+  const id = Number(req.params.id);
 
   Status.remove(id);
 
@@ -238,7 +238,7 @@ router.post('/signin', async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const { id: userId, password: hash } = Users.readByEmail(email);
+    const { id: userId, password: hash } = await Users.readByEmail(email);
 
     const match = await bcrypt.compare(password, hash);
 
@@ -262,7 +262,7 @@ router.post('/signin', async (req, res) => {
 
 //¬~{&}12octprojctstatus¬~{&}
 router.get('/status/api', async (req, res) => {
-  const statys = Status.readAll();
+  const statys = await Status.readAll();
   const address = statys.map((staty) => staty.address);
   const name = statys.map((staty) => staty.name);
   const protocolo = statys.map((staty) => staty.protocolo);
@@ -279,8 +279,8 @@ router.get('/status/api', async (req, res) => {
 
 
 router.get('/status/:apiID/', async (req, res) => {
-  const apiID = req.params.apiID;
-  const hostp1 = Status.read(apiID);
+  const apiID = Number(req.params.apiID);
+  const hostp1 = await Status.read(apiID);
     const data = await statusControllerr(hostp1.address);
     res.json({
         url: data.url,
@@ -310,7 +310,7 @@ router.use((req, res, next) => {
 
 // Error handler
 router.use((err, req, res, next) => {
-  // console.error(err.stack);
+  console.error(err.stack);
   res.status(500).send('Something broke!');
 });
 

@@ -418,14 +418,14 @@
 
                 form.addEventListener('submit', handleSubmit);
 
-                function handleSubmit(event) {
+                async function handleSubmit(event) {
                     event.preventDefault();
                     const data = new FormData(event.target);
 
                     const value = Object.fromEntries(data.entries());
 
 
-                    fetch('http://localhost:3000/status', {
+                    await fetch('http://localhost:3000/status', {
                         method: 'POST',
                         body: JSON.stringify(value),
                         headers: {
@@ -888,7 +888,7 @@
                                 </div>
                                 <form action="" id="formntz" class="verfast-form" style="padding-top:13%; float : left; width : 700px; margin : 10px;">
                                 <input class="submit-btn" type="submit" id="senda" value="Editar Configurações" style="width: 25%;"/>
-                                <input class="submit-btn" type="submit" id="sendb" value="Excluir Conta" style="margin-left: 10px; width: 15%;" data-bs-toggle="modal"
+                                <input class="submit-btn" type="submit" id="sendb" value="Excluir Conta" style="margin-left: 10px; width: 17%;" data-bs-toggle="modal"
                                 data-bs-target=".bd-example-modal-lg"/>
                    
                                 <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -991,9 +991,9 @@
 
                     getUser().then((data) =>{
                     console.log(data);
-                    const id = data[1].id;
+                    const id = data[0].id;
                     console.log(id);
-                    const name = data[1].name;
+                    const name = data[0].name;
                     console.log(name);
                     
 
@@ -1041,11 +1041,11 @@
 
                     getUser().then((data) =>{
                     console.log(data);
-                    const id = data[1].id;
+                    const id = data[0].id;
                     console.log(id);
-                    const name = data[1].name;
+                    const name = data[0].name;
                     console.log(name);
-                    const email = data[1].email;
+                    const email = data[0].email;
                     console.log(email);
                     const fusoh = data[0].fusoh;
                     console.log(fusoh);
@@ -1122,7 +1122,7 @@
                                     </div>
                              
                                 <div class="col-10">
-                                    <label for="infoparc">Informações Parceiros:</label>
+                                    <label for="infoparc">Informações de Parceiros:</label>
                                 </div>
                                     <div class="col-90">
                                         <input type="text" class="form-control" id="infoparc" name="infoparc" value="${infoparc}">
@@ -1133,9 +1133,7 @@
                         </div>
                     </div>
                     `
-                    const form = document.querySelector('#form');
-                    form.addEventListener('submit', (e) => {
-                        e.preventDefault();
+                    async function editUser() {
                         const config = {
                             method: 'PUT',
                             headers: {
@@ -1148,19 +1146,25 @@
                                 fusoh: form.fusoh.value,
                                 horarioverao: form.horarioverao.value,
                                 infoeyesup: form.infoeyesup.value,
-                                infoparc: form.infoparc.value
+                                infoparc: form.infoparc.value,
                             })
                         };
-                        const response = fetch(`http://localhost:3000/users/${id}`, config)
+                        const response = await fetch(`http://localhost:3000/users/${id}`, config)
                         .then((response) => {
-                            if (response.status === 200) {
-                                alert('Dados atualizados com sucesso!');
+                           if (response.status === 200) {
+                                alert('Dados alterados com sucesso!');
                                 window.location.reload();
                             } else {
-                                alert('Erro ao atualizar dados!');
+                                alert('Erro ao alterar dados!');
                             }
                         })
+                    }
+                    const sende = document.querySelector('#sende');
+                    sende.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        editUser();
                     })
+
                 })
             })
         })

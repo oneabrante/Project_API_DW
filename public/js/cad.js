@@ -50,4 +50,3 @@ form.confirmationPassword.addEventListener('input', () => {
       form.confirmationPassword.setCustomValidity('');
     }
 });
-

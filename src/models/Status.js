@@ -1,41 +1,46 @@
-import { v4 as uuidv4 } from "uuid";
+import prisma from '../database/index.js';
 
-import db from "../database/index.js";
-
-function readAll() {
-  return db.status;
-}
-
-function read(id) {
-  const status = db.status.find((status) => status.id === id);
+async function readAll() {
+  const status = await prisma.status.findMany();
 
   return status;
 }
 
-function create(status) {
-  const id = uuidv4();
+async function read(id) {
+  const status = await prisma.status.findFirst({
+    where: {
+      id,
+    },
+  });
 
-  const newStatus = { ...status, id };
+  return status;
+}
 
-  db.status.push(newStatus);
+async function create(status) {
+  const newStatus = await prisma.status.create({
+    data: status,
+  });
 
   return newStatus;
 }
 
-function update(status, id) {
-  const newStatus = { ...status, id };
-
-  const index = db.status.findIndex((status) => status.id === id);
-
-  db.status[index] = newStatus;
+async function update(status, id) {
+  const newStatus = await prisma.status.update({
+    data: status,
+    where: {
+      id,
+    },
+  });
 
   return newStatus;
 }
 
-function remove(id) {
-  const index = db.status.findIndex((status) => status.id === id);
-
-  db.status.splice(index, 1);
+async function remove(id) {
+  await prisma.status.delete({
+    where: {
+      id,
+    },
+  });
 }
 
 export default {
