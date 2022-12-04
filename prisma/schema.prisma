@@ -11,20 +11,23 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  name     String
-  email    String @unique
-  password String
-  fusoh String
+  id           Int      @id @default(autoincrement())
+  name         String
+  email        String   @unique
+  password     String
+  fusoh        String
   horarioverao String
-  infoeyesup String
-  infoparc String
+  infoeyesup   String
+  infoparc     String
+  status       Status[]
 }
 
 model Status {
-  id      Int    @id @default(autoincrement())
-  name    String
-  address String @unique
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  name      String
+  address   String   @unique
   protocolo String
- 
+  userId    Int?
+  user      User?    @relation(fields: [userId], references: [id])
 }

@@ -338,6 +338,10 @@
         monitoringg();
 
 
+    
+
+
+
         // function new monitoring status api
         function newmonitoring() {
             const element = document.getElementById('newmonitoring');
@@ -425,7 +429,20 @@
                     const value = Object.fromEntries(data.entries());
 
 
-                    await fetch('http://localhost:3000/status', {
+                    const response = await fetch('http://localhost:3000/users', {
+                        method: 'GET',
+                        headers: {
+                            Authorization: `Bearer ${getToken()}`,
+                            'Content-Type': 'application/json',
+                        },
+                    });
+                    const data1 = await response.json();
+                    console.log(data1);
+                    const id = data1[0].id;
+                    console.log(id);
+    
+
+                    await fetch(`http://localhost:3000/status/${id}`, {
                         method: 'POST',
                         body: JSON.stringify(value),
                         headers: {
@@ -453,6 +470,7 @@
             });
 
         }
+        
         newmonitoring();
 
 

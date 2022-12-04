@@ -1,86 +1,10 @@
 @host = http://localhost:3000
-@createHostId = {{createHost.response.body.id}}
 @token = {{signin.response.body.token}}
-
-//¬~{&}13oct¬~{&}
-### get /
-GET {{host}}/
-
-
-### get /hello/en?name=
-# Query parameters
-GET {{host}}/hello/en?name=Thiago
-
-
-### get /hello/en/:name'
-# Route parameters
-GET {{host}}/hello/en/Thiago
-
-
-### post /hello/es
-# Body parameters
-POST {{host}}/hello/en
-Content-Type: application/json
-
-{
-  "name": "Thiago"
-}
-
-
-
-# =====19.oct=====
-### Get latency
-
-GET {{host}}/hosts/1/times
-
-### Get latency with specific count
-
-GET {{host}}/hosts/1/times?count=5
-
-
-
-//¬~{&}30octprojct¬~{&}
-### Get 
-GET {{host}}/api/1/status
-
-
-
-//¬~{&}9nov¬~{&}
-### List all Hosts
-GET {{host}}/hosts
-Authorization: bearer {{token}}
-
-### Create Host
-# @name createHost
-POST {{host}}/hosts
-Content-Type: application/json
-Authorization: bearer {{token}}
-
-{
-  "name": "Cloudflare",
-  "address": "1.1.1.0"
-}
-
-### Update Host
-
-PUT {{host}}/hosts/{{createHostId}}
-Content-Type: application/json
-Authorization: bearer {{token}}
-
-{
-  "name": "Cloudflare",
-  "address": "1.1.1.1"
-}
-
-### Remove Host
-
-DELETE {{host}}/hosts/{{createHostId}}
-
 
 
 ### List Users
 
-GET {{host}}/users
+GET {{host}}/users/
 Authorization: bearer {{token}}
 
 ### Create User
@@ -93,13 +17,17 @@ Authorization: bearer {{token}}
 {
   "name": "Thiago",
   "email": "thiago@gmail.com",
-  "password": "123"
-}
+  "password": "123",
+  "fusoh": "America/Sao_Paulo",
+  "horarioverao": "sim",
+  "infoeyesup": "sim",
+  "infoparc": "sim"
 
+}
 
 ### Update User
 
-PUT {{host}}/users/4c514cfc-030c-4f00-bc42-42e32a677da4
+PUT {{host}}/users/10
 Content-Type: application/json
 Authorization: bearer {{token}}
 
@@ -111,7 +39,7 @@ Authorization: bearer {{token}}
 
 ### Delete User
 
-DELETE {{host}}/users/{{createHostId}}
+DELETE {{host}}/users/15
 Authorization: bearer {{token}}
 
 
@@ -143,16 +71,6 @@ Content-Type: application/json
 
 
 
-### Get latency
-### only when create hosts exists
-GET {{host}}/hosts/{{createHostId}}/times
-Authorization: bearer {{token}}
-
-### Get latency with specific count
-
-GET {{host}}/hosts/{{createHostId}}/times?count=3
-Authorization: bearer {{token}}
-
 
 
 
@@ -164,24 +82,25 @@ GET {{host}}/status
 
 
 ### Create API
-# @name createHost
-POST {{host}}/status
+#inform the id of the user
+# @name createStatusController
+POST {{host}}/status/18
 Content-Type: application/json
 
 {
-  "name": "Uol",
+  "name": "glob",
   "protocolo": "http",
-  "address": "asgoogle.com.br"
+  "address": "lolgggloballl.com.br"
 }
 
 ### Remove API
 
-DELETE {{host}}/status/c5cc453d-4538-451f-a7dd-33ce9bd1d11b
+DELETE {{host}}/status/30
 
 
 ### Update API
 
-PUT {{host}}/status/{{createHostId}}
+PUT {{host}}/status/17
 Content-Type: application/json
 
 {
@@ -193,7 +112,7 @@ Content-Type: application/json
 
 ### Get 
 ### only when create API exists
-GET {{host}}/status/{{createHostId}}/
+GET {{host}}/status/10
 
 ### Get status api
 ### only when create API exists

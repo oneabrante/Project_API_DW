@@ -6,10 +6,15 @@ import prisma from '../database/index.js';
 
 
 async function readAll() {
-  const users = await prisma.user.findMany();
+  const users = await prisma.user.findMany({
+    include: {
+      status: true,
+    },
+  });
 
   return users;
-}
+  }
+
 
 async function read(id) {
   const user = await prisma.user.findFirst({
