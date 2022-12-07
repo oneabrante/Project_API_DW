@@ -95,7 +95,7 @@ Content-Type: application/json
 
 ### Remove API
 
-DELETE {{host}}/status/30
+DELETE {{host}}/status/47
 
 
 ### Update API

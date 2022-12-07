@@ -75,15 +75,6 @@ router.get('/status', async (req, res) => {
 });
 
 
-// router.post('/status', async (req, res) => {
-//   const status = req.body;
-
-//   const newStatus = await Status.create(status);
-
-//   res.status(201).json(newStatus);
-// });
-
-
 router.put('/status/:id', async (req, res) => {
   const id = Number(req.params.id);
 

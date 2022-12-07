@@ -65,7 +65,7 @@ async function update(status, id) {
 async function remove(id) {
   await prisma.status.delete({
     where: {
-      id,
+      id
     },
   });
 }
