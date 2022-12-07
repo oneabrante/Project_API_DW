@@ -115,7 +115,7 @@ router.post('/signin', async (req, res) => {
 
     if (match) {
       const token = jwt.sign(
-        { userId },
+        { userId, email }, 
         process.env.SECRET,
         { expiresIn: 3600 } // 1h
       );

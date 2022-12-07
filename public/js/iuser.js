@@ -40,6 +40,10 @@ async function renderUser(){
 renderUser();
 
 
+
+
+
+
 if (!Auth.isAuthenticated()) {
     window.location.href = '/login.html';
 }

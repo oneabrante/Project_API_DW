@@ -112,7 +112,7 @@ Content-Type: application/json
 
 ### Get 
 ### only when create API exists
-GET {{host}}/status/10
+GET {{host}}/status/26
 
 ### Get status api
 ### only when create API exists

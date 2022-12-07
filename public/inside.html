@@ -112,7 +112,7 @@
         <!-- Fim div rodape -->
     </div>
     <!-- Fim div pagina -->
-    <script src="./js/iuser.js" type="module"></script>
+    <!-- <script src="./js/iuser.js" type="module"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script>
@@ -122,12 +122,14 @@
             window.location.href = '/login.html';
             } else {
             return true;
+
             }
         }
         
         function getToken() {
             return localStorage.getItem('@EyesUpToken:token');
         }
+     
         
         function signin(token) {
             localStorage.setItem('@EyesUpToken:token', token);
@@ -140,8 +142,15 @@
         
             window.location.href = '/index.html';
         }
-        
 
+      
+        if (isAuthenticated()) {
+            const token = getToken();
+            const user = JSON.parse(atob(token.split('.')[1]));
+            document.getElementById('hello').innerHTML = `Olá, ${user.email}`;
+        }
+
+        
         function verifast() {
             const ids = ['verifastt', 'verifast'];
             ids.forEach(id => {
@@ -339,9 +348,6 @@
 
 
     
-
-
-
         // function new monitoring status api
         function newmonitoring() {
             const element = document.getElementById('newmonitoring');
@@ -429,20 +435,13 @@
                     const value = Object.fromEntries(data.entries());
 
 
-                    const response = await fetch('http://localhost:3000/users', {
-                        method: 'GET',
-                        headers: {
-                            Authorization: `Bearer ${getToken()}`,
-                            'Content-Type': 'application/json',
-                        },
-                    });
-                    const data1 = await response.json();
-                    console.log(data1);
-                    const id = data1[0].id;
-                    console.log(id);
-    
+                    // get token id after authentification 
+                    const token = getToken();
+                    const user = JSON.parse(atob(token.split('.')[1]));
+                    const id2 = user.userId;
 
-                    await fetch(`http://localhost:3000/status/${id}`, {
+
+                    await fetch(`http://localhost:3000/status/${id2}`, {
                         method: 'POST',
                         body: JSON.stringify(value),
                         headers: {
@@ -479,25 +478,52 @@
 
         // all config list monitoring status api
 
-        const monitor = document.getElementById('listmonitoring');
-            fetch('http://localhost:3000/status')
+    
+            const token = getToken();
+            const user = JSON.parse(atob(token.split('.')[1]));
+            const id2 = user.userId;  
+            const monitor = document.getElementById('listmonitoring');
+            fetch('http://localhost:3000/status/')
                 .then(response => response.json())
                 .then(data => {
-                    monitor.innerHTML = ` Monitoramentos (${data.length})`;
-                    
-            });
+                    if (data.filter((item) => item.userId == id2).length > 0) {
+                        data.filter((item) => item.userId == id2).forEach((item) => {
+                            monitor.innerHTML = `Monitoramentos (${data.length})`
+                        })
+                    } else {
+                        monitor.innerHTML = `Monitoramentos (0)`
+                    }
+                })
 
-        function withoutmonitor(){
-            let div = document.getElementById('onload');
-            div.innerHTML = `<h1>Monitoramentos</h1>
-                        <span style="text-align : justify; margin : 20px 0 10px 20px;">
+            
+
+        async function withoutmonitor(){
+            const token = getToken();
+            const user = JSON.parse(atob(token.split('.')[1]));
+            const id2 = user.userId;
+            const response = await fetch('http://localhost:3000/users', {
+                        method: 'GET',
+                        headers: {
+                            Authorization: `Bearer ${getToken()}`,
+                            'Content-Type': 'application/json',
+                        },
+                    });
+            const data1 = await response.json();
+            if (data1.filter((item) => item.status.filter((item) => item.userId == id2).length > 0).length == 0) {
+                let div = document.getElementById('onload');
+                div.innerHTML = `<h1>Monitoramentos</h1>
+                <span style="text-align : justify; margin : 20px 0 10px 20px;">
                             Você não possui nenhum monitoramento cadastrado.
                             <br>
                             <br>
                             Para cadastrar um monitoramento, clique <a href="#">aqui</a>.
                         </span>`;
-            return div
+                return div
+            }
         }
+        withoutmonitor();
+
+        
 
 
         async function getfetch() {
@@ -512,9 +538,12 @@
             return data
         }
 
+        
+        
         async function renderapi(){
             monitor.addEventListener('click', async () => {
             const data = await getfetch()
+            console.log(data)
             const div = document.getElementById('onload');
 
             if (data.length > 0) {
@@ -699,6 +728,7 @@
         });
         }
         renderapi();
+       
 
 
 
