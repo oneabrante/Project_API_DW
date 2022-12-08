@@ -2,6 +2,7 @@
     margin : 0;
     padding : 0;
     border : none;
+    
 }
 
 body {
@@ -9,7 +10,16 @@ body {
     text-align : center;
     font-family : Verdana;
     font-size : 16px;
+    background-image: url(../assets/mapw.png);
+    width : 100%;
+    height : 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+   
 }
+
 
 .clear {
     clear : both;
@@ -29,10 +39,28 @@ a {
 
 
 .logo {
-    float : left;
-    width : 210px;
+    border-radius: 50%;
     margin-top : 10px;
     margin-left : 10px;
+   
+   
+    position: absolute;
+    animation: logo 3s infinite;
+}
+
+@keyframes logo {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
 }
 
 
@@ -43,9 +71,10 @@ a {
     height : 82px;
     padding-left : 3px;
     padding-top : 6px;
-    border : silver solid 1px;
+    border : black solid 1px;
     border-radius : 10px;
     margin-top : 15px;
+    background-color: #fff;
   
 }
    
@@ -71,6 +100,7 @@ a {
     margin-top : 30px;
     border : rgb(100, 97, 97) solid 1px;
     border-radius : 5px;
+    background-color: #fff;
 }
 
 
@@ -121,6 +151,7 @@ li.last {
     float : left;
     clear : both;
     width : 195px;
+    background-color: #fff;
     
    
 }
@@ -130,7 +161,7 @@ li.last {
     clear : both;
     width : 186px;
     margin-top : 15px;
-    border : silver solid 1px;
+    border : black solid 1px;
     border-radius : 10px;
     
 }
@@ -151,7 +182,7 @@ li.last {
     width : 170px;
     padding-top : 5px;
     padding-bottom : 6px;
-    border-bottom : 1px solid #CCC;
+    border-bottom : 1px solid black;
     
 }
 

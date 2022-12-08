@@ -14,14 +14,14 @@
         <div class="topo">
             <div class="logo">
                 <a href="index.html">
-                    <img src="./assets/small.jpg" alt="logo EyesUp" width="90px" style="border-radius: 50px;">
+                    <img src="./assets/small.jpg" alt="logo EyesUp" width="105px" style="border-radius: 50px; aspect-ratio: 1/1;">
                 </a>
             </div>
             <div class="login">
                 <div class="logado">
                     <div id="hello"></div>
                     <br>
-                    <a class="nav-link" href="#" onclick="signout()" style="color: red;">Sair do Sistema</a>
+                    <a class="nav-link" href="#" onclick="signout()" style="color: rgb(232, 0, 0);"><b>Sair do Sistema</b></a>
                 </div>   
             </div>
             <br class="clear">
@@ -79,8 +79,8 @@
                             <li>
                                 <a id="contactuss">Fale Conosco</a>
                             </li>
-                            <li>
-                                <a class="nav-link" href="#" onclick="signout()" style="color: red;">Sair do Sistema</a>
+                            <li style="border-bottom: none;">
+                                <a class="nav-link" href="#" onclick="signout()" style="color: rgb(232, 0, 0);"><b>Sair do Sistema</b></a>
                             </li>
                         </ul>
                     </div>
@@ -105,8 +105,11 @@
         <!-- Fim div conteudo -->
         <br class="clear">
         <div class="rodape">
-            <pre style="margin-left: 10%; margin-top: 30px;">
-                © 2022 EyesUp Ltda.
+            <pre style="margin-top: 30px; font-size: 18px;">
+                <b>© 2022 EyesUp Ltda.</b>
+                <a href="https://abtserver.abrantedevops.repl.co" target="_blank">
+                    <img src="./assets/abranteme.png" alt="Abranteme emblem" style="width: 20px; margin-right: 5%; ">
+                </a>
             </pre>
         </div>
         <!-- Fim div rodape -->
@@ -145,9 +148,27 @@
 
       
         if (isAuthenticated()) {
+            async function getuser() {
+            const config = {
+                method: 'GET',
+                headers: {
+                    Authorization: `Bearer ${getToken()}`,
+                    'Content-Type': 'application/json'
+                }
+            }
+            const response = await fetch('http://localhost:3000/users', config)
+            const data = await response.json()
+            return data
+        }
             const token = getToken();
             const user = JSON.parse(atob(token.split('.')[1]));
-            document.getElementById('hello').innerHTML = `Olá, ${user.email}`;
+            const id2 = user.userId
+            getuser().then(data => {
+                const user = data.find(user => user.id == id2);
+                const name = user.name;
+                document.getElementById("hello").innerHTML = `Olá, <b>${name}!<b>`;
+                
+            })
         }
 
         
@@ -308,7 +329,7 @@
                     <div style="font-size: 20px;">
                         <span style="line-height: 170%; text-align : justify; margin : 20px 0 10px 20px;">
                             A EyesUp monitora a sua aplicação para garantir que seus clientes tenham uma boa experiência acessando as suas informações e serviços. Você pode acompanhar os resultados dos testes em tempo real e receber relatórios por e-mail. Além dos testes de disponibilidade, você pode monitorar a performance da sua aplicação e receber alertas quando a performance estiver abaixo do esperado. Estamos disponíveis 24 horas por dia, 7 dias por semana, 365 dias por ano, sendo possível monitorar até dez aplicações a partir do nosso plano mais avançado e três aplicações no plano intermediário, além de oferecer um <b>plano gratuito</b> com uma aplicação monitorada.
-                            <br><br><a href="#contact">Contrate já</a> e comece a monitorar suas aplicações!<br>Qualquer dúvida entre em contato conosco.
+                            <br><br><a href="#contact"><b>Contrate já</b></a> e comece a monitorar suas aplicações!<br>Qualquer dúvida entre em contato conosco.
                         </span>
                     </div>`
                 document.getElementById("onload").innerHTML = miolon;
@@ -329,7 +350,7 @@
                             Você não possui nenhum monitoramento cadastrado.
                             <br>
                             <br>
-                            Para cadastrar um monitoramento, clique <a href="#">aqui</a>.
+                            Para cadastrar um monitoramento, clique <a href="#"><b>aqui</b></a>.
                         </span>`;
                     document.getElementById("onload").innerHTML = div.innerHTML;
                 } else {
@@ -339,7 +360,7 @@
                             Você possui ${data.filter((item) => item.userId == id2).length} monitoramento(s) cadastrado(s).
                             <br>
                             <br>
-                            Para cadastrar um monitoramento, clique <a href="#">aqui</a>.
+                            Para cadastrar um monitoramento, clique <a href="#"><b>aqui</b></a>.
                         </span>`;
                     document.getElementById("onload").innerHTML = div.innerHTML;
                 }
@@ -436,7 +457,7 @@
                     const value = Object.fromEntries(data.entries());
 
 
-                    // get token id after authentification 
+
                     const token = getToken();
                     const user = JSON.parse(atob(token.split('.')[1]));
                     const id2 = user.userId;
@@ -474,11 +495,7 @@
         newmonitoring();
 
 
-
-
-
         // all config list monitoring status api
-
     
             const token = getToken();
             const user = JSON.parse(atob(token.split('.')[1]));
@@ -517,7 +534,7 @@
                             Você não possui nenhum monitoramento cadastrado.
                             <br>
                             <br>
-                            Para cadastrar um monitoramento, clique <a href="#">aqui</a>.
+                            Para cadastrar um monitoramento, clique <a href="#"><b>aqui</b></a>.
                         </span>`;
                 return div
             }
@@ -542,12 +559,13 @@
         
         
         async function renderapi(){
-
+            monitor.addEventListener('click', async () => {
             const data = await getfetch()
-            if (data.userId == data.filter((item) => item.userId).userId == true) {
-                monitor.addEventListener('click', async () => {
-                    const data = await getfetch()
-                    const div = document.getElementById('onload');
+            const datap = data.filter((item) => item.userId == id2);
+            console.log(datap)
+            const div = document.getElementById('onload');
+
+            if (datap.length > 0) {
                     div.innerHTML = `<h1>Monitoramentos</h1>
                     <table class="table table-striped">
                         <thead>
@@ -561,7 +579,7 @@
                         </thead>
                         <tbody>
                             
-                            ${data.filter((item) => item.userId == id2).map(item => `
+                            ${datap.map(item => `
                                 <tr>
                                     <td>${item.name}</td>
                                     <td>${item.protocolo}</td>
@@ -726,14 +744,12 @@
                         }
                     });
                 });
-
-            });
-        }else {
-            withoutmonitor();
+            } else {
+                withoutmonitor();
+            }
+        });
         }
-    }
-    renderapi();
-
+        renderapi();
 
 
 
@@ -757,9 +773,11 @@
             const historic = document.getElementById('historic');
             historic.addEventListener('click', async () => {
             const data = await getfetch()
+            const data2= data.filter((item) => item.userId == id2);
+            console.log(data2)
             const div = document.getElementById('onload');
 
-            if (data.length > 0) {
+            if (data2.length > 0) {
                 div.innerHTML = `
                 <h1>Check</h1>
                 <table class="table table-striped">
@@ -771,7 +789,7 @@
                         </tr>
                     </thead>
                     <tbody id="tbody">
-                    ${data.map(item => `
+                    ${data2.map(item => `
                         <tr>
                             <td>${item.name}</td>
                             <td>${item.address}</td>
@@ -787,9 +805,9 @@
                 for (let i = 0; i < tbody.children.length; i++) {
                     
                     tbody.children[i].children[2].children[0].addEventListener('click', async () => {
-                        const id = data[i].id;
+                        const data = await getfetch()
+                        const data2= data.filter((item) => item.userId == id2);
                         const div = document.getElementById('onload');
-                        const result = await getfetch(`http://localhost:3000/status/api`);
                         div.innerHTML = `
                         <h1>Relatório de Monitoramento</h1>
                         <table class="table table-striped">
@@ -801,7 +819,7 @@
                                 </tr>
                             </thead>
                             <tbody id="tbody">
-                            ${result.map(item => `
+                                ${data2.map(item => `
                                 <tr>
                                     <td>${item.name}</td>
                                     <td>${item.address}</td>
@@ -819,10 +837,10 @@
                         const myChart = new Chart(ctx, {
                             type: 'line',
                             data: {
-                                labels: result.map(item => item.name),
+                                labels: data2.map(item => item.name),
                                 datasets: [{
                                     label: 'Status',
-                                    data: result.map(item => item.status == 200 ? 1 : 0),
+                                    data: data2.map(item => item.status == 200 ? 1 : 0),
                                     pointRadius: 6,
                                     boxHeight: 6,
                                     pointHoverRadius: 10,
@@ -920,13 +938,32 @@
         }
         histmonitor();
 
-        
+
+
         // functions of config for the user
+
+        async function getuser() {
+            const config = {
+                method: 'GET',
+                headers: {
+                    Authorization: `Bearer ${getToken()}`,
+                    'Content-Type': 'application/json'
+                }
+            }
+            const response = await fetch('http://localhost:3000/users', config)
+            const data = await response.json()
+            return data
+        }
+
 
         function conf() {
             const element = document.getElementById('conf');
-            element.addEventListener('click', () => {
-                const miolon = `
+            element.addEventListener('click', async () => {
+                const data = await getuser()
+                const datae = data.filter((item) => item.id == id2);
+                console.log(datae)
+                const div = document.getElementById('onload');
+                div.innerHTML = `
                     <h1>Configurações</h1>
                         <div id="veri" class="verfast-form">
                             <div class="textcenterunder">
@@ -939,7 +976,7 @@
                                     <span id="infoeyesup" style="font-size: 20px;display: block; margin-bottom: 20px;"></span>
                                     <span id="infoparc" style="font-size: 20px;"></span>
                                 </div>
-                                <form action="" id="formntz" class="verfast-form" style="padding-top:13%; float : left; width : 700px; margin : 10px;">
+                                <form action="" id="formntz" class="verfast-form" style=" float : left; width : 700px; margin : 20px;">
                                 <input class="submit-btn" type="submit" id="senda" value="Editar Configurações" style="width: 25%;"/>
                                 <input class="submit-btn" type="submit" id="sendb" value="Excluir Conta" style="margin-left: 10px; width: 17%;" data-bs-toggle="modal"
                                 data-bs-target=".bd-example-modal-lg"/>
@@ -950,106 +987,27 @@
                                 </div>
                             </div>
                         </div>`
-                document.getElementById("onload").innerHTML = miolon;
     
-                let user = document.getElementById('named');
-                let mail = document.getElementById('mail');
-                let fusoh = document.getElementById('fusoh');
-                let horarioverao = document.getElementById('horarioverao');
-                let infoeyesup = document.getElementById('infoeyesup');
-                let infoparc = document.getElementById('infoparc');
-                
-                function identityn({name}){
-                let div = document.createElement('div')
-                div.innerHTML = `Nome: <b>${name}</b>`
-                return div
-                }
+                const name = document.getElementById('named');
+                name.innerHTML = `Nome: <b>${datae[0].name}</b><br><br>`;
+                const mail = document.getElementById('mail');
+                mail.innerHTML = `Email: <b>${datae[0].email}</b><br><br>`;
+                const fusoh = document.getElementById('fusoh');
+                fusoh.innerHTML = `Fuso Horário: <b>${datae[0].fusoh}</b><br><br>`;
+                const horarioverao = document.getElementById('horarioverao');
+                horarioverao.innerHTML = `Horário de Verão: <b>${datae[0].horarioverao}</b><br><br>`;
+                const infoeyesup = document.getElementById('infoeyesup');
+                infoeyesup.innerHTML = `Informações da EyesUp: <b>${datae[0].infoeyesup}</b><br><br>`;
+                const infoparc = document.getElementById('infoparc');
+                infoparc.innerHTML = `Informações de Parceiros da EyesUp: <b>${datae[0].infoparc}</b><br><br>`;
 
-                function identitye({email}){
-                    let div = document.createElement('div')
-                    div.innerHTML = `Email: <b>${email}</b>`
-                    return div
-                }
 
-                function identityf({fusoh}){
-                    let div = document.createElement('div')
-                    div.innerHTML = `Fuso horário: <b>${fusoh}</b>`
-                    return div
-                }
 
-                function identityh({horarioverao}){
-                    let div = document.createElement('div')
-                    div.innerHTML = `Horário de Verão: <b>${horarioverao}</b>`
-                    return div
-                }
+                // delet user
 
-                function identityi({infoeyesup}){
-                    let div = document.createElement('div')
-                    div.innerHTML = `Informações da EyesUp: <b>${infoeyesup}</b>`
-                    return div
-                }
-
-                function identityinfoparc({infoparc}){
-                    let div = document.createElement('div')
-                    div.innerHTML = `Informações de Parceiros da EyesUp: <b>${infoparc}</b>`
-                    return div
-                }
-
-                async function getUser(){
-                    const config = {
-                    method: 'GET',
-                    headers: {
-                        Authorization: `Bearer ${getToken()}`,
-                        'Content-Type': 'application/json'
-                    },
-                };
-
-                    const response = await fetch('http://localhost:3000/users', config);
-                    const data = await response.json();
-                    return data;
-                }
-
-                async function renderUser(){
-                    const data = await getUser();
-                    data.forEach(element => {
-                        if(element.name != null){
-                            user.appendChild(identityn(element));
-                        }
-                        if(element.email != null){
-                            mail.appendChild(identitye(element));
-                        }
-                        if(element.fusoh != null){
-                            fusoh.appendChild(identityf(element));
-                        }
-                        if(element.horarioverao != null){
-                            horarioverao.appendChild(identityh(element));
-                        }
-                        if(element.infoeyesup != null){
-                            infoeyesup.appendChild(identityi(element));
-                        }
-                        if(element.infoparc != null){
-                            infoparc.appendChild(identityinfoparc(element));
-                        }
-
-                    });
-                }
-
-                renderUser();
-                
-
-                // del user
-                const del = document.querySelector('#sendb');
-                del.addEventListener('click', (e) => {
+                const element = document.getElementById('sendb');
+                element.addEventListener('click', async (e) => {
                     e.preventDefault();
-
-                    getUser().then((data) =>{
-                    console.log(data);
-                    const id = data[0].id;
-                    console.log(id);
-                    const name = data[0].name;
-                    console.log(name);
-                    
-
                     const question = `
                     <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -1058,58 +1016,47 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <h4>${name}, deseja realmente remover-se do site da EyesUp?</h4>
+                        <h4><b>${datae[0].name}</b>, deseja realmente remover-se do site da EyesUp?</h4>
                     </div>
                     <div class="modal-footer">
                         <input class="submit-btn" type="submit" id="sendc" value="Sim" style="width: 15%;"/>
                         <input class="submit-btn" type="submit" id="sendd" value="Não" style="margin-left: 2px; width: 15%;"/>
                     </div>
                 </div>
-            </div>
-                    `
+            </div>`
                     document.getElementById('myModal').innerHTML = question;
                     const sendc = document.querySelector('#sendc');
-                    sendc.addEventListener('click', () => {
+                    sendc.addEventListener('click', async (e) => {
+                        e.preventDefault();
                         const config = {
                             method: 'DELETE',
                             headers: {
                                 Authorization: `Bearer ${getToken()}`,
                                 'Content-Type': 'application/json'
-                            },
-                        };
-                        const response = fetch(`http://localhost:3000/users/${id}`, config)
+                            }
+                        }
+                        const response = await fetch(`http://localhost:3000/users/${id2}`, config)
                         .then((response) => {
                             console.log(response);
                             signout();
-                        }) 
-                            
-                        })
+                    })
+                    const sendd = document.querySelector('#sendd');
+                    sendd.addEventListener('click', async (e) => {
+                        e.preventDefault();
+                        window.location.href = 'inside.html';
                     })
                 })
+            })
+
+
 
                 // update user account
-                const edit = document.querySelector('#senda');
+
+                const edit = document.getElementById('senda');
                 edit.addEventListener('click', (e) => {
                     e.preventDefault();
 
-                    getUser().then((data) =>{
-                    console.log(data);
-                    const id = data[0].id;
-                    console.log(id);
-                    const name = data[0].name;
-                    console.log(name);
-                    const email = data[0].email;
-                    console.log(email);
-                    const fusoh = data[0].fusoh;
-                    console.log(fusoh);
-                    const horarioverao = data[0].horarioverao;
-                    console.log(horarioverao);
-                    const infoeyesup = data[0].infoeyesup;
-                    console.log(infoeyesup);
-                    const infoparc = data[0].infoparc;
-                    console.log(infoparc);
-
-                    let div = document.getElementById('onload');
+                    const div = document.getElementById('onload');
                     div.innerHTML = `
                     <style>
                             .form-control {
@@ -1139,46 +1086,80 @@
                     <div class="row">
                         <div class="col-12">
                             <h1>Editar Configurações</h1>
-                            <form id="form" class="verfast-form" method="post" action="http://localhost:3000/users/${id}" style="margin-left: 10px; float : left; width : 700px; margin : 20px;">
+                            <form id="form" class="verfast-form" method="post" action="http://localhost:3000/users/${id2}" style="margin-left: 10px; float : left; width : 700px; margin : 20px;">
                                 <div class="col-10">
                                     <label for="name" style="margin:auto">Nome:</label>
                                 </div>
                                     <div class="col-90">
-                                        <input type="text" class="form-control" id="name" name="name" value="${name}">
+                                        <input type="text" class="form-control" id="name" name="name" value="${datae[0].name}">
                                     </div>  
                                 <div class="col-10">
                                     <label for="email">Email:</label>
                                 </div>
                                     <div class="col-90">
-                                        <input type="email" class="form-control" id="email" name="email" value="${email}">
+                                        <input type="email" class="form-control" id="email" name="email" value="${datae[0].email}">
                                     </div>
                              
                                 <div class="col-10">
                                     <label for="fusoh">Fuso Horário:</label>
                                 </div>
                                     <div class="col-90">
-                                        <input type="text" class="form-control" id="fusoh" name="fusoh" value="${fusoh}">
+                                        <select id="fusoh" name="fusoh" class="select_medio">
+                                            <option value="GMT-3 Brasil - Brasília">GMT-3 Brasil - Brasília</option>
+                                            <option value="+12 USA - Wellington">+12 USA - Wellington</option>
+                                            <option value="-12">-12</option>
+                                            <option value="GMT-10 USA Havaii">+GMT-10 USA Havaii</option>
+                                            <option value="GMT-9 Alaska">GMT-9 Alaska</option>
+                                            <option value="GMT-8 USA - Los Angeles">GMT-8 USA - Los Angeles</option>
+                                            <option value="GMT-7 Mointain Time (USA e Canadá)">GMT-7 Mointain Time (USA e Canadá)</option>
+                                            <option value="GMT-6 USA - Chicago">GMT-6 USA - Chicago</option>
+                                            <option value="GMT-5 Equador - Quito">GMT-5 Equador - Quito</option>
+                                            <option value="GMT-4 Brasil - Manaus">GMT-4 Brasil - Manaus</option>
+                                            <option value="GMT-2 Brasil - Fernando de Noronha">GMT-2 Brasil - Fernando de Noronha</option>
+                                            <option value="GMT-1">GMT-1</option>
+                                            <option value="GMT (0) Portugal - Lisboa">GMT (0) Portugal - Lisboa</option>
+                                            <option value="GMT+1 França - Paris">GMT+1 França - Paris</option>
+                                            <option value="GMT+2">GMT+2</option>
+                                            <option value="GMT+3">GMT+3</option>
+                                            <option value="GMT+4">GMT+4</option>
+                                            <option value="GMT+5">GMT+5</option>
+                                            <option value="GMT+6">GMT+6</option>
+                                            <option value="GMT+7">GMT+7</option>
+                                            <option value="GMT+8 China - Hong Kong">GMT+8 China - Hong Kong</option>
+                                            <option value="GMT+9 Japão - Tokyo">GMT+9 Japão - Tokyo</option>
+                                            <option value="GMT+10">GMT+10</option>
+                                            <option value="GMT+11">GMT+11</option>
+                                        </select>
                                     </div>
                                
                                 <div class="col-10">
                                     <label for="horarioverao">Horário de Verão:</label>
                                 </div>
                                     <div class="col-90">
-                                        <input type="text" class="form-control" id="horarioverao" name="horarioverao" value="${horarioverao}">
+                                        <select id="horarioverao" name="horarioverao" class="select_medio">
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
                                     </div>
                             
                                 <div class="col-10">
                                     <label for="infoeyesup">Informações EyesUp:</label>
                                 </div>
                                     <div class="col-90">
-                                        <input type="text" class="form-control" id="infoeyesup" name="infoeyesup" value="${infoeyesup}">
+                                        <select id="infoeyesup" name="infoeyesup" class="select_medio">
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
                                     </div>
                              
                                 <div class="col-10">
                                     <label for="infoparc">Informações de Parceiros:</label>
                                 </div>
                                     <div class="col-90">
-                                        <input type="text" class="form-control" id="infoparc" name="infoparc" value="${infoparc}">
+                                        <select id="infoparc" name="infoparc" class="select_medio">
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
                                     </div>
                                
                                 <input name="submit" id="sende" class="submit-btn" value="Editar" type="submit" />
@@ -1186,7 +1167,15 @@
                         </div>
                     </div>
                     `
-                    async function editUser() {
+                    const sende = document.getElementById('sende');
+                    sende.addEventListener('click', async (e) => {
+                        e.preventDefault();
+                        const name = document.getElementById('name').value;
+                        const email = document.getElementById('email').value;
+                        const fusoh = document.getElementById('fusoh').value;
+                        const horarioverao = document.getElementById('horarioverao').value;
+                        const infoeyesup = document.getElementById('infoeyesup').value;
+                        const infoparc = document.getElementById('infoparc').value;
                         const config = {
                             method: 'PUT',
                             headers: {
@@ -1194,36 +1183,29 @@
                                 'Content-Type': 'application/json'
                             },
                             body: JSON.stringify({
-                                name: form.name.value,
-                                email: form.email.value,
-                                fusoh: form.fusoh.value,
-                                horarioverao: form.horarioverao.value,
-                                infoeyesup: form.infoeyesup.value,
-                                infoparc: form.infoparc.value,
+                                name,
+                                email,
+                                fusoh,
+                                horarioverao,
+                                infoeyesup,
+                                infoparc
                             })
-                        };
-                        const response = await fetch(`http://localhost:3000/users/${id}`, config)
+                        }
+                        const response = await fetch(`http://localhost:3000/users/${id2}`, config)
                         .then((response) => {
-                           if (response.status === 200) {
+                            if (response.status === 200) {
                                 alert('Dados alterados com sucesso!');
                                 window.location.reload();
                             } else {
                                 alert('Erro ao alterar dados!');
                             }
                         })
-                    }
-                    const sende = document.querySelector('#sende');
-                    sende.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        editUser();
                     })
-
                 })
             })
-        })
-    }
-    conf();
-        
+        }
+        conf();
+
     </script>
 </body>
 </html>
