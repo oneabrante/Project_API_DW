@@ -13,12 +13,9 @@ import { isAuthenticated } from './middleware/auth.js';
 
 import { statusController } from './lib/statusController.js';
 import { statusControllerr } from './lib/statusController.js';
+import { notifyController } from './lib/notifyController.js';
 
 const router = express.Router();
-
-
-
-router.post('/status/:id', StatusControl.createStatus);
 
 
 
@@ -156,6 +153,9 @@ router.get('/status/:apiID/', async (req, res) => {
 });
 
 
+router.post('/status/:id', StatusControl.createStatus);
+
+router.post('/send', notifyController);
 
 
 

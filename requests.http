@@ -84,7 +84,7 @@ GET {{host}}/status
 ### Create API
 #inform the id of the user
 # @name createStatusController
-POST {{host}}/status/18
+POST {{host}}/status/32
 Content-Type: application/json
 
 {
@@ -117,4 +117,15 @@ GET {{host}}/status/26
 ### Get status api
 ### only when create API exists
 GET {{host}}/status/api
+
+
+### Get send notification
+POST {{host}}/send
+Content-Type: application/json
+
+{
+  "email": "caway28271@dmonies.com",
+  "subject": "EyesUp - Notificação!",
+  "message": "<h1>Olá Usuário!</h1> <p>você está recebendo essa notificação porque seu site está fora do ar. Acesse o EyesUp para mais informações.</p>"
+}
 

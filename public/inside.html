@@ -166,12 +166,87 @@
             getuser().then(data => {
                 const user = data.find(user => user.id == id2);
                 const name = user.name;
-                document.getElementById("hello").innerHTML = `Olá, <b>${name}!<b>`;
+                document.getElementById("hello").innerHTML = `Olá, <b>${name}!</b>`;
                 
             })
         }
 
-        
+
+        async function notificationinhtml(){
+            const token = getToken();
+            const user = JSON.parse(atob(token.split('.')[1]));
+            const id2 = user.userId;
+            const data = await getfetch()
+            const datap = data.filter((item) => item.userId == id2);
+            datap.forEach((item) => {
+                if (item.status != 200) {
+                    const notip = Notification.permission;
+                    if (notip == "granted") {
+                        const notification = new Notification("Ops!", {
+                            body: `O monitoramento ${item.name} está com problemas!`,
+                            icon: "./assets/alert.png",
+                            tag: "notification",
+                            renotify: true,
+                            requireInteraction: true,
+                            silent: false,
+              
+                        })
+                    }
+                }
+            })
+        }
+        notificationinhtml();
+
+
+        async function byemail(){
+            const tokenn = getToken();
+            const usern = JSON.parse(atob(tokenn.split('.')[1]));
+            const id2n = usern.userId;
+            getuser().then(data => {
+            const user = data.find(user => user.id == id2n);
+            const userz = user.name;
+            const email = user.email;
+            console.log(email)
+            getfetch().then(data => {
+                const datap = data.filter((item) => item.userId == id2n);
+                datap.forEach((item) => {
+                    if (item.status != 200) {
+                        async function sendemail() {
+                        const hour = new Date().getHours();
+                        const minutes = new Date().getMinutes();
+                        const seconds = new Date().getSeconds();
+                        const day = new Date().getDate();
+                        const month = new Date().getMonth();
+                        const year = new Date().getFullYear();
+                        const date = `${day}/${month}/${year} - ${hour}:${minutes}:${seconds}`
+                        url = `http://localhost:3000/send`
+                        const config = {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                email: `${email}`,
+                                subject: "EyesUp - Notificação!",
+                                message: `<h1>Olá, ${userz}</h1><br><br<p> O monitoramento <b>${item.name}</b> encontra-se <font color="red">offline!</font><br>Checagem mais recente: ${date} <p>Verifique o mais rápido possível!</p><p>Obrigado!</p><br>Atenciosamente, Equipe EyesUp <br><br> © 2023 Copyright: Grupo Abranteme</p>` 
+                            })
+                        }
+                        const response = await fetch(url, config)
+                        const data = await response.json()
+                        if (data.status != 200) {
+                            console.log("Email enviado com sucesso!")
+                        }
+                        }
+                        sendemail()
+                    }
+                })
+            })
+            })
+        }
+        // byemail();
+
+
+
         function verifast() {
             const ids = ['verifastt', 'verifast'];
             ids.forEach(id => {
@@ -370,7 +445,9 @@
 
 
     
+
         // function new monitoring status api
+
         function newmonitoring() {
             const element = document.getElementById('newmonitoring');
             element.addEventListener('click', () => {
@@ -484,8 +561,6 @@
                         console.log(data);
                     });
                     
-
-
                 }
 
             });
@@ -541,8 +616,8 @@
         }
         withoutmonitor();
 
-        
 
+        
 
         async function getfetch() {
             const config = {
@@ -557,7 +632,7 @@
         }
 
         
-        
+
         async function renderapi(){
             monitor.addEventListener('click', async () => {
             const data = await getfetch()
