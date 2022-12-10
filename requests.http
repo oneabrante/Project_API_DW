@@ -88,9 +88,9 @@ POST {{host}}/status/32
 Content-Type: application/json
 
 {
-  "name": "glob",
+  "name": "globzzz",
   "protocolo": "http",
-  "address": "lolgggloballl.com.br"
+  "address": "zzzzzlolgggloballl.com.br"
 }
 
 ### Remove API
@@ -112,7 +112,7 @@ Content-Type: application/json
 
 ### Get 
 ### only when create API exists
-GET {{host}}/status/26
+GET {{host}}/status/78
 
 ### Get status api
 ### only when create API exists
@@ -128,4 +128,9 @@ Content-Type: application/json
   "subject": "EyesUp - Notificação!",
   "message": "<h1>Olá Usuário!</h1> <p>você está recebendo essa notificação porque seu site está fora do ar. Acesse o EyesUp para mais informações.</p>"
 }
+
+
+### Get ip return
+#inform the id of the status host
+GET {{host}}/ip/78
 

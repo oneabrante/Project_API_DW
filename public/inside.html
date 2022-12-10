@@ -840,7 +840,11 @@
             return datehour;
         }
 
-        datehour();
+        // datehour();
+
+
+        
+     
 
 
         // monitoring history log report
@@ -907,7 +911,21 @@
                             <h1>Gráfico de Monitoramento</h1>
                             <canvas id="myChart"></canvas>
                         </div>
-                        `;
+                        <div>
+                            <h1>Geolocalização</h1>
+                            <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Endereço</th>
+                                    <th scope="col">Cidade</th>
+                                    <th scope="col">País</th>
+                                    <th scope="col">Coordenadas</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyy"></tbody>
+                        </table>
+                        <div id="mapid"></div>
+                        </div>`;
                         const ctx = document.getElementById('myChart').getContext('2d');
                         const myChart = new Chart(ctx, {
                             type: 'line',
@@ -1000,8 +1018,46 @@
                                 }
                             }
                         });
-                        
-                        
+
+                                const config = {
+                                    method: 'GET',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    }
+                                }
+                                const token = getToken();
+                                const user = JSON.parse(atob(token.split('.')[1]));
+                                const id2z = user.userId;
+                                const dataz = await getfetch()
+                                const data3 = dataz.filter((item) => item.userId == id2z);
+                                console.log(data3);
+                                const dataid = data3.forEach((item) => {
+                                    const id = item.id;
+                                    const address = item.address;
+
+                                fetch(`http://localhost:3000/ip/${id}`, config)
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        let tbody = document.getElementById('tbodyy');
+                                        let tr = document.createElement('tr');
+                                        let td = document.createElement('td');
+                                        let td2 = document.createElement('td');
+                                        let td3 = document.createElement('td');
+                                        let td4 = document.createElement('td');
+                                        td.innerHTML = item.address;
+                                        td2.innerHTML = data.city;
+                                        td3.innerHTML = data.country;
+                                        td4.innerHTML = data.loc;
+                                        tr.appendChild(td);
+                                        tr.appendChild(td2);
+                                        tr.appendChild(td3);
+                                        tr.appendChild(td4);
+                                        tbody.appendChild(tr);
+
+                                    })
+                                    
+                            })
+                          
                     })
 
                 }   
@@ -1012,6 +1068,17 @@
         });
         }
         histmonitor();
+
+
+
+
+
+
+
+
+
+
+
 
 
 

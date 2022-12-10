@@ -15,6 +15,9 @@ import { statusController } from './lib/statusController.js';
 import { statusControllerr } from './lib/statusController.js';
 import { notifyController } from './lib/notifyController.js';
 
+import returnipController from './lib/returnipController.js';
+
+
 const router = express.Router();
 
 
@@ -156,6 +159,9 @@ router.get('/status/:apiID/', async (req, res) => {
 router.post('/status/:id', StatusControl.createStatus);
 
 router.post('/send', notifyController);
+
+router.get('/ip/:id', returnipController.ipaddr);
+
 
 
 
