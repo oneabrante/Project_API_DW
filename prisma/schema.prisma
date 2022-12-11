@@ -26,7 +26,7 @@ model Status {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   name      String
-  address   String   @unique
+  address   String   
   protocolo String
   userId    Int
   user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)

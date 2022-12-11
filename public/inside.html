@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0/css/flag-icon.min.css" integrity="sha512-qBHaRLQnXdZXB6c5ryUXUy/9C6uqMgMYh0HGXZsOGCYJNDkdo46eHPbBPY7URCxyBG/cYpyCQsgIS5xyfWx4Nw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -195,7 +198,7 @@
                 }
             })
         }
-        notificationinhtml();
+        // notificationinhtml();
 
 
         async function byemail(){
@@ -923,8 +926,8 @@
                                 </tr>
                             </thead>
                             <tbody id="tbodyy"></tbody>
+                            <div id="mymap"></div>
                         </table>
-                        <div id="mapid"></div>
                         </div>`;
                         const ctx = document.getElementById('myChart').getContext('2d');
                         const myChart = new Chart(ctx, {
@@ -1019,6 +1022,7 @@
                             }
                         });
 
+
                                 const config = {
                                     method: 'GET',
                                     headers: {
@@ -1034,8 +1038,10 @@
                                 const dataid = data3.forEach((item) => {
                                     const id = item.id;
                                     const address = item.address;
+                                    const status = item.status;
 
-                                fetch(`http://localhost:3000/ip/${id}`, config)
+                                if (status == 200) {
+                                    fetch(`http://localhost:3000/ip/${id}`, config)
                                     .then(response => response.json())
                                     .then(data => {
                                         let tbody = document.getElementById('tbodyy');
@@ -1046,17 +1052,75 @@
                                         let td4 = document.createElement('td');
                                         td.innerHTML = item.address;
                                         td2.innerHTML = data.city;
-                                        td3.innerHTML = data.country;
+                                        const code = `${data.country.toLowerCase()}`;
+                                        console.log(code)
+                                        td3.innerHTML = `<h6><i class="flag-icon flag-icon-${code} "></i> ${data.country}</h6>`;
                                         td4.innerHTML = data.loc;
                                         tr.appendChild(td);
                                         tr.appendChild(td2);
                                         tr.appendChild(td3);
+                                        // td3.classList.add("flag-icon");
                                         tr.appendChild(td4);
                                         tbody.appendChild(tr);
 
+
+                                        const coord = data.loc.split(',');
+                                        // for (let i = 0; i < coord.length; i++) {
+                                        //     coord[i] = parseFloat(coord[i]);
+                                        // }
+                                        console.log(coord);
+
+                                        var element = document.getElementById('mymap');
+
+                                        // Height has to be set. You can do this in CSS too.
+                                        element.style = 'height:400px; weight:300px';
+
+                                        // Create Leaflet map on map element.
+                                        var map = L.map(element);
+
+                                        // Add OSM tile layer to the Leaflet map.
+                                        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                                            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                                        }).addTo(map);
+
+                                        // Target's GPS coordinates.
+                                        var target = L.latLng(coord);
+
+
+                                        // Set map's center to target with zoom 14.
+                                        map.setView(target, 3);
+
+                                        // Place a marker on the same location.
+                                        L.marker(target).addTo(map);
+
+
+
+        
+
                                     })
-                                    
+                                }else {
+                                    let tbody = document.getElementById('tbodyy');
+                                    let tr = document.createElement('tr');
+                                    let td = document.createElement('td');
+                                    let td2 = document.createElement('td');
+                                    let td3 = document.createElement('td');
+                                    let td4 = document.createElement('td');
+                                    td.innerHTML = item.address;
+                                    td2.innerHTML = '<font color="red">Status offline!</font>';
+                                    td3.innerHTML = '<font color="red">Status offline!</font>';
+                                    td4.innerHTML = '<font color="red">Status offline!</font>';
+                                    tr.appendChild(td);
+                                    tr.appendChild(td2);
+                                    tr.appendChild(td3);
+                                    tr.appendChild(td4);
+                                    tbody.appendChild(tr);
+                                }
+
+                                
+
+                           
                             })
+                       
                           
                     })
 
