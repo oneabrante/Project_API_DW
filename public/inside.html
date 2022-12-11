@@ -428,7 +428,7 @@
                             Você não possui nenhum monitoramento cadastrado.
                             <br>
                             <br>
-                            Para cadastrar um monitoramento, clique <a href="#"><b>aqui</b></a>.
+                            Clique em "Novo Monitoramento" para inserir um host ou serviço.
                         </span>`;
                     document.getElementById("onload").innerHTML = div.innerHTML;
                 } else {
@@ -438,7 +438,7 @@
                             Você possui ${data.filter((item) => item.userId == id2).length} monitoramento(s) cadastrado(s).
                             <br>
                             <br>
-                            Para cadastrar um monitoramento, clique <a href="#"><b>aqui</b></a>.
+                            Clique em "Novo Monitoramento" para inserir um host ou serviço 
                         </span>`;
                     document.getElementById("onload").innerHTML = div.innerHTML;
                 }
@@ -612,7 +612,7 @@
                             Você não possui nenhum monitoramento cadastrado.
                             <br>
                             <br>
-                            Para cadastrar um monitoramento, clique <a href="#"><b>aqui</b></a>.
+                            Clique em "Novo Monitoramento" para inserir um host ou serviço.
                         </span>`;
                 return div
             }
@@ -1063,41 +1063,52 @@
                                         tr.appendChild(td4);
                                         tbody.appendChild(tr);
 
-
-                                        const coord = data.loc.split(',');
-                                        // for (let i = 0; i < coord.length; i++) {
-                                        //     coord[i] = parseFloat(coord[i]);
-                                        // }
-                                        console.log(coord);
-
-                                        var element = document.getElementById('mymap');
-
-                                        // Height has to be set. You can do this in CSS too.
-                                        element.style = 'height:400px; weight:300px';
-
-                                        // Create Leaflet map on map element.
-                                        var map = L.map(element);
-
-                                        // Add OSM tile layer to the Leaflet map.
-                                        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-                                            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                                        }).addTo(map);
-
-                                        // Target's GPS coordinates.
-                                        var target = L.latLng(coord);
-
-
-                                        // Set map's center to target with zoom 14.
-                                        map.setView(target, 3);
-
-                                        // Place a marker on the same location.
-                                        L.marker(target).addTo(map);
-
-
-
-        
+                                        console.log(data.loc)
+                                        const mymap = document.getElementById('mymap');
+                                        mymap.innerHTML = `<div id="mapid" style="width:100%;height:380px;""></div>`;
+                                        const coord = data.loc
+                                        const lat = coord.split(',')[0];
+                                        const long = coord.split(',')[1];
+                                        const coordinates = {
+                                            latitude: {
+                                             lat,
+                                            },
+                                            longitude: {
+                                                long
+                                            },
+                                        };
+                                        var mymapp = L.map('mapid').setView([coordinates.latitude.lat, coordinates.longitude.long], 1);
+                                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                        }).addTo(mymapp);
+                                        
+                                        for (let i = 0; i < data3.length; i++) {
+                                            const id = data3[i].id;
+                                            const address = data3[i].address;
+                                            const status = data3[i].status;
+                                            if (status == 200) {
+                                                fetch(`http://localhost:3000/ip/${id}`, config)
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    const coord = data.loc
+                                                    const lat = coord.split(',')[0];
+                                                    const long = coord.split(',')[1];
+                                                    const coordinates = {
+                                                        latitude: {
+                                                         lat,
+                                                        },
+                                                        longitude: {
+                                                            long
+                                                        },
+                                                    };
+                                                    L.marker([coordinates.latitude.lat, coordinates.longitude.long]).addTo(mymapp)
+                                                    .bindPopup(`${address}`).openPopup();
+                                                })
+                                            }
+                                        }
 
                                     })
+
                                 }else {
                                     let tbody = document.getElementById('tbodyy');
                                     let tr = document.createElement('tr');
@@ -1116,11 +1127,8 @@
                                     tbody.appendChild(tr);
                                 }
 
-                                
-
-                           
+                            
                             })
-                       
                           
                     })
 
@@ -1132,17 +1140,6 @@
         });
         }
         histmonitor();
-
-
-
-
-
-
-
-
-
-
-
 
 
 

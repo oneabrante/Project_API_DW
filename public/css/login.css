@@ -36,12 +36,30 @@ html, body{
     transform: translate(-50%, -50%);
 }
 
+
 .logo{
     position: absolute;
-    top: 10.5%;
-    left: 50%;
+    top: 2%;
+    left: 45%;
     transform: translate(-50%, -50%);
+    animation: logo 3s infinite;
 }
+
+@keyframes logo {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+    70% {
+        transform: scale(1.02);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+}
+
 
 .sem-conta{
     padding: 10px 0px;

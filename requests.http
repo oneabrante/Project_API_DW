@@ -112,7 +112,7 @@ Content-Type: application/json
 
 ### Get 
 ### only when create API exists
-GET {{host}}/status/78
+GET {{host}}/status/91
 
 ### Get status api
 ### only when create API exists
@@ -132,5 +132,5 @@ Content-Type: application/json
 
 ### Get ip return
 #inform the id of the status host
-GET {{host}}/ip/80
+GET {{host}}/ip/91
 
