@@ -85,10 +85,6 @@ a {
 
 }
 
-.logado a:hover {
-    color: rgb(255, 157, 0);
-}
-
 
 .menu {
     float : left;
@@ -133,7 +129,7 @@ li.last {
 }
 
 .menu_center ul li a:hover {
-    color : rgb(43, 42, 42);
+    color : rgb(255, 157, 0) !important;
     
 }
 
@@ -195,7 +191,7 @@ li.last {
 }
 
 .menu_lateral_center ul li a:hover {
-    color : rgb(255, 157, 0);
+    color : rgb(255, 157, 0) !important;
    
 }
 

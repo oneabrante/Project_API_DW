@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>EyesUp - Monitoramento</title>
+    <link rel="shortcut icon" href="assets/small.jpg" type="image/x-icon">
     <link rel="stylesheet" href="css/inside.css" />
 </head>
 <body>
@@ -517,7 +518,7 @@
                                         <label for="url">URL: </label>
                                     </div>
                                     <div class="col-90">
-                                        <input id="address" name="address" required="" class="form-control input-lg" type="text" required />
+                                        <input id="address" name="address" pattern="^[a-v0-9]+[\-\.]{1}[a-z0-9]*.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)*.*?$" class="form-control input-lg" type="text" placeholder="website.com.br" required />
                                     </div>
                                     <input name="submit" class="submit-btn" value="Criar" type="submit" />
                                     <div class="clearfix"></div>
@@ -620,7 +621,6 @@
         withoutmonitor();
 
 
-        
 
         async function getfetch() {
             const config = {
@@ -783,7 +783,7 @@
                                         <label for="address">URL:</label>
                                     </div>
                                     <div class="col-90">
-                                        <input id="address" name="address" required="" class="form-control input-lg" type="text" value="${address}" required />
+                                        <input id="address" name="address" pattern="^[a-v0-9]+[\-\.]{1}[a-z0-9]*.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)*.*?$" class="form-control input-lg" type="text" value="${address}" required />
                                     </div>
                                     <input name="submit" class="submit-btn" value="Editar" type="submit" />
                                     <div class="clearfix"></div>
@@ -1044,67 +1044,87 @@
                                     fetch(`http://localhost:3000/ip/${id}`, config)
                                     .then(response => response.json())
                                     .then(data => {
-                                        let tbody = document.getElementById('tbodyy');
-                                        let tr = document.createElement('tr');
-                                        let td = document.createElement('td');
-                                        let td2 = document.createElement('td');
-                                        let td3 = document.createElement('td');
-                                        let td4 = document.createElement('td');
-                                        td.innerHTML = item.address;
-                                        td2.innerHTML = data.city;
-                                        const code = `${data.country.toLowerCase()}`;
-                                        console.log(code)
-                                        td3.innerHTML = `<h6><i class="flag-icon flag-icon-${code} "></i> ${data.country}</h6>`;
-                                        td4.innerHTML = data.loc;
-                                        tr.appendChild(td);
-                                        tr.appendChild(td2);
-                                        tr.appendChild(td3);
-                                        // td3.classList.add("flag-icon");
-                                        tr.appendChild(td4);
-                                        tbody.appendChild(tr);
+                                        if (!data.status) {
+                                            console.log(!data.status)
+                                            let tbody = document.getElementById('tbodyy');
+                                            let tr = document.createElement('tr');
+                                            let td = document.createElement('td');
+                                            let td2 = document.createElement('td');
+                                            let td3 = document.createElement('td');
+                                            let td4 = document.createElement('td');
+                                            td.innerHTML = item.address;
+                                            td2.innerHTML = data.city;
+                                            const code = `${data.country.toLowerCase()}`;
+                                            console.log(code)
+                                            td3.innerHTML = `<h6><i class="flag-icon flag-icon-${code} "></i> ${data.country}</h6>`;
+                                            td4.innerHTML = data.loc;
+                                            tr.appendChild(td);
+                                            tr.appendChild(td2);
+                                            tr.appendChild(td3);
+                                            // td3.classList.add("flag-icon");
+                                            tr.appendChild(td4);
+                                            tbody.appendChild(tr);
 
-                                        console.log(data.loc)
-                                        const mymap = document.getElementById('mymap');
-                                        mymap.innerHTML = `<div id="mapid" style="width:100%;height:380px;""></div>`;
-                                        const coord = data.loc
-                                        const lat = coord.split(',')[0];
-                                        const long = coord.split(',')[1];
-                                        const coordinates = {
-                                            latitude: {
-                                             lat,
-                                            },
-                                            longitude: {
-                                                long
-                                            },
-                                        };
-                                        var mymapp = L.map('mapid').setView([coordinates.latitude.lat, coordinates.longitude.long], 1);
-                                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                        }).addTo(mymapp);
-                                        
-                                        for (let i = 0; i < data3.length; i++) {
-                                            const id = data3[i].id;
-                                            const address = data3[i].address;
-                                            const status = data3[i].status;
-                                            if (status == 200) {
-                                                fetch(`http://localhost:3000/ip/${id}`, config)
-                                                .then(response => response.json())
-                                                .then(data => {
-                                                    const coord = data.loc
-                                                    const lat = coord.split(',')[0];
-                                                    const long = coord.split(',')[1];
-                                                    const coordinates = {
-                                                        latitude: {
-                                                         lat,
-                                                        },
-                                                        longitude: {
-                                                            long
-                                                        },
-                                                    };
-                                                    L.marker([coordinates.latitude.lat, coordinates.longitude.long]).addTo(mymapp)
-                                                    .bindPopup(`${address}`).openPopup();
-                                                })
+                                            console.log(data.loc)
+                                            const mymap = document.getElementById('mymap');
+                                            mymap.innerHTML = `<div id="mapid" style="width:100%;height:380px;""></div>`;
+                                            const coord = data.loc
+                                            const lat = coord.split(',')[0];
+                                            const long = coord.split(',')[1];
+                                            const coordinates = {
+                                                latitude: {
+                                                lat,
+                                                },
+                                                longitude: {
+                                                    long
+                                                },
+                                            };
+                                            var mymapp = L.map('mapid').setView([coordinates.latitude.lat, coordinates.longitude.long], 1);
+                                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                            }).addTo(mymapp);
+                                            
+                                            for (let i = 0; i < data3.length; i++) {
+                                                const id = data3[i].id;
+                                                const address = data3[i].address;
+                                                const status = data3[i].status;
+                                                if (status == 200) {
+                                                    fetch(`http://localhost:3000/ip/${id}`, config)
+                                                    .then(response => response.json())
+                                                    .then(data => {
+                                                        const coord = data.loc
+                                                        const lat = coord.split(',')[0];
+                                                        const long = coord.split(',')[1];
+                                                        const coordinates = {
+                                                            latitude: {
+                                                            lat,
+                                                            },
+                                                            longitude: {
+                                                                long
+                                                            },
+                                                        };
+                                                        L.marker([coordinates.latitude.lat, coordinates.longitude.long]).addTo(mymapp)
+                                                        .bindPopup(`${address}`).openPopup();
+                                                    })
+                                                }
                                             }
+
+                                        }else {
+                                            let tbody = document.getElementById('tbodyy');
+                                            let tr = document.createElement('tr');
+                                            let td = document.createElement('td');
+                                            let td2 = document.createElement('td');
+                                            let td3 = document.createElement('td');
+                                            let td4 = document.createElement('td');
+                                            td.innerHTML = item.address;
+                                            td2.innerHTML = '<font color="orange">Indisponível</font>';
+                                            td3.innerHTML = '<font color="orange">Indisponível</font>';
+                                            td4.innerHTML = '<font color="orange">Indisponível</font>';
+                                            tr.appendChild(td);
+                                            tr.appendChild(td2);
+                                            tr.appendChild(td3);
+                                            tr.appendChild(td4);
+                                            tbody.appendChild(tr);
                                         }
 
                                     })
