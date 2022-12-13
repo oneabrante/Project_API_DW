@@ -119,13 +119,13 @@
         <!-- Fim div rodape -->
     </div>
     <!-- Fim div pagina -->
-    <!-- <script src="./js/iuser.js" type="module"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script>
         
         function isAuthenticated() {
             if (!getToken()) {
+            alert('Você precisa estar logado para acessar essa página!');
             window.location.href = '/login.html';
             } else {
             return true;
@@ -518,7 +518,7 @@
                                         <label for="url">URL: </label>
                                     </div>
                                     <div class="col-90">
-                                        <input id="address" name="address" pattern="^[a-v0-9]+[\-\.]{1}[a-z0-9]*.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)*.*?$" class="form-control input-lg" type="text" placeholder="website.com.br" required />
+                                        <input id="address" name="address" pattern="^(?!(?:https?|ftps?|dns?|pop3?|ftp?|smtp?):\/\/)(?!www\.)[a-zA-Z].{0,620}(?:[0-9A-Za-z][0-9A-Za-z-]{0,62})(?:\.(?:[0-9A-Za-z][0-9A-Za-z-]{0,62}))*(?:\.?|\b)" class="form-control input-lg" type="text" placeholder="website.com.br" required />
                                     </div>
                                     <input name="submit" class="submit-btn" value="Criar" type="submit" />
                                     <div class="clearfix"></div>
