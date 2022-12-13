@@ -1,10 +1,6 @@
+<p align="center"><img src="./public/assets/bannerEyesUp.png" alt="Banner EyesUp" style="max-width:100%"></p>
 
-<h1 align="center"> EyesUp </h1>
-
-<p align="center"><img src="./public/assets/small.jpg" alt="logo EyesUP" width="100%" style="border-radius: 40px;"></p>
-
-
-# :pushpin: Índice
+# :pushpin:  Índice
 
 - [Sobre o projeto](#bulb-sobre-o-projeto)
 - [Como funciona](#wrench-como-funciona)
@@ -12,19 +8,20 @@
 - [Tecnologias utilizadas](#rocket-tecnologias-utilizadas)
 - [Como rodar o projeto](#computer-como-rodar-o-projeto)
 - [Licença](#pencil-licença)
+- [Contato](#-iphone-contato)
 
 
-# :bulb: Sobre o projeto
+# :bulb:  Sobre o projeto
 
 Esta é uma ideia para o projeto da disciplina de Desenvolvimento WEB do curso de Tecnologia de Redes de Computadores do IFPB - Campus JP. 
 A EyesUp nasceu com o intuito de facilitar o monitoramento de aplicações WEB e API's, de forma simples e rápida, para que o usuário possa ter uma visão geral de como está o funcionamento de suas aplicações e assim poder tomar decisões mais rápidas. 
 
-# :wrench: Como funciona
+# :wrench:  Como funciona
 
-O usuário pode cadastrar suas aplicações WEB e API's, e assim o sistema irá monitorar o funcionamento das aplicações, e caso ocorra algum erro ou aviso, o usuário será notificado em tempo real. O usuário também pode visualizar os gráficos de monitoramento das aplicações, e assim ter uma visão geral de como está o funcionamento das aplicações.
+O usuário pode cadastrar suas aplicações WEB e API's e assim o sistema irá realizar o monitoramento, ocorrendo algum erro ou aviso, o usuário será notificado em tempo real. O usuário também pode visualizar os gráficos de monitoramento, geolocalização dos servidores e assim ter uma visão geral de como está o desempenho de suas aplicações.
 
 
-# :hammer: Funcionalidades do projeto
+# :hammer:  Funcionalidades do projeto
 
 - `Funcionalidade 1`: Monitoramento de Aplicações WEB
 - `Funcionalidade 2`: Monitoramento de API
@@ -34,7 +31,20 @@ O usuário pode cadastrar suas aplicações WEB e API's, e assim o sistema irá 
 - `Funcionalidade 6`: Verificações rápidas com retorno de status e tempo de resposta da aplicação WEB
 
 
-# :rocket: Tecnologias utilizadas
+# :camera:  Prints
+
+<p align="center"><img src="./public/assets/p1.png" alt="Print 1" style="max-width:100%"></p>
+<p align="center"><img src="./public/assets/pattention1.png" alt="Print 2" style="max-width:100%"></p>
+<p align="center"><img src="./public/assets/pemail.png" alt="Print 3" style="max-width:100%"></p>
+<p align="center"><img src="./public/assets/pgeolocation.png" alt="Print 4" style="max-width:100%"></p>
+<p align="center"><img src="./public/assets/pgraph.png" alt="Print 5" style="max-width:100%"></p>
+<p align="center"><img src="./public/assets/plogin.png" alt="Print 6" style="max-width:100%"></p>
+<p align="center"><img src="./public/assets/pvat.png" alt="Print 7" style="max-width:100%"></p>
+<p align="center"><img src="./public/assets/pvbd.png" alt="Print 5" style="max-width:100%"></p>
+<p align="center"><img src="./public/assets/pvhappy.png" alt="Print 6" style="max-width:100%"></p>
+
+
+# :rocket:  Tecnologias utilizadas
 
 - `HTML`
 - `CSS`
@@ -50,7 +60,7 @@ O usuário pode cadastrar suas aplicações WEB e API's, e assim o sistema irá 
 - `sqlite3`
 
 
-# :computer: Como rodar o projeto
+# :computer:  Como rodar o projeto
 
 ```bash
 # Clone este repositório
@@ -76,7 +86,7 @@ DATABASE_URL="file:./dev.db"
 $ EMAIL=your_email
 $ PASSWORD=your_password
 
-# PS: Para o envio de emails, é necessário alterar as constantes de user e pass no arquivo notifyController.js (linha 9, 10 e 20) para as variáveis de ambiente EMAIL e PASSWORD
+# PS: Para o envio das notificações via email, alterar as constantes "user" "pass" no arquivo notifyController.js (linhas 9, 10 e 20) para as variáveis de ambiente EMAIL e PASSWORD
 
 # Execute a aplicação em modo de desenvolvimento
 $ npm run dev
@@ -84,7 +94,7 @@ $ npm run dev
 # O servidor inciará na porta:3000 - acesse http://localhost:3000
 ```
 
-# :pencil: Licença
+# :pencil:  Licença
 
 MIT License
 
@@ -108,6 +118,11 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+# :iphone:  Contato
+
+- [Gmail](mailto:thiago.abrante@academico.ifpb.edu.br)
 
 
 
