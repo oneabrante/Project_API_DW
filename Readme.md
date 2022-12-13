@@ -6,25 +6,25 @@
   <a href="#sobre-o-projeto">Sobre o projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#como-funciona">Como funciona</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#funcionalidades-do-projeto">Funcionalidades do projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#camera-prints">Prints</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#rocket-tecnologias-utilizadas">Tecnologias utilizadas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#computer-como-rodar-o-projeto">Como rodar o projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#pencil-licença">Licença</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#iphone-contato">Contato</a>
+  <a href="#prints">Prints</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#tecnologias-utilizadas">Tecnologias utilizadas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#como-rodar-o-projeto">Como rodar o projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#licença">Licença</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#contato">Contato</a>
 </p>
 
 
-<h2><a id="sobre-o-projeto"> # :bulb:  Sobre o projeto </a></h2>
+<h1><a id="sobre-o-projeto"> :bulb:  Sobre o projeto </a></h1>
 
 Esta é uma ideia para o projeto da disciplina de Desenvolvimento WEB do curso de Tecnologia de Redes de Computadores do IFPB - Campus JP. 
 A EyesUp nasceu com o intuito de facilitar o monitoramento de aplicações WEB e API's, de forma simples e rápida, para que o usuário possa ter uma visão geral de como está o funcionamento de suas aplicações e assim poder tomar decisões mais rápidas. 
 
-# :wrench:  Como funciona
+<h1><a id="como-funciona"> :wrench:  Como funciona </a></h1>
 
 O usuário pode cadastrar suas aplicações WEB e API's e assim o sistema irá realizar o monitoramento, ocorrendo algum erro ou aviso, o usuário será notificado em tempo real. O usuário também pode visualizar os gráficos de monitoramento, geolocalização dos servidores e assim ter uma visão geral de como está o desempenho de suas aplicações.
 
+<h1><a id="funcionalidades-do-projeto"> :hammer:  Funcionalidades do projeto </a></h1>
 
-# :hammer:  Funcionalidades do projeto
 
 - `Funcionalidade 1`: Monitoramento de Aplicações WEB
 - `Funcionalidade 2`: Monitoramento de API
@@ -33,8 +33,8 @@ O usuário pode cadastrar suas aplicações WEB e API's e assim o sistema irá r
 - `Funcionalidade 5`: Gráficos de Monitoramento
 - `Funcionalidade 6`: Verificações rápidas com retorno de status e tempo de resposta da aplicação WEB
 
+<h1><a id="prints"> :camera:  Prints </a></h1>
 
-# :camera:  Prints
 
 <p align="center"><img src="./public/assets/p1.png" alt="Print 1" style="max-width:100%"></p>
 <p align="center"><img src="./public/assets/pattention1.png" alt="Print 2" style="max-width:100%"></p>
@@ -46,8 +46,8 @@ O usuário pode cadastrar suas aplicações WEB e API's e assim o sistema irá r
 <p align="center"><img src="./public/assets/pvbd.png" alt="Print 5" style="max-width:100%"></p>
 <p align="center"><img src="./public/assets/pvhappy.png" alt="Print 6" style="max-width:100%"></p>
 
+<h1><a id="tecnologias-utilizadas"> :rocket:  Tecnologias utilizadas </a></h1>
 
-# :rocket:  Tecnologias utilizadas
 
 - `HTML`
 - `CSS`
@@ -62,8 +62,8 @@ O usuário pode cadastrar suas aplicações WEB e API's e assim o sistema irá r
 - `BCrypt`
 - `sqlite3`
 
+<h1><a id="como-rodar-o-projeto"> :computer:  Como rodar o projeto</a></h1>
 
-# :computer:  Como rodar o projeto
 
 ```bash
 # Clone este repositório
@@ -96,8 +96,8 @@ $ npm run dev
 
 # O servidor inciará na porta:3000 - acesse http://localhost:3000
 ```
+<h1><a id="licença"> :pencil:  Licença</a></h1>
 
-# :pencil:  Licença
 
 MIT License
 
@@ -122,8 +122,8 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+<h1><a id="contato"> :iphone:  Contato</a></h1>
 
-# :iphone:  Contato
 
 - [Thiago A. Souza](mailto:thiago.abrante@academico.ifpb.edu.br)
 
