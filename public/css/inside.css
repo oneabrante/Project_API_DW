@@ -425,7 +425,23 @@ span.coluna01, span.coluna02, span.coluna03, span.coluna04{
         box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
     }
 }
+
+.toast-header{
+    background-color: rgb(238, 237, 147);
+    color: rgb(20, 17, 17);
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+
+
+}
+
+.toast-body{
+    background-color: #fff;
+    color: #222;
+    font-size: 18px;
     
+}
 
 
 

@@ -16,6 +16,19 @@
 <body>
     <div id="pagina">
         <div class="topo">
+            <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 0px;">
+                
+                <div class="toast" style="position: absolute; top: 0; right: 37%;">
+                  <div class="toast-header">
+                    <i class="fa-solid fa-triangle-exclamation" style="color:red; font-size: 30px; padding: 10px;"></i>
+                    <small class="date"></small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" style="font-size:13px">
+                        <span aria-hidden="true"></span>
+                    </button>
+                  </div>
+                  <div class="toast-body"></div>
+                </div>
+              </div>
             <div class="logo">
                 <a href="index.html">
                     <img src="./assets/small.jpg" alt="logo EyesUp" width="105px" style="border-radius: 50px; aspect-ratio: 1/1;">
@@ -174,6 +187,7 @@
                 
             })
         }
+        
 
 
         async function notificationinhtml(){
@@ -182,24 +196,31 @@
             const id2 = user.userId;
             const data = await getfetch()
             const datap = data.filter((item) => item.userId == id2);
-            datap.forEach((item) => {
+            datap.map((item) => {
                 if (item.status != 200) {
-                    const notip = Notification.permission;
-                    if (notip == "granted") {
-                        const notification = new Notification("Ops!", {
-                            body: `O monitoramento ${item.name} está com problemas!`,
-                            icon: "./assets/alert.png",
-                            tag: "notification",
-                            renotify: true,
-                            requireInteraction: true,
-                            silent: false,
-              
-                        })
-                    }
+                    const date = document.querySelector('.date');
+                    const toastBody = document.querySelector('.toast-body');
+                    const toast = document.querySelector('.toast');
+                    const hour = new Date().getHours();
+                    const minutes = new Date().getMinutes();
+                    const seconds = new Date().getSeconds();
+                    const day = new Date().getDate();
+                    const month = new Date().getMonth();
+                    const year = new Date().getFullYear();
+                    const datee = `${day}/${month}/${year} ${hour}:${minutes}:${seconds}`;
+                    date.innerHTML = `Ultima atualização: ${datee}`;
+                    toastBody.innerHTML = `Ops! Existem monitoramentos <font color="red">offline!</font>`;
+                    const toastEl = document.querySelector('.toast')
+                    const toasts = new bootstrap.Toast(toastEl)
+                    toasts.show()     
                 }
             })
         }
-        // notificationinhtml();
+        notificationinhtml()
+
+                        
+
+                        
 
 
         async function byemail(){
@@ -783,7 +804,7 @@
                                         <label for="address">URL:</label>
                                     </div>
                                     <div class="col-90">
-                                        <input id="address" name="address" pattern="^[a-v0-9]+[\-\.]{1}[a-z0-9]*.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)*.*?$" class="form-control input-lg" type="text" value="${address}" required />
+                                        <input id="address" name="address" pattern="^(?!(?:https?|ftps?|dns?|pop3?|ftp?|smtp?):\/\/)(?!www\.)[a-zA-Z].{0,620}(?:[0-9A-Za-z][0-9A-Za-z-]{0,62})(?:\.(?:[0-9A-Za-z][0-9A-Za-z-]{0,62}))*(?:\.?|\b)" class="form-control input-lg" type="text" value="${address}" required />
                                     </div>
                                     <input name="submit" class="submit-btn" value="Editar" type="submit" />
                                     <div class="clearfix"></div>
