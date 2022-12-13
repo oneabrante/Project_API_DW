@@ -3,9 +3,9 @@
 # :pushpin:  Índice
 
 <p align="center">
-  <a href="#bulb-sobre-o-projeto">Sobre o projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#wrench-como-funciona">Como funciona</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#hammer-funcionalidades-do-projeto">Funcionalidades do projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#sobre-o-projeto">Sobre o projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#como-funciona">Como funciona</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#funcionalidades-do-projeto">Funcionalidades do projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#camera-prints">Prints</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#rocket-tecnologias-utilizadas">Tecnologias utilizadas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#computer-como-rodar-o-projeto">Como rodar o projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -14,7 +14,7 @@
 </p>
 
 
-# :bulb:  Sobre o projeto
+<h2><a id="sobre-o-projeto"> # :bulb:  Sobre o projeto </a></h2>
 
 Esta é uma ideia para o projeto da disciplina de Desenvolvimento WEB do curso de Tecnologia de Redes de Computadores do IFPB - Campus JP. 
 A EyesUp nasceu com o intuito de facilitar o monitoramento de aplicações WEB e API's, de forma simples e rápida, para que o usuário possa ter uma visão geral de como está o funcionamento de suas aplicações e assim poder tomar decisões mais rápidas. 
