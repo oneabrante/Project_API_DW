@@ -2,13 +2,16 @@
 
 # :pushpin:  Índice
 
-- [Sobre o projeto](#bulb-sobre-o-projeto)
-- [Como funciona](#wrench-como-funciona)
-- [Funcionalidades do projeto](#hammer-funcionalidades-do-projeto)
-- [Tecnologias utilizadas](#rocket-tecnologias-utilizadas)
-- [Como rodar o projeto](#computer-como-rodar-o-projeto)
-- [Licença](#pencil-licença)
-- [Contato](#-iphone-contato)
+<p align="center">
+  <a href="#bulb-sobre-o-projeto">Sobre o projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#wrench-como-funciona">Como funciona</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#hammer-funcionalidades-do-projeto">Funcionalidades do projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#camera-prints">Prints</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#rocket-tecnologias-utilizadas">Tecnologias utilizadas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#computer-como-rodar-o-projeto">Como rodar o projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#pencil-licença">Licença</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#iphone-contato">Contato</a>
+</p>
 
 
 # :bulb:  Sobre o projeto
@@ -122,7 +125,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # :iphone:  Contato
 
-- [Gmail](mailto:thiago.abrante@academico.ifpb.edu.br)
+- [Thiago A. Souza](mailto:thiago.abrante@academico.ifpb.edu.br)
 
 
 
