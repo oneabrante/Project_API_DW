@@ -125,6 +125,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 - [Thiago A. Souza](mailto:thiago.abrante@academico.ifpb.edu.br)
+- [Larissa Galdino](mailto:larissa.galdino@academico.ifpb.edu.br)
+- [Matheus Gomes](mailto:gomes.andrade@academico.ifpb.edu.br)
 
 
 
