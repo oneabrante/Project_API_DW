@@ -36,12 +36,11 @@ O usuário pode cadastrar suas aplicações WEB e API's e assim o sistema irá r
 <h1><a id="prints"> :camera:  Prints </a></h1>
 
 
-<p align="center"><img src="./public/assets/p1.png" alt="Print 1" style="max-width:100%"></p>
+<p align="center"><img src="./public/assets/intro.gif" alt="Print 1" style="max-width:100%"></p>
 <p align="center"><img src="./public/assets/pattention1.png" alt="Print 2" style="max-width:100%"></p>
 <p align="center"><img src="./public/assets/pemail.png" alt="Print 3" style="max-width:100%"></p>
 <p align="center"><img src="./public/assets/pgeolocation.png" alt="Print 4" style="max-width:100%"></p>
 <p align="center"><img src="./public/assets/pgraph.png" alt="Print 5" style="max-width:100%"></p>
-<p align="center"><img src="./public/assets/plogin.png" alt="Print 6" style="max-width:100%"></p>
 <p align="center"><img src="./public/assets/pvat.png" alt="Print 7" style="max-width:100%"></p>
 <p align="center"><img src="./public/assets/pvbd.png" alt="Print 5" style="max-width:100%"></p>
 <p align="center"><img src="./public/assets/pvhappy.png" alt="Print 6" style="max-width:100%"></p>
