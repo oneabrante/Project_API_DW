@@ -173,7 +173,7 @@
                     'Content-Type': 'application/json'
                 }
             }
-            const response = await fetch('http://localhost:3000/users', config)
+            const response = await fetch('/users', config)
             const data = await response.json()
             return data
         }
@@ -244,7 +244,7 @@
                         const month = new Date().getMonth();
                         const year = new Date().getFullYear();
                         const date = `${day}/${month}/${year} - ${hour}:${minutes}:${seconds}`
-                        url = `http://localhost:3000/send`
+                        url = `/send`
                         const config = {
                             method: 'POST',
                             headers: {
@@ -268,7 +268,7 @@
             })
             })
         }
-        // byemail();
+        byemail();
 
 
 
@@ -440,7 +440,7 @@
         function monitoringg() {
             
             const monitor = document.getElementById('monitoringg');
-            fetch('http://localhost:3000/status')
+            fetch('/status')
             .then(response => response.json())
             .then(data =>{
                 if (data.filter((item) => item.userId == id2).length == 0) { 
@@ -565,7 +565,7 @@
                     const id2 = user.userId;
 
 
-                    await fetch(`http://localhost:3000/status/${id2}`, {
+                    await fetch(`/status/${id2}`, {
                         method: 'POST',
                         body: JSON.stringify(value),
                         headers: {
@@ -601,7 +601,7 @@
             const user = JSON.parse(atob(token.split('.')[1]));
             const id2 = user.userId;  
             const monitor = document.getElementById('listmonitoring');
-            fetch('http://localhost:3000/status/')
+            fetch('/status/')
                 .then(response => response.json())
                 .then(data => {
                     if (data.filter((item) => item.userId == id2).length > 0) {
@@ -619,7 +619,7 @@
             const token = getToken();
             const user = JSON.parse(atob(token.split('.')[1]));
             const id2 = user.userId;
-            const response = await fetch('http://localhost:3000/users', {
+            const response = await fetch('/users', {
                         method: 'GET',
                         headers: {
                             Authorization: `Bearer ${getToken()}`,
@@ -650,7 +650,7 @@
                     'Content-Type': 'application/json'
                 }
             }
-            const response = await fetch('http://localhost:3000/status/api', config)
+            const response = await fetch('/status/api', config)
             const data = await response.json()
             return data
         }
@@ -712,7 +712,7 @@
                 btns.forEach((btn, index) => {
                     btn.addEventListener('click', () => {
                         if (confirm('Deseja realmente excluir este monitoramento?')) {
-                        fetch(`http://localhost:3000/status/${ids[index].id}`, {
+                        fetch(`/status/${ids[index].id}`, {
                             method: 'DELETE',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -780,7 +780,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <h1>Editar Monitoramento</h1>
-                                <form id="form" class="verfast-form" method="post" action="http://localhost:3000/status/${id}" style="margin-left: 10px; float : left; width : 700px; margin : 20px;">
+                                <form id="form" class="verfast-form" method="post" action="/status/${id}" style="margin-left: 10px; float : left; width : 700px; margin : 20px;">
                                     <div class="col-10">
                                         <label for="name">Nome:</label>
                                     </div>
@@ -823,7 +823,7 @@
                             const value = Object.fromEntries(data
                                 .entries());
 
-                            fetch(`http://localhost:3000/status/${id}`, {
+                            fetch(`/status/${id}`, {
                                 method: 'PUT',
                                 headers: {
                                     'Content-Type': 'application/json'
@@ -1062,7 +1062,7 @@
                                     const status = item.status;
 
                                 if (status == 200) {
-                                    fetch(`http://localhost:3000/ip/${id}`, config)
+                                    fetch(`/ip/${id}`, config)
                                     .then(response => response.json())
                                     .then(data => {
                                         if (!data.status) {
@@ -1110,7 +1110,7 @@
                                                 const address = data3[i].address;
                                                 const status = data3[i].status;
                                                 if (status == 200) {
-                                                    fetch(`http://localhost:3000/ip/${id}`, config)
+                                                    fetch(`/ip/${id}`, config)
                                                     .then(response => response.json())
                                                     .then(data => {
                                                         const coord = data.loc
@@ -1194,7 +1194,7 @@
                     'Content-Type': 'application/json'
                 }
             }
-            const response = await fetch('http://localhost:3000/users', config)
+            const response = await fetch('/users', config)
             const data = await response.json()
             return data
         }
@@ -1279,7 +1279,7 @@
                                 'Content-Type': 'application/json'
                             }
                         }
-                        const response = await fetch(`http://localhost:3000/users/${id2}`, config)
+                        const response = await fetch(`/users/${id2}`, config)
                         .then((response) => {
                             console.log(response);
                             signout();
@@ -1330,7 +1330,7 @@
                     <div class="row">
                         <div class="col-12">
                             <h1>Editar Configurações</h1>
-                            <form id="form" class="verfast-form" method="post" action="http://localhost:3000/users/${id2}" style="margin-left: 10px; float : left; width : 700px; margin : 20px;">
+                            <form id="form" class="verfast-form" method="post" action="/users/${id2}" style="margin-left: 10px; float : left; width : 700px; margin : 20px;">
                                 <div class="col-10">
                                     <label for="name" style="margin:auto">Nome:</label>
                                 </div>
@@ -1435,7 +1435,7 @@
                                 infoparc
                             })
                         }
-                        const response = await fetch(`http://localhost:3000/users/${id2}`, config)
+                        const response = await fetch(`/users/${id2}`, config)
                         .then((response) => {
                             if (response.status === 200) {
                                 alert('Dados alterados com sucesso!');

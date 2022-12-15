@@ -15,7 +15,7 @@ async function handleSubmit(event) {
     };
 
 
-    site = 'http://localhost:3000/users'
+    site = '/users'
 
     await fetch(site, config)
         .then(response =>  {
