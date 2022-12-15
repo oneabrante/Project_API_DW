@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0/css/flag-icon.min.css" integrity="sha512-qBHaRLQnXdZXB6c5ryUXUy/9C6uqMgMYh0HGXZsOGCYJNDkdo46eHPbBPY7URCxyBG/cYpyCQsgIS5xyfWx4Nw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>EyesUp - Monitoramento</title>
+    <link rel="shortcut icon" href="assets/small.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="css/inside.css" />
+</head>
+<body>
+    <div id="pagina">
+        <div class="topo">
+            <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 0px;">
+                
+                <div class="toast" style="position: absolute; top: 0; right: 37%;">
+                  <div class="toast-header">
+                    <i class="fa-solid fa-triangle-exclamation" style="color:red; font-size: 30px; padding: 10px;"></i>
+                    <small class="date"></small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" style="font-size:13px">
+                        <span aria-hidden="true"></span>
+                    </button>
+                  </div>
+                  <div class="toast-body"></div>
+                </div>
+              </div>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="./assets/small.jpg" alt="logo EyesUp" width="105px" style="border-radius: 50px; aspect-ratio: 1/1;">
+                </a>
+            </div>
+            <div class="login">
+                <div class="logado">
+                    <div id="hello"></div>
+                    <br>
+                    <a class="nav-link" href="#" onclick="signout()" style="color: rgb(232, 0, 0);"><b>Sair do Sistema</b></a>
+                </div>   
+            </div>
+            <br class="clear">
+            <div class="menu">
+                <div class="menu_center">
+                    <ul>
+                        <li>
+                            <a id="plan">Crie sua Conta</a>
+                        </li>
+                        <li>
+                            <a id="howf">Como Funciona</a>
+                        </li>
+                        <li>
+                            <a id="plann">Planos de Assinatura</a>
+                        </li>
+                        <li>
+                            <a id="verifastt">Verificação Rápida</a>
+                        </li>
+                        <li class="last">
+                            <a id="contactus">Fale Conosco</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Fim div topo -->
+        <br class="clear">
+        <div class="conteudo">
+            <div class="engloba_menus_laterais">
+                <div class="menu_lateral">
+                    <div class="menu_lateral_center">
+                        <ul>
+                            <li>
+                                <a id ="listmonitoring">Monitoramentos</a>
+                            </li>
+                            <li>
+                                <a id="newmonitoring">Novo monitoramento</a>
+                            </li>
+                            <li>
+                                <a id="historic">Check</a>
+                            </li>
+                            <li class="last">
+                                <a id="conf">Configurações</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Fim div menu lateral 02 -->
+                <div class="menu_lateral">
+                    <div class="menu_lateral_center">
+                        <ul>
+                            <li>
+                                <a id="verifast">Verificação Rápida</a>
+                            </li>
+                            <li>
+                                <a id="contactuss">Fale Conosco</a>
+                            </li>
+                            <li style="border-bottom: none;">
+                                <a class="nav-link" href="#" onclick="signout()" style="color: rgb(232, 0, 0);"><b>Sair do Sistema</b></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Fim div menu lateral 02 -->
+            </div>
+            <!-- Fim div engloba menus laterais -->
+            <div class="miolo">
+                <div class="miolo_center" id="onload">
+                    <!-- Início do conteúdo -->
+                    <h1>Monitoramentos</h1>
+                    <div class="listagem_urls">
+                        <span style="text-align : justify; margin : 20px 0 10px 20px; line-height: 170%;">
+                            <div id="monitoringg" style="font-size: 20px;"></div> 
+                        </span>
+                    </div>
+                    <!-- Fim do conteúdo -->
+                </div>
+            </div>
+            <!-- Fim div miolo -->
+        </div>
+        <!-- Fim div conteudo -->
+        <br class="clear">
+        <div class="rodape">
+            <pre style="margin-top: 30px; font-size: 18px;">
+                <b>© 2022 EyesUp Ltda.</b>
+                <a href="https://abtserver.abrantedevops.repl.co" target="_blank">
+                    <img src="./assets/abranteme.png" alt="Abranteme emblem" style="width: 20px; margin-right: 5%; ">
+                </a>
+            </pre>
+        </div>
+        <!-- Fim div rodape -->
+    </div>
+    <!-- Fim div pagina -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script>
+        
+        function isAuthenticated() {
+            if (!getToken()) {
+            alert('Você precisa estar logado para acessar essa página!');
+            window.location.href = '/login.html';
+            } else {
+            return true;
+
+            }
+        }
+        
+        function getToken() {
+            return localStorage.getItem('@EyesUpToken:token');
+        }
+     
+        
+        function signin(token) {
+            localStorage.setItem('@EyesUpToken:token', token);
+        
+            window.location.href = '/inside.html';
+        }
+        
+        function signout() {
+            localStorage.removeItem('@EyesUpToken:token');
+        
+            window.location.href = '/index.html';
+        }
+
+      
+        if (isAuthenticated()) {
+            async function getuser() {
+            const config = {
+                method: 'GET',
+                headers: {
+                    Authorization: `Bearer ${getToken()}`,
+                    'Content-Type': 'application/json'
+                }
+            }
+            const response = await fetch('/users', config)
+            const data = await response.json()
+            return data
+        }
+            const token = getToken();
+            const user = JSON.parse(atob(token.split('.')[1]));
+            const id2 = user.userId
+            getuser().then(data => {
+                const user = data.find(user => user.id == id2);
+                const name = user.name;
+                document.getElementById("hello").innerHTML = `Olá, <b>${name}!</b>`;
+                
+            })
+        }
+        
+
+
+        async function notificationinhtml(){
+            const token = getToken();
+            const user = JSON.parse(atob(token.split('.')[1]));
+            const id2 = user.userId;
+            const data = await getfetch()
+            const datap = data.filter((item) => item.userId == id2);
+            datap.map((item) => {
+                if (item.status != 200) {
+                    const date = document.querySelector('.date');
+                    const toastBody = document.querySelector('.toast-body');
+                    const toast = document.querySelector('.toast');
+                    const hour = new Date().getHours();
+                    const minutes = new Date().getMinutes();
+                    const seconds = new Date().getSeconds();
+                    const day = new Date().getDate();
+                    const month = new Date().getMonth();
+                    const year = new Date().getFullYear();
+                    const datee = `${day}/${month}/${year} ${hour}:${minutes}:${seconds}`;
+                    date.innerHTML = `Ultima atualização: ${datee}`;
+                    toastBody.innerHTML = `Ops! Existem monitoramentos <font color="red">offline!</font>`;
+                    const toastEl = document.querySelector('.toast')
+                    const toasts = new bootstrap.Toast(toastEl)
+                    toasts.show()     
+                }
+            })
+        }
+        notificationinhtml()
+
+                        
+
+                        
+
+
+        async function byemail(){
+            const tokenn = getToken();
+            const usern = JSON.parse(atob(tokenn.split('.')[1]));
+            const id2n = usern.userId;
+            getuser().then(data => {
+            const user = data.find(user => user.id == id2n);
+            const userz = user.name;
+            const email = user.email;
+            console.log(email)
+            getfetch().then(data => {
+                const datap = data.filter((item) => item.userId == id2n);
+                datap.forEach((item) => {
+                    if (item.status != 200) {
+                        async function sendemail() {
+                        const hour = new Date().getHours();
+                        const minutes = new Date().getMinutes();
+                        const seconds = new Date().getSeconds();
+                        const day = new Date().getDate();
+                        const month = new Date().getMonth();
+                        const year = new Date().getFullYear();
+                        const date = `${day}/${month}/${year} - ${hour}:${minutes}:${seconds}`
+                        url = `/send`
+                        const config = {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                email: `${email}`,
+                                subject: "EyesUp - Notificação!",
+                                message: `<h1>Olá, ${userz}</h1><br><br<p> O monitoramento <b>${item.name}</b> encontra-se <font color="red">offline!</font><br>Checagem mais recente: ${date} <p>Verifique o mais rápido possível!</p><p>Obrigado!</p><br>Atenciosamente, Equipe EyesUp <br><br> © 2023 Copyright: Grupo Abranteme</p>` 
+                            })
+                        }
+                        const response = await fetch(url, config)
+                        const data = await response.json()
+                        if (data.status != 200) {
+                            console.log("Email enviado com sucesso!")
+                        }
+                        }
+                        sendemail()
+                    }
+                })
+            })
+            })
+        }
+        byemail();
+
+
+
+        function verifast() {
+            const ids = ['verifastt', 'verifast'];
+            ids.forEach(id => {
+                const element = document.getElementById(id);
+                element.addEventListener('click', () => {
+                    const miolon = `
+                    <h1>Verificação Rápida</h1>
+                        <span style="text-align : justify; margin : 20px 0 10px 20px;">
+                            <div id="pageverifast" width="300px" style="max-width: 800px;"></div>
+                        </span>`
+                document.getElementById("onload").innerHTML = miolon;
+                const pgver = document.querySelector('#pageverifast');
+                pgver.innerHTML = '<embed type="text/html" src="iverifast.html" width="100%" height="470" >';
+                });
+            });
+        }
+        verifast();
+
+        
+
+        function plan() {
+            const ids = ['plan', 'plann'];
+            ids.forEach(id => {
+                const element = document.getElementById(id);
+                element.addEventListener('click', () => {
+                    const miolon = `
+                    <h1>Planos de assinatura</h1>
+                        <span style="text-align : justify; margin : 20px 0 20px 41px;">Escolha o plano que mais se encaixa com suas necessidades.</span>
+                        <div class="planos">
+                            <div class="planos_center">
+                                <div class="planos_center_conteudo">
+                                    <div class="planos_center_conteudo_box">
+                                        <div class="planos_center_conteudo_box_topo">
+                                            <h2 class="coluna01">Recursos</h2>
+                                            <h2 class="coluna02">Básico</h2>
+                                            <h2 class="coluna03">Intermediário</h2>
+                                            <h2 class="coluna04">Avançado</h2>
+                                        </div>
+                                        <div class="separador"></div>
+                                        <div class="linha_planos">
+                                            <span class="coluna01">Monitoramentos</span>
+                                            <span class="coluna02">1</span>
+                                            <span class="coluna03">3</span>
+                                            <span class="coluna04">10</span>
+                                        </div>
+                                        <div class="linha_planos">
+                                            <span class="coluna01">Relatórios Online</span>
+                                            <span class="coluna02">Sim</span>
+                                            <span class="coluna03">Sim</span>
+                                            <span class="coluna04">Sim</span>
+                                        </div>
+                                        <div class="linha_planos">
+                                            <span class="coluna01">Relatórios por Email</span>
+                                            <span class="coluna02">Mensal</span>
+                                            <span class="coluna03">Mensal</span>
+                                            <span class="coluna04">Mensal</span>
+                                        </div>
+                                        <div class="linha_planos">
+                                            <span class="coluna01">Protocolos</span>
+                                            <span class="coluna02">HTTP</span>
+                                            <span class="coluna03">HTTP/SMTP/<br>POP3/FTP</span>
+                                            <span class="coluna04">HTTP/SMTP/POP3/<br>FTP/DNS/HTTPS</span>
+                                        </div>
+                                        <div class="linha_planos">
+                                            <span class="coluna01">URLs</span>
+                                            <span class="coluna02">1</span>
+                                            <span class="coluna03">3</span>
+                                            <span class="coluna04">10</span>
+                                        </div>
+                                        <div class="planos_center_conteudo_box_topo">
+                                            <h2 class="coluna01">Assinatura</h2>
+                                            <h2 class="coluna02">Grátis!</h2>
+                                            <h2 class="coluna03">R$ 19,90/mês</h2>
+                                            <h2 class="coluna04">R$ 29,90/mês</h2>
+                                        </div>
+                                        <div class="planos_center_conteudo_box_topo">
+                                            <h2 class="coluna01"></h2>
+                                            <h2 class="coluna02"></h2>
+                                            <h2 class="coluna03">
+                                                <a href="https://www.paypal.com/br/home" target="_blank">
+                                                    <button type="button" class="btn btn-danger">Assinar!</button>
+                                                </a>
+                                            </h2>
+                                            <h2 class="coluna04">
+                                                <a href="https://www.paypal.com/br/home" target="_blank">
+                                                    <button type="button" class="btn btn-danger">Assinar!</button>
+                                                </a>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`
+                document.getElementById("onload").innerHTML = miolon;
+                });
+            });
+        }
+        plan();
+
+
+        function contactus() {
+            const ids = ['contactus', 'contactuss'];
+            ids.forEach(id => {
+                const element = document.getElementById(id);
+                element.addEventListener('click', () => {
+                    const miolon = `
+                    <h1>Fale Conosco</h1>
+                            <div id="contact">
+                            <div class="pt-0">
+                            <form class="verfast-form" style="margin-left: 10px; float : left; width : 700px; margin : 20px;">
+                                <form action="https://formsubmit.co/vibat23184@turuma.com" method="POST">
+                                    <div class="col-7">
+                                        <div class="pt-0 row">
+                                            <div class="col-md-5">
+                                                <div class="pb-4 form-group">
+                                                    <input id="name" name="First Name" required="" class="form-control input-lg" placeholder="Primeiro nome*" type="text">
+                                                </div>
+                                                <div class="pb-4 form-group">
+                                                    <input id="lname" name="Last Name" class="form-control input-lg" placeholder="Sobrenome" type="text">
+                                                </div>
+                                                <div class="pb-4 form-group">
+                                                    <input id="email" name="email" required="" class="form-control input-lg" placeholder="Seu e-mail*" type="email">
+                                                </div>
+                                                <div class="pb-4 form-group">
+                                                    <input id="phone" name="phone" class="form-control input-lg" placeholder="Seu telefone" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="col-md-7">
+                                            <div class="pb-4 form-group">
+                                                <textarea cols="6" rows="5" id="comments" name="comments" class="form-control input-lg" placeholder="Escreva sua mensagem"></textarea>
+                                            </div>
+                                            <input name="submit" class="submit-btn" value="Enviar" type="submit" />
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div id="message"></div>
+                                    </div> 
+                                </form>
+                            </div>
+                        </div>`
+                document.getElementById("onload").innerHTML = miolon;
+                });
+            });
+        }
+        contactus();
+
+
+        function howfc() {
+            const element = document.getElementById('howf');
+            element.addEventListener('click', () => {
+                const miolon = `
+                    <h1>Como Funciona</h1>
+                    <div style="font-size: 20px;">
+                        <span style="line-height: 170%; text-align : justify; margin : 20px 0 10px 20px;">
+                            A EyesUp monitora a sua aplicação para garantir que seus clientes tenham uma boa experiência acessando as suas informações e serviços. Você pode acompanhar os resultados dos testes em tempo real e receber relatórios por e-mail. Além dos testes de disponibilidade, você pode monitorar a performance da sua aplicação e receber alertas quando a performance estiver abaixo do esperado. Estamos disponíveis 24 horas por dia, 7 dias por semana, 365 dias por ano, sendo possível monitorar até dez aplicações a partir do nosso plano mais avançado e três aplicações no plano intermediário, além de oferecer um <b>plano gratuito</b> com uma aplicação monitorada.
+                            <br><br><a href="#contact"><b>Contrate já</b></a> e comece a monitorar suas aplicações!<br>Qualquer dúvida entre em contato conosco.
+                        </span>
+                    </div>`
+                document.getElementById("onload").innerHTML = miolon;
+            });
+        }
+        howfc();
+
+        function monitoringg() {
+            
+            const monitor = document.getElementById('monitoringg');
+            fetch('/status')
+            .then(response => response.json())
+            .then(data =>{
+                if (data.filter((item) => item.userId == id2).length == 0) { 
+                    let div = document.createElement('div');
+                    div.innerHTML = `<h1>Monitoramentos</h1>
+                        <span style="text-align : justify; margin : 20px 0 10px 20px;">
+                            Você não possui nenhum monitoramento cadastrado.
+                            <br>
+                            <br>
+                            Clique em "Novo Monitoramento" para inserir um host ou serviço.
+                        </span>`;
+                    document.getElementById("onload").innerHTML = div.innerHTML;
+                } else {
+                    let div = document.createElement('div');
+                    div.innerHTML = `<h1>Monitoramentos</h1>
+                        <span style="text-align : justify; margin : 20px 0 10px 20px;">
+                            Você possui ${data.filter((item) => item.userId == id2).length} monitoramento(s) cadastrado(s).
+                            <br>
+                            <br>
+                            Clique em "Novo Monitoramento" para inserir um host ou serviço 
+                        </span>`;
+                    document.getElementById("onload").innerHTML = div.innerHTML;
+                }
+            });
+        }
+        monitoringg();
+
+
+    
+
+        // function new monitoring status api
+
+        function newmonitoring() {
+            const element = document.getElementById('newmonitoring');
+            element.addEventListener('click', () => {
+                const miolon = `
+                <style>
+                    .form-control {
+                        width: 40%;
+                        margin-left: 20px;
+                        margin-bottom: 5%;
+                    }
+                    .select_medio{
+                        height: 40px;
+                        border: 1px solid #ced4da;
+                        border-radius: .25rem;
+                        display: block;
+                        padding: .375rem .75rem;
+                        font-size: 1rem;
+                        margin-left: 20px;
+                        margin-bottom: 5%;
+                    }
+                    label{
+                        padding: 10px 10px 0 0;
+                    }
+                    .col-10{
+                        float: left;
+                        width:10%;
+                        margin-top: 6px;
+                    }
+                    .col-90{
+                        float: left;
+                        width: 90%;
+                        margin-top: 6px;
+                    }
+                    input[type=submit] {
+                        margin-left: 12%;
+                    }
+                </style>
+                    <h1>Novo Monitoramento</h1>
+                        <div id="contact">
+                            <div class="pt-0">
+                                <form class="verfast-form" style="margin-left: 10px; float : left; width : 700px; margin : 20px;"/>
+                                    <div class="col-10">
+                                        <label for="name">Nome:</label>
+                                    </div>
+                                    <div class="col-90">
+                                        <input id="name" name="name" required="" class="form-control input-lg" type="text" required>
+                                    </div>
+
+                                    <div class="col-10">
+                                        <label for="protocolo">Protocolo:</label>
+                                    </div>
+                                    <div class="col-90">
+                                    <select id="protocolo" name="protocolo" class="select_medio" include_blank="false"  />
+                                        <option value="http">http</option>
+                                        <option value="https">https</option>
+                                        <option value="dns">dns</option>
+                                        <option value="pop3">pop3</option>
+                                        <option value="smtp">smpt</option>
+                                        <option value="ftp">ftp</option>
+                                    </select>
+                                    </div>
+
+                                    <div class="col-10">
+                                        <label for="url">URL: </label>
+                                    </div>
+                                    <div class="col-90">
+                                        <input id="address" name="address" pattern="^(?!(?:https?|ftps?|dns?|pop3?|ftp?|smtp?):\/\/)(?!www\.)[a-zA-Z].{0,620}(?:[0-9A-Za-z][0-9A-Za-z-]{0,62})(?:\.(?:[0-9A-Za-z][0-9A-Za-z-]{0,62}))*(?:\.?|\b)" class="form-control input-lg" type="text" placeholder="website.com.br" required />
+                                    </div>
+                                    <input name="submit" class="submit-btn" value="Criar" type="submit" />
+                                    <div class="clearfix"></div>
+                                    <div id="message"></div>
+                                </form>
+                            </div>
+                        </div>`
+                document.getElementById("onload").innerHTML = miolon;
+                const form = document.querySelector('form');
+
+                form.addEventListener('submit', handleSubmit);
+
+                async function handleSubmit(event) {
+                    event.preventDefault();
+                    const data = new FormData(event.target);
+
+                    const value = Object.fromEntries(data.entries());
+
+
+
+                    const token = getToken();
+                    const user = JSON.parse(atob(token.split('.')[1]));
+                    const id2 = user.userId;
+
+
+                    await fetch(`/status/${id2}`, {
+                        method: 'POST',
+                        body: JSON.stringify(value),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }).then(response => {
+                        if (response.ok) {
+                            document.getElementById('name').value = '';
+                            document.getElementById('address').value = '';
+                            document.getElementById('protocolo').value = '';
+                            alert('Monitoramento criado com sucesso!');
+                            window.location.reload();
+                        } else {
+                            document.getElementById('message').innerHTML = '<br><br><div class="alert alert-danger" role="alert" style="width:45%; margin-left:30%;">Erro ao cadastrar!</div>';
+                        }
+                        return response.json();
+                    }).then(data => {
+                        console.log(data);
+                    });
+                    
+                }
+
+            });
+
+        }
+        
+        newmonitoring();
+
+
+        // all config list monitoring status api
+    
+            const token = getToken();
+            const user = JSON.parse(atob(token.split('.')[1]));
+            const id2 = user.userId;  
+            const monitor = document.getElementById('listmonitoring');
+            fetch('/status/')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.filter((item) => item.userId == id2).length > 0) {
+                        data.filter((item) => item.userId == id2).forEach((item) => {
+                            monitor.innerHTML = `Monitoramentos (${data.filter((item) => item.userId == id2).length})`
+                        })
+                    } else {
+                        monitor.innerHTML = `Monitoramentos (0)`
+                    }
+                })
+
+            
+
+        async function withoutmonitor(){
+            const token = getToken();
+            const user = JSON.parse(atob(token.split('.')[1]));
+            const id2 = user.userId;
+            const response = await fetch('/users', {
+                        method: 'GET',
+                        headers: {
+                            Authorization: `Bearer ${getToken()}`,
+                            'Content-Type': 'application/json',
+                        },
+                    });
+            const data1 = await response.json();
+            if (data1.filter((item) => item.status.filter((item) => item.userId == id2).length > 0).length == 0) {
+                let div = document.getElementById('onload');
+                div.innerHTML = `<h1>Monitoramentos</h1>
+                <span style="text-align : justify; margin : 20px 0 10px 20px;">
+                            Você não possui nenhum monitoramento cadastrado.
+                            <br>
+                            <br>
+                            Clique em "Novo Monitoramento" para inserir um host ou serviço.
+                        </span>`;
+                return div
+            }
+        }
+        withoutmonitor();
+
+
+
+        async function getfetch() {
+            const config = {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+            const response = await fetch('/status/api', config)
+            const data = await response.json()
+            return data
+        }
+
+        
+
+        async function renderapi(){
+            monitor.addEventListener('click', async () => {
+            const data = await getfetch()
+            const datap = data.filter((item) => item.userId == id2);
+            console.log(datap)
+            const div = document.getElementById('onload');
+
+            if (datap.length > 0) {
+                    div.innerHTML = `<h1>Monitoramentos</h1>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Protocolo</th>
+                                <th scope="col">URL</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            ${datap.map(item => `
+                                <tr>
+                                    <td>${item.name}</td>
+                                    <td>${item.protocolo}</td>
+                                    <td>${item.address}</td>
+                                    <td>${item.status}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-primary btn-sm" style="margin-right: 5px;">Editar</a>
+                                        <a href="#" class="btn btn-danger btn-sm" style="margin-right: 5px;">Excluir</a>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>`
+                let tbody = document.querySelector('tbody');
+
+                for (let i = 0; i < tbody.children.length; i++) {
+                    let status = tbody.children[i].children[3].textContent;
+                    if (status == 200) {
+                        tbody.children[i].children[3].innerHTML = '<td><div class="pulse"></div></td>';
+                    } else {
+                        tbody.children[i].children[3].innerHTML = `<i class="icon-indicator fa fa-times" style="color:red; font-size:25px;"></i>`;
+                    }
+                }
+
+
+                // delete monitoring api status
+          
+                const ids = data.filter((item) => item.userId == id2);
+                console.log(ids)
+                const btns = document.querySelectorAll('.btn-danger');
+                btns.forEach((btn, index) => {
+                    btn.addEventListener('click', () => {
+                        if (confirm('Deseja realmente excluir este monitoramento?')) {
+                        fetch(`/status/${ids[index].id}`, {
+                            method: 'DELETE',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                            }).then(response => {
+                                if (response.ok) {
+                                    alert('Monitoramento excluído com sucesso!');
+                                    window.location.reload();
+                                } else {
+                                    alert('Erro ao excluir o monitoramento!');
+                                }
+                                return response.json();
+                            }).then(data => {
+                                console.log(data);
+                            });
+                        }
+                    });
+                });
+
+
+                // edit monitoring 
+                const btnsedit = document.querySelectorAll('.btn-primary');
+                btnsedit.forEach((btn, index) => {
+                    btn.addEventListener('click', () => {
+                        let name = tbody.children[index].children[0].textContent;
+                        let protocolo = tbody.children[index].children[1].textContent;
+                        let address = tbody.children[index].children[2].textContent;
+                        let status = tbody.children[index].children[3].textContent;
+                        let id = ids[index].id;
+                        let div = document.getElementById('onload');
+                        div.innerHTML = `
+                        <style>
+                            .form-control {
+                        width: 40%;
+                        margin-left: 20px;
+                        margin-bottom: 5%;
+                            }
+                            .select_medio{
+                                height: 40px;
+                                border: 1px solid #ced4da;
+                                border-radius: .25rem;
+                                display: block;
+                                padding: .375rem .75rem;
+                                font-size: 1rem;
+                                margin-left: 20px;
+                                margin-bottom: 5%;
+                            }
+                            label{
+                                padding: 10px 10px 0 0;
+                            }
+                            .col-10{
+                                float: left;
+                                width:10%;
+                                margin-top: 6px;
+                            }
+                            .col-90{
+                                float: left;
+                                width: 90%;
+                                margin-top: 6px;
+                            }
+                            input[type=submit] {
+                                margin-left: 12%;
+                            }
+                    </style>
+                        <div class="row">
+                            <div class="col-12">
+                                <h1>Editar Monitoramento</h1>
+                                <form id="form" class="verfast-form" method="post" action="/status/${id}" style="margin-left: 10px; float : left; width : 700px; margin : 20px;">
+                                    <div class="col-10">
+                                        <label for="name">Nome:</label>
+                                    </div>
+                                    <div class="col-90">
+                                        <input id="name" name="name" required="" class="form-control input-lg" type="text" value="${name}" required />
+                                    </div>
+                                    <div class="col-10">
+                                        <label for="protocolo">Protocolo:</label>
+                                    </div>
+                                    <div class="col-90">
+                                        <select id="protocolo" name="protocolo" class="form-control input-lg" required>
+                                            <option value="http" ${protocolo == 'http' ? 'selected' : ''}>http</option>
+                                            <option value="https" ${protocolo == 'https' ? 'selected' : ''}>https</option>
+                                            <option value="ftp" ${protocolo == 'ftp' ? 'selected' : ''}>ftp</option>
+                                            <option value="dns" ${protocolo == 'dns' ? 'selected' : ''}>dns</option>
+                                            <option value="smtp" ${protocolo == 'smtp' ? 'selected' : ''}>smtp</option>
+                                            <option value="pop3" ${protocolo == 'pop3' ? 'selected' : ''}>pop3</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-10">
+                                        <label for="address">URL:</label>
+                                    </div>
+                                    <div class="col-90">
+                                        <input id="address" name="address" pattern="^(?!(?:https?|ftps?|dns?|pop3?|ftp?|smtp?):\/\/)(?!www\.)[a-zA-Z].{0,620}(?:[0-9A-Za-z][0-9A-Za-z-]{0,62})(?:\.(?:[0-9A-Za-z][0-9A-Za-z-]{0,62}))*(?:\.?|\b)" class="form-control input-lg" type="text" value="${address}" required />
+                                    </div>
+                                    <input name="submit" class="submit-btn" value="Editar" type="submit" />
+                                    <div class="clearfix"></div>
+                                    <div id="message"></div>
+                                </form>
+                            </div>
+                        </div>`;
+                        const form = document.querySelector('form');
+
+                        form.addEventListener('submit', handleSubmit);
+
+                        function handleSubmit(event) {
+                            event.preventDefault();
+                            const data = new FormData(event.target);
+
+                            const value = Object.fromEntries(data
+                                .entries());
+
+                            fetch(`/status/${id}`, {
+                                method: 'PUT',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(value)
+                            }).then(response => {
+                                if (response.ok) {
+                                    alert('Monitoramento editado com sucesso!');
+                                    window.location.reload();
+                                } else {
+                                    alert('Erro ao editar o monitoramento!');
+                                }
+                                return response.json();
+                            }).then(data => {
+                                console.log(data);
+                            });
+                        }
+                    });
+                });
+            } else {
+                withoutmonitor();
+            }
+        });
+        }
+        renderapi();
+
+
+
+        function datehour() {
+            let date = new Date();
+            let day = date.getDate();
+            let month = date.getMonth() + 1;
+            let year = date.getFullYear();
+            let hour = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+            let datehour = `${day}/${month}/${year} ${hour}:${minutes}:${seconds}`;
+            return datehour;
+        }
+
+        // datehour();
+
+
+        
+     
+
+
+        // monitoring history log report
+        function histmonitor(){
+            const historic = document.getElementById('historic');
+            historic.addEventListener('click', async () => {
+            const data = await getfetch()
+            const data2= data.filter((item) => item.userId == id2);
+            console.log(data2)
+            const div = document.getElementById('onload');
+
+            if (data2.length > 0) {
+                div.innerHTML = `
+                <h1>Check</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">URL</th>
+                            <th scope="col">Informações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                    ${data2.map(item => `
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>${item.address}</td>
+                            <td>
+                                <a href="#" id="result"><i class="fa-solid fa-chart-simple" style="color:blue;font-size:25px"></i></a>
+                            </td>
+                        </tr>
+                        `).join('')}
+                    </tbody>
+                </table>`
+                const tbody = document.getElementById('tbody');
+                
+                for (let i = 0; i < tbody.children.length; i++) {
+                    
+                    tbody.children[i].children[2].children[0].addEventListener('click', async () => {
+                        const data = await getfetch()
+                        const data2= data.filter((item) => item.userId == id2);
+                        const div = document.getElementById('onload');
+                        div.innerHTML = `
+                        <h1>Relatório de Monitoramento</h1>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Endereço</th>
+                                    <th scope="col">Última Verificação</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+                                ${data2.map(item => `
+                                <tr>
+                                    <td>${item.name}</td>
+                                    <td>${item.address}</td>
+                                    <td>${datehour()}</td>
+                                </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                        <div>
+                            <h1>Gráfico de Monitoramento</h1>
+                            <canvas id="myChart"></canvas>
+                        </div>
+                        <div>
+                            <h1>Geolocalização</h1>
+                            <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Endereço</th>
+                                    <th scope="col">Cidade</th>
+                                    <th scope="col">País</th>
+                                    <th scope="col">Coordenadas</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyy"></tbody>
+                            <div id="mymap"></div>
+                        </table>
+                        </div>`;
+                        const ctx = document.getElementById('myChart').getContext('2d');
+                        const myChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: data2.map(item => item.name),
+                                datasets: [{
+                                    label: 'Status',
+                                    data: data2.map(item => item.status == 200 ? 1 : 0),
+                                    pointRadius: 6,
+                                    boxHeight: 6,
+                                    pointHoverRadius: 10,
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: { 
+                                plugins: {
+                                    legend: {
+                                        display: true,
+                                        labels: {
+                                            boxWidth: 40,
+                                            boxHeight: 1,
+                                            font: {
+                                                size: 17
+                                            },
+                                            padding: 20,
+                                            color: 'black'
+                                        },
+                                    },
+                                },
+                                scales: {
+                                    y: {
+                                        offset: true,
+                                        grid: { offset: true },
+                                        beginAtZero: true,
+                                        ticks: {
+                                            font: {
+                                                size: 14
+                                            },
+                                            color: 'black',
+                                            stepSize: 1,
+                                            callback: function (value, index, values) {
+                                                if (value == 1) {
+                                                    return 'Online';
+                                                } else {
+                                                    return 'Offline';
+                                                }
+                                            }
+                                            
+                                        },
+
+                                    },
+                                    x: {
+                                        title: {
+                                            display: true,
+                                            text: 'Hosts',
+                                            color: 'black',
+                                            font: {
+                                                size: 20,
+                                                weight: 'bold'
+                                            },
+                                            padding: {
+                                                top: 10,
+                                                bottom: 30
+                                            },
+                                        },
+                                        ticks: {
+                                            color: 'black',
+                                            font: {
+                                                size: 14,
+                                            },
+                                        }
+                                },
+
+                                }
+                            }
+                        });
+
+
+                                const config = {
+                                    method: 'GET',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    }
+                                }
+                                const token = getToken();
+                                const user = JSON.parse(atob(token.split('.')[1]));
+                                const id2z = user.userId;
+                                const dataz = await getfetch()
+                                const data3 = dataz.filter((item) => item.userId == id2z);
+                                console.log(data3);
+                                const dataid = data3.forEach((item) => {
+                                    const id = item.id;
+                                    const address = item.address;
+                                    const status = item.status;
+
+                                if (status == 200) {
+                                    fetch(`/ip/${id}`, config)
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (!data.status) {
+                                            console.log(!data.status)
+                                            let tbody = document.getElementById('tbodyy');
+                                            let tr = document.createElement('tr');
+                                            let td = document.createElement('td');
+                                            let td2 = document.createElement('td');
+                                            let td3 = document.createElement('td');
+                                            let td4 = document.createElement('td');
+                                            td.innerHTML = item.address;
+                                            td2.innerHTML = data.city;
+                                            const code = `${data.country.toLowerCase()}`;
+                                            console.log(code)
+                                            td3.innerHTML = `<h6><i class="flag-icon flag-icon-${code} "></i> ${data.country}</h6>`;
+                                            td4.innerHTML = data.loc;
+                                            tr.appendChild(td);
+                                            tr.appendChild(td2);
+                                            tr.appendChild(td3);
+                                            // td3.classList.add("flag-icon");
+                                            tr.appendChild(td4);
+                                            tbody.appendChild(tr);
+
+                                            console.log(data.loc)
+                                            const mymap = document.getElementById('mymap');
+                                            mymap.innerHTML = `<div id="mapid" style="width:100%;height:380px;""></div>`;
+                                            const coord = data.loc
+                                            const lat = coord.split(',')[0];
+                                            const long = coord.split(',')[1];
+                                            const coordinates = {
+                                                latitude: {
+                                                lat,
+                                                },
+                                                longitude: {
+                                                    long
+                                                },
+                                            };
+                                            var mymapp = L.map('mapid').setView([coordinates.latitude.lat, coordinates.longitude.long], 1);
+                                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                            }).addTo(mymapp);
+                                            
+                                            for (let i = 0; i < data3.length; i++) {
+                                                const id = data3[i].id;
+                                                const address = data3[i].address;
+                                                const status = data3[i].status;
+                                                if (status == 200) {
+                                                    fetch(`/ip/${id}`, config)
+                                                    .then(response => response.json())
+                                                    .then(data => {
+                                                        const coord = data.loc
+                                                        const lat = coord.split(',')[0];
+                                                        const long = coord.split(',')[1];
+                                                        const coordinates = {
+                                                            latitude: {
+                                                            lat,
+                                                            },
+                                                            longitude: {
+                                                                long
+                                                            },
+                                                        };
+                                                        L.marker([coordinates.latitude.lat, coordinates.longitude.long]).addTo(mymapp)
+                                                        .bindPopup(`${address}`).openPopup();
+                                                    })
+                                                }
+                                            }
+
+                                        }else {
+                                            let tbody = document.getElementById('tbodyy');
+                                            let tr = document.createElement('tr');
+                                            let td = document.createElement('td');
+                                            let td2 = document.createElement('td');
+                                            let td3 = document.createElement('td');
+                                            let td4 = document.createElement('td');
+                                            td.innerHTML = item.address;
+                                            td2.innerHTML = '<font color="orange">Indisponível</font>';
+                                            td3.innerHTML = '<font color="orange">Indisponível</font>';
+                                            td4.innerHTML = '<font color="orange">Indisponível</font>';
+                                            tr.appendChild(td);
+                                            tr.appendChild(td2);
+                                            tr.appendChild(td3);
+                                            tr.appendChild(td4);
+                                            tbody.appendChild(tr);
+                                        }
+
+                                    })
+
+                                }else {
+                                    let tbody = document.getElementById('tbodyy');
+                                    let tr = document.createElement('tr');
+                                    let td = document.createElement('td');
+                                    let td2 = document.createElement('td');
+                                    let td3 = document.createElement('td');
+                                    let td4 = document.createElement('td');
+                                    td.innerHTML = item.address;
+                                    td2.innerHTML = '<font color="red">Status offline!</font>';
+                                    td3.innerHTML = '<font color="red">Status offline!</font>';
+                                    td4.innerHTML = '<font color="red">Status offline!</font>';
+                                    tr.appendChild(td);
+                                    tr.appendChild(td2);
+                                    tr.appendChild(td3);
+                                    tr.appendChild(td4);
+                                    tbody.appendChild(tr);
+                                }
+
+                            
+                            })
+                          
+                    })
+
+                }   
+               
+            } else {
+                withoutmonitor();
+            }
+        });
+        }
+        histmonitor();
+
+
+
+        // functions of config for the user
+
+        async function getuser() {
+            const config = {
+                method: 'GET',
+                headers: {
+                    Authorization: `Bearer ${getToken()}`,
+                    'Content-Type': 'application/json'
+                }
+            }
+            const response = await fetch('/users', config)
+            const data = await response.json()
+            return data
+        }
+
+
+        function conf() {
+            const element = document.getElementById('conf');
+            element.addEventListener('click', async () => {
+                const data = await getuser()
+                const datae = data.filter((item) => item.id == id2);
+                console.log(datae)
+                const div = document.getElementById('onload');
+                div.innerHTML = `
+                    <h1>Configurações</h1>
+                        <div id="veri" class="verfast-form">
+                            <div class="textcenterunder">
+                                <div class="input-container" style="text-align : justify; margin : 20px 0 10px 20px;">
+                                    <br><br>
+                                    <span id="named" style="font-size: 20px; display: block; margin-bottom: 20px;"></span>
+                                    <span id="mail" style="font-size: 20px;display: block; margin-bottom: 20px;"></span>
+                                    <span id="fusoh" style="font-size: 20px;display: block; margin-bottom: 20px;"></span>
+                                    <span id="horarioverao" style="font-size: 20px;display: block; margin-bottom: 20px;"></span>
+                                    <span id="infoeyesup" style="font-size: 20px;display: block; margin-bottom: 20px;"></span>
+                                    <span id="infoparc" style="font-size: 20px;"></span>
+                                </div>
+                                <form action="" id="formntz" class="verfast-form" style=" float : left; width : 700px; margin : 20px;">
+                                <input class="submit-btn" type="submit" id="senda" value="Editar Configurações" style="width: 25%;"/>
+                                <input class="submit-btn" type="submit" id="sendb" value="Excluir Conta" style="margin-left: 10px; width: 17%;" data-bs-toggle="modal"
+                                data-bs-target=".bd-example-modal-lg"/>
+                   
+                                <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg"></div> 
+                                </form>
+                                </div>
+                            </div>
+                        </div>`
+    
+                const name = document.getElementById('named');
+                name.innerHTML = `Nome: <b>${datae[0].name}</b><br><br>`;
+                const mail = document.getElementById('mail');
+                mail.innerHTML = `Email: <b>${datae[0].email}</b><br><br>`;
+                const fusoh = document.getElementById('fusoh');
+                fusoh.innerHTML = `Fuso Horário: <b>${datae[0].fusoh}</b><br><br>`;
+                const horarioverao = document.getElementById('horarioverao');
+                horarioverao.innerHTML = `Horário de Verão: <b>${datae[0].horarioverao}</b><br><br>`;
+                const infoeyesup = document.getElementById('infoeyesup');
+                infoeyesup.innerHTML = `Informações da EyesUp: <b>${datae[0].infoeyesup}</b><br><br>`;
+                const infoparc = document.getElementById('infoparc');
+                infoparc.innerHTML = `Informações de Parceiros da EyesUp: <b>${datae[0].infoparc}</b><br><br>`;
+
+
+
+                // delet user
+
+                const element = document.getElementById('sendb');
+                element.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    const question = `
+                    <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Excluir Conta </h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h4><b>${datae[0].name}</b>, deseja realmente remover-se do site da EyesUp?</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <input class="submit-btn" type="submit" id="sendc" value="Sim" style="width: 15%;"/>
+                        <input class="submit-btn" type="submit" id="sendd" value="Não" style="margin-left: 2px; width: 15%;"/>
+                    </div>
+                </div>
+            </div>`
+                    document.getElementById('myModal').innerHTML = question;
+                    const sendc = document.querySelector('#sendc');
+                    sendc.addEventListener('click', async (e) => {
+                        e.preventDefault();
+                        const config = {
+                            method: 'DELETE',
+                            headers: {
+                                Authorization: `Bearer ${getToken()}`,
+                                'Content-Type': 'application/json'
+                            }
+                        }
+                        const response = await fetch(`/users/${id2}`, config)
+                        .then((response) => {
+                            console.log(response);
+                            signout();
+                    })
+                    const sendd = document.querySelector('#sendd');
+                    sendd.addEventListener('click', async (e) => {
+                        e.preventDefault();
+                        window.location.href = 'inside.html';
+                    })
+                })
+            })
+
+
+
+                // update user account
+
+                const edit = document.getElementById('senda');
+                edit.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    const div = document.getElementById('onload');
+                    div.innerHTML = `
+                    <style>
+                            .form-control {
+                            width: 40%;
+                            margin-left: 20px;
+                            margin-bottom: 5%;
+                            }
+                            .select_medio{
+                                height: 40px;
+                                border: 1px solid #ced4da;
+                                border-radius: .25rem;
+                                display: block;
+                                padding: .375rem .75rem;
+                                font-size: 1rem;
+                                margin-left: 20px;
+                                margin-bottom: 5%;
+                            }
+                            .col-10{
+                                float: left;
+                                width:30%;
+                                margin-top: 6px;
+                            }
+                            input[type=submit] {
+                                margin-left: 12%;
+                            }
+                    </style>
+                    <div class="row">
+                        <div class="col-12">
+                            <h1>Editar Configurações</h1>
+                            <form id="form" class="verfast-form" method="post" action="/users/${id2}" style="margin-left: 10px; float : left; width : 700px; margin : 20px;">
+                                <div class="col-10">
+                                    <label for="name" style="margin:auto">Nome:</label>
+                                </div>
+                                    <div class="col-90">
+                                        <input type="text" class="form-control" id="name" name="name" value="${datae[0].name}">
+                                    </div>  
+                                <div class="col-10">
+                                    <label for="email">Email:</label>
+                                </div>
+                                    <div class="col-90">
+                                        <input type="email" class="form-control" id="email" name="email" value="${datae[0].email}">
+                                    </div>
+                             
+                                <div class="col-10">
+                                    <label for="fusoh">Fuso Horário:</label>
+                                </div>
+                                    <div class="col-90">
+                                        <select id="fusoh" name="fusoh" class="select_medio">
+                                            <option value="GMT-3 Brasil - Brasília">GMT-3 Brasil - Brasília</option>
+                                            <option value="+12 USA - Wellington">+12 USA - Wellington</option>
+                                            <option value="-12">-12</option>
+                                            <option value="GMT-10 USA Havaii">+GMT-10 USA Havaii</option>
+                                            <option value="GMT-9 Alaska">GMT-9 Alaska</option>
+                                            <option value="GMT-8 USA - Los Angeles">GMT-8 USA - Los Angeles</option>
+                                            <option value="GMT-7 Mointain Time (USA e Canadá)">GMT-7 Mointain Time (USA e Canadá)</option>
+                                            <option value="GMT-6 USA - Chicago">GMT-6 USA - Chicago</option>
+                                            <option value="GMT-5 Equador - Quito">GMT-5 Equador - Quito</option>
+                                            <option value="GMT-4 Brasil - Manaus">GMT-4 Brasil - Manaus</option>
+                                            <option value="GMT-2 Brasil - Fernando de Noronha">GMT-2 Brasil - Fernando de Noronha</option>
+                                            <option value="GMT-1">GMT-1</option>
+                                            <option value="GMT (0) Portugal - Lisboa">GMT (0) Portugal - Lisboa</option>
+                                            <option value="GMT+1 França - Paris">GMT+1 França - Paris</option>
+                                            <option value="GMT+2">GMT+2</option>
+                                            <option value="GMT+3">GMT+3</option>
+                                            <option value="GMT+4">GMT+4</option>
+                                            <option value="GMT+5">GMT+5</option>
+                                            <option value="GMT+6">GMT+6</option>
+                                            <option value="GMT+7">GMT+7</option>
+                                            <option value="GMT+8 China - Hong Kong">GMT+8 China - Hong Kong</option>
+                                            <option value="GMT+9 Japão - Tokyo">GMT+9 Japão - Tokyo</option>
+                                            <option value="GMT+10">GMT+10</option>
+                                            <option value="GMT+11">GMT+11</option>
+                                        </select>
+                                    </div>
+                               
+                                <div class="col-10">
+                                    <label for="horarioverao">Horário de Verão:</label>
+                                </div>
+                                    <div class="col-90">
+                                        <select id="horarioverao" name="horarioverao" class="select_medio">
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </div>
+                            
+                                <div class="col-10">
+                                    <label for="infoeyesup">Informações EyesUp:</label>
+                                </div>
+                                    <div class="col-90">
+                                        <select id="infoeyesup" name="infoeyesup" class="select_medio">
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </div>
+                             
+                                <div class="col-10">
+                                    <label for="infoparc">Informações de Parceiros:</label>
+                                </div>
+                                    <div class="col-90">
+                                        <select id="infoparc" name="infoparc" class="select_medio">
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </div>
+                               
+                                <input name="submit" id="sende" class="submit-btn" value="Editar" type="submit" />
+                            </form>
+                        </div>
+                    </div>
+                    `
+                    const sende = document.getElementById('sende');
+                    sende.addEventListener('click', async (e) => {
+                        e.preventDefault();
+                        const name = document.getElementById('name').value;
+                        const email = document.getElementById('email').value;
+                        const fusoh = document.getElementById('fusoh').value;
+                        const horarioverao = document.getElementById('horarioverao').value;
+                        const infoeyesup = document.getElementById('infoeyesup').value;
+                        const infoparc = document.getElementById('infoparc').value;
+                        const config = {
+                            method: 'PUT',
+                            headers: {
+                                Authorization: `Bearer ${getToken()}`,
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                name,
+                                email,
+                                fusoh,
+                                horarioverao,
+                                infoeyesup,
+                                infoparc
+                            })
+                        }
+                        const response = await fetch(`/users/${id2}`, config)
+                        .then((response) => {
+                            if (response.status === 200) {
+                                alert('Dados alterados com sucesso!');
+                                window.location.reload();
+                            } else {
+                                alert('Erro ao alterar dados!');
+                            }
+                        })
+                    })
+                })
+            })
+        }
+        conf();
+
+    </script>
+</body>
+</html>

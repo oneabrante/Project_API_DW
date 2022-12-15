@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EyesUP-Cadastro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/cadastro.css" />
+  </head>
+  <body>
+    <div id="particles-js"></div>
+    <a class="logo" href="index.html"><img src="./assets/small.jpg" alt="logo EyesUp" width="170px" style="border-radius: 100px; aspect-ratio: 1/1;"></a>
+        <div class="container mt-4" id="cadastro">
+            <div class="row align-itens-center">
+                <div class="col-md-10 mx-auto col-lg-5">
+                    
+                    <form class="p-4 p-md-5 border rounded-3 bg-light" onsubmit="handleSubmit(event)" novalidate>
+                        <h1 style="text-align: center; margin: bottom 5px;">Cadastro</h1>
+                        <div class="ja-tem-conta" <p>Já tem uma conta ? <a href="login.html">Faça login →</a></p></div>
+                        
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Usuário" required />
+                            <label for="name">Nome de usuário</label>
+                            <div class="invalid-feedback">Informe o nome do usuário.</div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required />
+                            <label for="email">E-mail</label>
+                            <div class="invalid-feedback">Informe o email do usuário.</div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="password" name="password" minlength="8" placeholder="Senha" required />
+                            <label for="password">Senha</label>
+                            <div class="invalid-feedback">Informe a senha com 8 caracteres.</div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="confirmationPassword" name="confirmationPassword" placeholder="Confirme a Senha"  required />
+                            <label for="confirmationPassword">Confirmar a Senha</label>
+                            <div class="invalid-feedback">Reescreva novamente a senha.</div>
+                        </div>
+                        <input type="text" class="form-control" id="fusoh" name="fusoh" value="GMT-3 Brasil - Brasília" style="display: none;" />
+                        <input type="text" class="form-control" id="horarioverao" name="horarioverao" value="Sim" style="display: none;" />
+                        <input type="text" class="form-control" id="infoeyesup" name="infoeyesup" value="Sim" style="display: none;" />
+                        <input type="text" class="form-control" id="infoparc" name="infoparc" value="Sim" style="display: none;" />
+                        
+                        <div id="bozp"></div>
+                        <input class="w-100 btn btn-lg btn-danger" type="submit" id="botao" value="Cadastrar"/>
+                    </form>
+                </div> 
+            </div>
+        </div>
+    <script src="./js/particles.js"></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/cad.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  </body>
+</html>

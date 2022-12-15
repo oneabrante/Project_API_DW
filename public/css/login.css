@@ -1,0 +1,102 @@
+html, body{
+    font-family: 'Lato', sans-serif;
+    min-height: 100vh;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.row {
+    padding: 70px 0px 70px 0px;
+}
+
+* {
+    list-style: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+
+#particles-js{
+    background-color:rgb(8, 18, 27);
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+#particles-js canvas{
+    display: block;
+
+}
+
+#login{
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+
+.logo{
+    position: absolute;
+    top: 2%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    animation: logo 3s infinite;
+}
+
+@keyframes logo {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+    70% {
+        transform: scale(1.02);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+}
+
+
+.sem-conta{
+    padding: 10px 0px;
+}
+
+#botao{
+    background: rgb(250, 137, 51);
+    border-color: rgb(250, 137, 51);
+}
+
+#botao:hover{
+    background: rgb(250, 137, 51);
+    opacity: 0.8;
+}
+
+p{
+    color: rgb(184, 181, 179);
+    font-weight: 700;
+    position: absolute;
+    top: 5%;
+    left: 80%;
+    transform: translate(-100%, -30%);
+}
+
+a{
+    text-decoration: none;
+    color: rgb(250, 137, 51);
+}
+
+a:hover{
+    color: rgb(250, 137, 51);
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 768px){
+    p{
+    left: 30%;
+    transform: translate(-40%, -50%);
+    }
+}
