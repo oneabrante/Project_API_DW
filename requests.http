@@ -109,7 +109,6 @@ Content-Type: application/json
 }
 
 
-
 ### Get 
 ### only when create API exists
 GET {{host}}/status/91
