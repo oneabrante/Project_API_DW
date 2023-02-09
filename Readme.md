@@ -16,7 +16,6 @@
 
 <h1><a id="sobre-o-projeto"> :bulb:  Sobre o projeto </a></h1>
 
-Esta é uma ideia para o projeto da disciplina de Desenvolvimento WEB do curso de Tecnologia de Redes de Computadores do IFPB - Campus JP. 
 A EyesUp nasceu com o intuito de facilitar o monitoramento de aplicações WEB e API's, de forma simples e rápida, para que o usuário possa ter uma visão geral de como está o funcionamento de suas aplicações e assim poder tomar decisões mais rápidas. 
 
 <h1><a id="como-funciona"> :wrench:  Como funciona </a></h1>
