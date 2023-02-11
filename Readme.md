@@ -75,17 +75,17 @@ $ npm i
 
 # Crie um arquivo .env na raiz do projeto e adicione as seguintes variáveis de ambiente
 # JWT
-$ SECRET=secret_anything
+SECRET=secret_anything
 
 # BCRYPT
-$ SALT=10
+SALT=10
 
 # Prisma
 DATABASE_URL="file:./dev.db"
 
 # Nodemailer
-$ EMAIL=your_email
-$ PASSWORD=your_password
+EMAIL=your_email
+PASSWORD=your_password
 
 # PS: Para o envio das notificações via email, alterar as constantes "user" "pass" no arquivo notifyController.js (linhas 9, 10 e 20) para as variáveis de ambiente EMAIL e PASSWORD
 
